@@ -44,80 +44,89 @@
             // 
             // square1Button
             // 
-            this.square1Button.Location = new System.Drawing.Point(101, 96);
+            this.square1Button.Location = new System.Drawing.Point(100, 100);
             this.square1Button.Name = "square1Button";
-            this.square1Button.Size = new System.Drawing.Size(75, 23);
+            this.square1Button.Size = new System.Drawing.Size(100, 100);
             this.square1Button.TabIndex = 0;
             this.square1Button.UseVisualStyleBackColor = true;
+            this.square1Button.Click += new System.EventHandler(this.square1Button_Click);
             // 
             // square2Button
             // 
-            this.square2Button.Location = new System.Drawing.Point(233, 96);
+            this.square2Button.Location = new System.Drawing.Point(250, 100);
             this.square2Button.Name = "square2Button";
-            this.square2Button.Size = new System.Drawing.Size(75, 23);
+            this.square2Button.Size = new System.Drawing.Size(100, 100);
             this.square2Button.TabIndex = 1;
             this.square2Button.UseVisualStyleBackColor = true;
+            this.square2Button.Click += new System.EventHandler(this.square2Button_Click);
             // 
             // square3Button
             // 
-            this.square3Button.Location = new System.Drawing.Point(363, 96);
+            this.square3Button.Location = new System.Drawing.Point(400, 100);
             this.square3Button.Name = "square3Button";
-            this.square3Button.Size = new System.Drawing.Size(75, 23);
+            this.square3Button.Size = new System.Drawing.Size(100, 100);
             this.square3Button.TabIndex = 2;
             this.square3Button.UseVisualStyleBackColor = true;
+            this.square3Button.Click += new System.EventHandler(this.square3Button_Click);
             // 
             // square4Button
             // 
-            this.square4Button.Location = new System.Drawing.Point(101, 154);
+            this.square4Button.Location = new System.Drawing.Point(100, 250);
             this.square4Button.Name = "square4Button";
-            this.square4Button.Size = new System.Drawing.Size(75, 23);
+            this.square4Button.Size = new System.Drawing.Size(100, 100);
             this.square4Button.TabIndex = 3;
             this.square4Button.UseVisualStyleBackColor = true;
+            this.square4Button.Click += new System.EventHandler(this.square4Button_Click);
             // 
             // square5Button
             // 
-            this.square5Button.Location = new System.Drawing.Point(233, 154);
+            this.square5Button.Location = new System.Drawing.Point(250, 250);
             this.square5Button.Name = "square5Button";
-            this.square5Button.Size = new System.Drawing.Size(75, 23);
+            this.square5Button.Size = new System.Drawing.Size(100, 100);
             this.square5Button.TabIndex = 4;
             this.square5Button.UseVisualStyleBackColor = true;
+            this.square5Button.Click += new System.EventHandler(this.square5Button_Click);
             // 
             // square6Button
             // 
-            this.square6Button.Location = new System.Drawing.Point(363, 154);
+            this.square6Button.Location = new System.Drawing.Point(400, 250);
             this.square6Button.Name = "square6Button";
-            this.square6Button.Size = new System.Drawing.Size(75, 23);
+            this.square6Button.Size = new System.Drawing.Size(100, 100);
             this.square6Button.TabIndex = 5;
             this.square6Button.UseVisualStyleBackColor = true;
+            this.square6Button.Click += new System.EventHandler(this.square6Button_Click);
             // 
             // square7Button
             // 
-            this.square7Button.Location = new System.Drawing.Point(101, 211);
+            this.square7Button.Location = new System.Drawing.Point(100, 400);
             this.square7Button.Name = "square7Button";
-            this.square7Button.Size = new System.Drawing.Size(75, 23);
+            this.square7Button.Size = new System.Drawing.Size(100, 100);
             this.square7Button.TabIndex = 6;
             this.square7Button.UseVisualStyleBackColor = true;
+            this.square7Button.Click += new System.EventHandler(this.square7Button_Click);
             // 
             // square8Button
             // 
-            this.square8Button.Location = new System.Drawing.Point(233, 211);
+            this.square8Button.Location = new System.Drawing.Point(250, 400);
             this.square8Button.Name = "square8Button";
-            this.square8Button.Size = new System.Drawing.Size(75, 23);
+            this.square8Button.Size = new System.Drawing.Size(100, 100);
             this.square8Button.TabIndex = 7;
             this.square8Button.UseVisualStyleBackColor = true;
+            this.square8Button.Click += new System.EventHandler(this.square8Button_Click);
             // 
             // square9Button
             // 
-            this.square9Button.Location = new System.Drawing.Point(363, 211);
+            this.square9Button.Location = new System.Drawing.Point(400, 400);
             this.square9Button.Name = "square9Button";
-            this.square9Button.Size = new System.Drawing.Size(75, 23);
+            this.square9Button.Size = new System.Drawing.Size(100, 100);
             this.square9Button.TabIndex = 8;
             this.square9Button.UseVisualStyleBackColor = true;
+            this.square9Button.Click += new System.EventHandler(this.square9Button_Click);
             // 
             // theCurrentPlayerIsLabel
             // 
             this.theCurrentPlayerIsLabel.AutoSize = true;
-            this.theCurrentPlayerIsLabel.Location = new System.Drawing.Point(140, 380);
+            this.theCurrentPlayerIsLabel.Location = new System.Drawing.Point(555, 13);
             this.theCurrentPlayerIsLabel.Name = "theCurrentPlayerIsLabel";
             this.theCurrentPlayerIsLabel.Size = new System.Drawing.Size(103, 13);
             this.theCurrentPlayerIsLabel.TabIndex = 9;
@@ -126,7 +135,7 @@
             // currentPlayerLabel
             // 
             this.currentPlayerLabel.AutoSize = true;
-            this.currentPlayerLabel.Location = new System.Drawing.Point(259, 380);
+            this.currentPlayerLabel.Location = new System.Drawing.Point(684, 13);
             this.currentPlayerLabel.Name = "currentPlayerLabel";
             this.currentPlayerLabel.Size = new System.Drawing.Size(68, 13);
             this.currentPlayerLabel.TabIndex = 10;
@@ -145,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 533);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.currentPlayerLabel);
             this.Controls.Add(this.theCurrentPlayerIsLabel);
