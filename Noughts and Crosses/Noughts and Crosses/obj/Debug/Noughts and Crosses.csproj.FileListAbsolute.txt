@@ -1,0 +1,11 @@
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\bin\Debug\Noughts and Crosses.exe.config
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\bin\Debug\Noughts and Crosses.exe
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\bin\Debug\Noughts and Crosses.pdb
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.csprojAssemblyReference.cache
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts_and_Crosses.Form1.resources
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts_and_Crosses.GameUI.resources
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts_and_Crosses.Properties.Resources.resources
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.csproj.GenerateResource.cache
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.csproj.CoreCompileInputs.cache
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.exe
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.pdb

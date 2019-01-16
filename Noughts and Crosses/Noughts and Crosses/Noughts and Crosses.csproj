@@ -57,7 +57,7 @@
     <Compile Include="GameUI.Designer.cs">
       <DependentUpon>GameUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs" />
+    <Compile Include="mechanics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
