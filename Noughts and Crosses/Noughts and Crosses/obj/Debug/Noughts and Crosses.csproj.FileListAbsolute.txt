@@ -9,3 +9,15 @@ C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Pro
 C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.csproj.CoreCompileInputs.cache
 C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.exe
 C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.pdb
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\bin\Debug\Noughts and Crosses.exe.config
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\bin\Debug\Noughts and Crosses.exe
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\bin\Debug\Noughts and Crosses.pdb
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.csprojAssemblyReference.cache
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts_and_Crosses.FinForm.resources
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts_and_Crosses.Form1.resources
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts_and_Crosses.GameUI.resources
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts_and_Crosses.Properties.Resources.resources
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.csproj.GenerateResource.cache
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.csproj.CoreCompileInputs.cache
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.exe
+H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.pdb

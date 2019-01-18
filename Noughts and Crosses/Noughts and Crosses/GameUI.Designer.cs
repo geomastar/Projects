@@ -137,18 +137,17 @@
             this.currentPlayerLabel.AutoSize = true;
             this.currentPlayerLabel.Location = new System.Drawing.Point(684, 13);
             this.currentPlayerLabel.Name = "currentPlayerLabel";
-            this.currentPlayerLabel.Size = new System.Drawing.Size(68, 13);
+            this.currentPlayerLabel.Size = new System.Drawing.Size(0, 13);
             this.currentPlayerLabel.TabIndex = 10;
-            this.currentPlayerLabel.Text = "currentplayer";
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Location = new System.Drawing.Point(305, 13);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(35, 13);
+            this.titleLabel.Size = new System.Drawing.Size(108, 13);
             this.titleLabel.TabIndex = 12;
-            this.titleLabel.Text = "label4";
+            this.titleLabel.Text = "Noughts and Crosses";
             // 
             // GameUI
             // 
