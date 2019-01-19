@@ -21,3 +21,4 @@ H:\My Documents\Computer science\github projects repo\Projects\Noughts and Cross
 H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.csproj.CoreCompileInputs.cache
 H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.exe
 H:\My Documents\Computer science\github projects repo\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts and Crosses.pdb
+C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\Noughts and Crosses\Noughts and Crosses\obj\Debug\Noughts_and_Crosses.FinForm.resources

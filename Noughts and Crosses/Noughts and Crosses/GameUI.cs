@@ -99,19 +99,30 @@ namespace Noughts_and_Crosses
             if (currentPlayer)
             {
                 currentList = crossSquares;
+                currentPlayerUserName = crossesUserName;
+            }
+            else
+            {
+                currentList = noughtSquares;
+                currentPlayerUserName = noughtsUserName;
+            }
+
+            currentList.Add(currentButton);
+            buttonList[currentButton].Enabled = false;
+            mechanics.playTurn(buttonList[currentButton], currentPlayer, currentList, buttonList, currentPlayerUserName);
+
+            if (currentPlayer)
+            {
                 currentPlayerLabel.Text = noughtsUserName;
                 currentPlayerUserName = noughtsUserName;
             }
             else
             {
-                currentList = noughtSquares;
                 currentPlayerLabel.Text = crossesUserName;
                 currentPlayerUserName = crossesUserName;
             }
-            currentList.Add(currentButton);
-            buttonList[currentButton].Enabled = false;
-            mechanics.playTurn(buttonList[currentButton], currentPlayer, currentList, buttonList, currentPlayerUserName);
-            currentPlayer = !currentPlayer;            
+
+            currentPlayer = !currentPlayer;
         }
     }
 }
