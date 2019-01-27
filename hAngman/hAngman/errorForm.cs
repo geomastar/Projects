@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace hAngman
 {
-    public partial class Form1 : Form
+    public partial class errorForm : Form
     {
-        public Form1()
+        public errorForm()
         {
             InitializeComponent();
+        }
+
+        private void errorForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void errorButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
