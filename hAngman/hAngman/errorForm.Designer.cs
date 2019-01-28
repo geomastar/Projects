@@ -37,10 +37,10 @@
             this.errorLabel.AutoSize = true;
             this.errorLabel.Location = new System.Drawing.Point(155, 164);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(495, 13);
+            this.errorLabel.Size = new System.Drawing.Size(547, 13);
             this.errorLabel.TabIndex = 0;
-            this.errorLabel.Text = "ERROR: Please make sure that the word you entered only contains letters, and no m" +
-    "ore than 9 of them.";
+            this.errorLabel.Text = "ERROR: Please make sure that the word you entered only contains letters. It must " +
+    "also be between 3 and 9 letters.";
             // 
             // errorButton
             // 

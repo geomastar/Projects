@@ -165,6 +165,7 @@
             this.QButton.TabIndex = 9;
             this.QButton.Text = "Q";
             this.QButton.UseVisualStyleBackColor = true;
+            this.QButton.Click += new System.EventHandler(this.QButton_Click);
             // 
             // WButton
             // 

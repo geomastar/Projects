@@ -29,11 +29,11 @@ namespace hAngman
         {
             word = wordSelectTextBox.Text;
 
-            if (word.All(Char.IsLetter) && word.Length >= 9)
+            if (word.All(char.IsLetter) && word.Length >= 3 && word.Length <= 9)
             {
                 gameForm newGameForm = new gameForm(word);
                 newGameForm.Show();
-                Close();
+                Hide();
             }
             else
             {
