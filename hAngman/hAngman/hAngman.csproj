@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="endForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="endForm.Designer.cs">
+      <DependentUpon>endForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="game.cs" />
     <Compile Include="errorForm.cs">
       <SubType>Form</SubType>
@@ -58,6 +64,11 @@
     <Compile Include="gameForm.Designer.cs">
       <DependentUpon>gameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="wordSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +77,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="endForm.resx">
+      <DependentUpon>endForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="errorForm.resx">
       <DependentUpon>errorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,13 +89,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="wordSelectForm.resx">
       <DependentUpon>wordSelectForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

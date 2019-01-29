@@ -9,15 +9,24 @@ namespace hAngman
     class game
     {
         private letterStruct[] word;
+        private int wrongGuesses; 
+
+        public int GetWrongGuesses() { return wrongGuesses; }
 
         public game(string theWord)
         {
+            wrongGuesses = 0;
             word = new letterStruct[9];
 
             for (int i = 0; i < theWord.Length; i++)
             {
                 word[i] = new letterStruct(theWord[i]);
-            }            
+            }  
+            
+            for (int i = theWord.Length; i < 9; i++)
+            {
+                word[i] = new letterStruct(true);
+            }
         }
 
         private struct letterStruct
@@ -29,6 +38,12 @@ namespace hAngman
             {
                 letter = theLetter;
                 guessed = false;
+            }
+
+            public letterStruct(bool enabled)
+            {
+                letter = '0';
+                guessed = true;
             }
         }
 
@@ -45,20 +60,25 @@ namespace hAngman
                 }
             }
 
+            if (returnString == "")
+            {
+                wrongGuesses++;
+            }
+
             return returnString;
         }
 
-        public int gameEndCheck(int manHang)
+        public int gameEndCheck()
         {
-            if (manHang >= 12)
-            {
-                return -1;
-            }
-
             foreach (letterStruct letter in word)
             {
                 if (letter.guessed == false)
                 {
+                    if (wrongGuesses == 12)
+                    {
+                        return -1;
+                    }
+
                     return 0;
                 }
             }

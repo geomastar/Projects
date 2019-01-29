@@ -18,6 +18,7 @@ namespace hAngman
         public wordSelectForm()
         {
             InitializeComponent();
+            Form newWordSelectForm = this; 
         }
 
         private void wordSelectForm_Load(object sender, EventArgs e)

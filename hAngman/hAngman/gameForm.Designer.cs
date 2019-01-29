@@ -175,6 +175,7 @@
             this.WButton.TabIndex = 10;
             this.WButton.Text = "W";
             this.WButton.UseVisualStyleBackColor = true;
+            this.WButton.Click += new System.EventHandler(this.WButton_Click);
             // 
             // EButton
             // 
@@ -184,6 +185,7 @@
             this.EButton.TabIndex = 11;
             this.EButton.Text = "E";
             this.EButton.UseVisualStyleBackColor = true;
+            this.EButton.Click += new System.EventHandler(this.EButton_Click);
             // 
             // RButton
             // 
@@ -193,6 +195,7 @@
             this.RButton.TabIndex = 12;
             this.RButton.Text = "R";
             this.RButton.UseVisualStyleBackColor = true;
+            this.RButton.Click += new System.EventHandler(this.RButton_Click);
             // 
             // TButton
             // 
@@ -202,6 +205,7 @@
             this.TButton.TabIndex = 13;
             this.TButton.Text = "T";
             this.TButton.UseVisualStyleBackColor = true;
+            this.TButton.Click += new System.EventHandler(this.TButton_Click);
             // 
             // YButton
             // 
@@ -211,6 +215,7 @@
             this.YButton.TabIndex = 14;
             this.YButton.Text = "Y";
             this.YButton.UseVisualStyleBackColor = true;
+            this.YButton.Click += new System.EventHandler(this.YButton_Click);
             // 
             // UButton
             // 
@@ -220,6 +225,7 @@
             this.UButton.TabIndex = 15;
             this.UButton.Text = "U";
             this.UButton.UseVisualStyleBackColor = true;
+            this.UButton.Click += new System.EventHandler(this.UButton_Click);
             // 
             // IButton
             // 
@@ -229,6 +235,7 @@
             this.IButton.TabIndex = 16;
             this.IButton.Text = "I";
             this.IButton.UseVisualStyleBackColor = true;
+            this.IButton.Click += new System.EventHandler(this.IButton_Click);
             // 
             // OButton
             // 
@@ -238,6 +245,7 @@
             this.OButton.TabIndex = 17;
             this.OButton.Text = "O";
             this.OButton.UseVisualStyleBackColor = true;
+            this.OButton.Click += new System.EventHandler(this.OButton_Click);
             // 
             // PButton
             // 
@@ -247,6 +255,7 @@
             this.PButton.TabIndex = 18;
             this.PButton.Text = "P";
             this.PButton.UseVisualStyleBackColor = true;
+            this.PButton.Click += new System.EventHandler(this.PButton_Click);
             // 
             // AButton
             // 
@@ -256,6 +265,7 @@
             this.AButton.TabIndex = 19;
             this.AButton.Text = "A";
             this.AButton.UseVisualStyleBackColor = true;
+            this.AButton.Click += new System.EventHandler(this.AButton_Click);
             // 
             // SButton
             // 
@@ -265,6 +275,7 @@
             this.SButton.TabIndex = 20;
             this.SButton.Text = "S";
             this.SButton.UseVisualStyleBackColor = true;
+            this.SButton.Click += new System.EventHandler(this.SButton_Click);
             // 
             // DButton
             // 
@@ -274,6 +285,7 @@
             this.DButton.TabIndex = 21;
             this.DButton.Text = "D";
             this.DButton.UseVisualStyleBackColor = true;
+            this.DButton.Click += new System.EventHandler(this.DButton_Click);
             // 
             // FButton
             // 
@@ -283,6 +295,7 @@
             this.FButton.TabIndex = 22;
             this.FButton.Text = "F";
             this.FButton.UseVisualStyleBackColor = true;
+            this.FButton.Click += new System.EventHandler(this.FButton_Click);
             // 
             // GButton
             // 
@@ -292,6 +305,7 @@
             this.GButton.TabIndex = 23;
             this.GButton.Text = "G";
             this.GButton.UseVisualStyleBackColor = true;
+            this.GButton.Click += new System.EventHandler(this.GButton_Click);
             // 
             // HButton
             // 
@@ -301,6 +315,7 @@
             this.HButton.TabIndex = 24;
             this.HButton.Text = "H";
             this.HButton.UseVisualStyleBackColor = true;
+            this.HButton.Click += new System.EventHandler(this.HButton_Click);
             // 
             // JButton
             // 
@@ -310,6 +325,7 @@
             this.JButton.TabIndex = 25;
             this.JButton.Text = "J";
             this.JButton.UseVisualStyleBackColor = true;
+            this.JButton.Click += new System.EventHandler(this.JButton_Click);
             // 
             // KButton
             // 
@@ -319,6 +335,7 @@
             this.KButton.TabIndex = 26;
             this.KButton.Text = "K";
             this.KButton.UseVisualStyleBackColor = true;
+            this.KButton.Click += new System.EventHandler(this.KButton_Click);
             // 
             // LButton
             // 
@@ -328,6 +345,7 @@
             this.LButton.TabIndex = 27;
             this.LButton.Text = "L";
             this.LButton.UseVisualStyleBackColor = true;
+            this.LButton.Click += new System.EventHandler(this.LButton_Click);
             // 
             // ZButton
             // 
@@ -337,6 +355,7 @@
             this.ZButton.TabIndex = 28;
             this.ZButton.Text = "Z";
             this.ZButton.UseVisualStyleBackColor = true;
+            this.ZButton.Click += new System.EventHandler(this.ZButton_Click);
             // 
             // XButton
             // 
@@ -346,6 +365,7 @@
             this.XButton.TabIndex = 29;
             this.XButton.Text = "X";
             this.XButton.UseVisualStyleBackColor = true;
+            this.XButton.Click += new System.EventHandler(this.XButton_Click);
             // 
             // CButton
             // 
@@ -355,6 +375,7 @@
             this.CButton.TabIndex = 30;
             this.CButton.Text = "C";
             this.CButton.UseVisualStyleBackColor = true;
+            this.CButton.Click += new System.EventHandler(this.CButton_Click);
             // 
             // VButton
             // 
@@ -364,6 +385,7 @@
             this.VButton.TabIndex = 31;
             this.VButton.Text = "V";
             this.VButton.UseVisualStyleBackColor = true;
+            this.VButton.Click += new System.EventHandler(this.VButton_Click);
             // 
             // BButton
             // 
@@ -373,6 +395,7 @@
             this.BButton.TabIndex = 32;
             this.BButton.Text = "B";
             this.BButton.UseVisualStyleBackColor = true;
+            this.BButton.Click += new System.EventHandler(this.BButton_Click);
             // 
             // NButton
             // 
@@ -382,6 +405,7 @@
             this.NButton.TabIndex = 33;
             this.NButton.Text = "N";
             this.NButton.UseVisualStyleBackColor = true;
+            this.NButton.Click += new System.EventHandler(this.NButton_Click);
             // 
             // MButton
             // 
@@ -391,6 +415,7 @@
             this.MButton.TabIndex = 34;
             this.MButton.Text = "M";
             this.MButton.UseVisualStyleBackColor = true;
+            this.MButton.Click += new System.EventHandler(this.MButton_Click);
             // 
             // hangmanPictureBox
             // 
