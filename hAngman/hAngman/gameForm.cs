@@ -46,7 +46,7 @@ namespace hAngman
             string correctGuesses = game.attempt('Q');
             for (int i = 0; i < correctGuesses.Length; i++)
             {
-                letterLabels[Convert.ToInt16(correctGuesses[i])].Text = "Q";
+                letterLabels[Convert.ToInt16(correctGuesses.Substring(i, 1))].Text = "Q";
             }
         }
     }
