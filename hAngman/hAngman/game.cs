@@ -47,5 +47,23 @@ namespace hAngman
 
             return returnString;
         }
+
+        public int gameEndCheck(int manHang)
+        {
+            if (manHang >= 12)
+            {
+                return -1;
+            }
+
+            foreach (letterStruct letter in word)
+            {
+                if (letter.guessed == false)
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
     }
 }

@@ -31,6 +31,7 @@ namespace hAngman
 
             if (word.All(char.IsLetter) && word.Length >= 3 && word.Length <= 9)
             {
+                word = word.ToUpper();
                 gameForm newGameForm = new gameForm(word);
                 newGameForm.Show();
                 Hide();
