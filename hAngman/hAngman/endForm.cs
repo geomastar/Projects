@@ -19,6 +19,7 @@ namespace hAngman
         public endForm(bool theResult, string theWord)
         {
             InitializeComponent();
+            endLabel.Text = "Result: ";
             result = theResult;
             word = theWord;
             if (result) { endLabel.Text += "You Win!    The word was " + word; hangmanPictureBox.Image = Resources._13; }

@@ -20,9 +20,22 @@ namespace hAngman
 
         public gameForm(string theWord)
         {
+            setupGame(theWord);
+            game = new game(word);
+        }
+
+        public gameForm()
+        {
+            game = new game();
+            setupGame(game.GetWordString());
+        }
+
+        private void setupGame(string theWord)
+        {
             InitializeComponent();
             word = theWord;
-            letterLabels = new Label[9] 
+            hangmanPictureBox.Image = Resources._0;
+            letterLabels = new Label[12]
             {
                 Letter0Label,
                 Letter1Label,
@@ -32,7 +45,10 @@ namespace hAngman
                 Letter5Label,
                 Letter6Label,
                 Letter7Label,
-                Letter8Label
+                Letter8Label,
+                Letter9Label,
+                Letter10Label,
+                Letter11Label
             };
             images = new Image[12]
             {
@@ -47,9 +63,16 @@ namespace hAngman
                 Resources._9,
                 Resources._10,
                 Resources._11,
-                Resources._12,
+                Resources._12,                
             };
-            game = new game(word);
+            foreach (Label label in letterLabels)
+            {
+                label.Text = "";
+            }
+            for (int i = 0; i < word.Length; i++)
+            {
+                letterLabels[i].Text = "_";
+            }            
         }
 
         private void gameForm_Load(object sender, EventArgs e)

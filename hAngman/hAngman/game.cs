@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,21 +10,49 @@ namespace hAngman
     class game
     {
         private letterStruct[] word;
-        private int wrongGuesses; 
+        private string wordString;
+        private int wrongGuesses;
+        private List<string> dictionary;
+        private Random rnd;
+        private StreamReader sr;
 
         public int GetWrongGuesses() { return wrongGuesses; }
+        public string GetWordString() { return wordString; }
+
+        public game()
+        {
+            dictionary = new List<string>();
+            rnd = new Random();
+            sr = new StreamReader(@"C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\hAngman\hAngman\Resources\dictionary.txt");            
+            while (sr.Peek() >= 0)
+            {
+                string line = sr.ReadLine();
+                if (line.All(char.IsLetter) && line.Length >= 3 && line.Length <= 12)
+                {
+                    dictionary.Add(line);
+                }                
+            }
+
+            createWord(randWord());
+        }
 
         public game(string theWord)
         {
+            createWord(theWord);
+        }
+
+        private void createWord(string theWord)
+        {
             wrongGuesses = 0;
-            word = new letterStruct[9];
+            word = new letterStruct[12];
+            wordString = theWord;
 
             for (int i = 0; i < theWord.Length; i++)
             {
                 word[i] = new letterStruct(theWord[i]);
-            }  
-            
-            for (int i = theWord.Length; i < 9; i++)
+            }
+
+            for (int i = theWord.Length; i < 12; i++)
             {
                 word[i] = new letterStruct(true);
             }
@@ -84,6 +113,11 @@ namespace hAngman
             }
 
             return 1;
+        }
+
+        private string randWord()
+        {
+            return dictionary[rnd.Next(0, dictionary.Count)].ToUpper();
         }
     }
 }

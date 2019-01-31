@@ -32,18 +32,20 @@
             this.playButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.enterWordLabel = new System.Windows.Forms.Label();
+            this.rndWordButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // wordSelectTextBox
             // 
-            this.wordSelectTextBox.Location = new System.Drawing.Point(393, 181);
+            this.wordSelectTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wordSelectTextBox.Location = new System.Drawing.Point(110, 100);
             this.wordSelectTextBox.Name = "wordSelectTextBox";
-            this.wordSelectTextBox.Size = new System.Drawing.Size(100, 20);
+            this.wordSelectTextBox.Size = new System.Drawing.Size(140, 26);
             this.wordSelectTextBox.TabIndex = 1;
             // 
             // playButton
             // 
-            this.playButton.Location = new System.Drawing.Point(307, 321);
+            this.playButton.Location = new System.Drawing.Point(10, 150);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(75, 23);
             this.playButton.TabIndex = 2;
@@ -54,26 +56,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(315, 43);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(138, 31);
             this.label1.TabIndex = 3;
             this.label1.Text = "Hang Man";
             // 
             // enterWordLabel
             // 
             this.enterWordLabel.AutoSize = true;
-            this.enterWordLabel.Location = new System.Drawing.Point(208, 181);
+            this.enterWordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enterWordLabel.Location = new System.Drawing.Point(10, 100);
             this.enterWordLabel.Name = "enterWordLabel";
-            this.enterWordLabel.Size = new System.Drawing.Size(66, 13);
+            this.enterWordLabel.Size = new System.Drawing.Size(94, 20);
             this.enterWordLabel.TabIndex = 4;
             this.enterWordLabel.Text = "Type a word";
+            // 
+            // rndWordButton
+            // 
+            this.rndWordButton.Location = new System.Drawing.Point(100, 150);
+            this.rndWordButton.Name = "rndWordButton";
+            this.rndWordButton.Size = new System.Drawing.Size(150, 23);
+            this.rndWordButton.TabIndex = 5;
+            this.rndWordButton.Text = "Generate Random Word!";
+            this.rndWordButton.UseVisualStyleBackColor = true;
+            this.rndWordButton.Click += new System.EventHandler(this.rndWordButton_Click);
             // 
             // wordSelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(259, 211);
+            this.Controls.Add(this.rndWordButton);
             this.Controls.Add(this.enterWordLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.playButton);
@@ -91,6 +106,7 @@
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label enterWordLabel;
+        private System.Windows.Forms.Button rndWordButton;
     }
 }
 

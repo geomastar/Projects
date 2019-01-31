@@ -35,16 +35,17 @@
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
-            this.errorLabel.Location = new System.Drawing.Point(155, 164);
+            this.errorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabel.Location = new System.Drawing.Point(10, 10);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(547, 13);
+            this.errorLabel.Size = new System.Drawing.Size(439, 60);
             this.errorLabel.TabIndex = 0;
-            this.errorLabel.Text = "ERROR: Please make sure that the word you entered only contains letters. It must " +
-    "also be between 3 and 9 letters.";
+            this.errorLabel.Text = "ERROR: \r\n-The word must be between 3 and 9 letters. \r\n-It must only contain lette" +
+    "rs (no spaces, numbers or symbols).";
             // 
             // errorButton
             // 
-            this.errorButton.Location = new System.Drawing.Point(318, 306);
+            this.errorButton.Location = new System.Drawing.Point(10, 90);
             this.errorButton.Name = "errorButton";
             this.errorButton.Size = new System.Drawing.Size(75, 23);
             this.errorButton.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(459, 136);
             this.Controls.Add(this.errorButton);
             this.Controls.Add(this.errorLabel);
             this.Name = "errorForm";

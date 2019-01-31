@@ -37,7 +37,7 @@
             // 
             // endButton
             // 
-            this.endButton.Location = new System.Drawing.Point(97, 340);
+            this.endButton.Location = new System.Drawing.Point(10, 575);
             this.endButton.Name = "endButton";
             this.endButton.Size = new System.Drawing.Size(75, 23);
             this.endButton.TabIndex = 3;
@@ -48,15 +48,16 @@
             // endLabel
             // 
             this.endLabel.AutoSize = true;
-            this.endLabel.Location = new System.Drawing.Point(94, 191);
+            this.endLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endLabel.Location = new System.Drawing.Point(10, 10);
             this.endLabel.Name = "endLabel";
-            this.endLabel.Size = new System.Drawing.Size(43, 13);
+            this.endLabel.Size = new System.Drawing.Size(63, 20);
             this.endLabel.TabIndex = 2;
             this.endLabel.Text = "Result: ";
             // 
             // replayButton
             // 
-            this.replayButton.Location = new System.Drawing.Point(218, 340);
+            this.replayButton.Location = new System.Drawing.Point(100, 575);
             this.replayButton.Name = "replayButton";
             this.replayButton.Size = new System.Drawing.Size(75, 23);
             this.replayButton.TabIndex = 4;
@@ -66,7 +67,7 @@
             // 
             // hangmanPictureBox
             // 
-            this.hangmanPictureBox.Location = new System.Drawing.Point(492, 35);
+            this.hangmanPictureBox.Location = new System.Drawing.Point(10, 50);
             this.hangmanPictureBox.Name = "hangmanPictureBox";
             this.hangmanPictureBox.Size = new System.Drawing.Size(500, 500);
             this.hangmanPictureBox.TabIndex = 36;
@@ -76,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 557);
+            this.ClientSize = new System.Drawing.Size(524, 611);
             this.Controls.Add(this.hangmanPictureBox);
             this.Controls.Add(this.replayButton);
             this.Controls.Add(this.endButton);

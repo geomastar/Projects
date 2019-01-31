@@ -30,7 +30,7 @@ namespace hAngman
         {
             word = wordSelectTextBox.Text;
 
-            if (word.All(char.IsLetter) && word.Length >= 3 && word.Length <= 9)
+            if (word.All(char.IsLetter) && word.Length >= 3 && word.Length <= 12)
             {
                 word = word.ToUpper();
                 gameForm newGameForm = new gameForm(word);
@@ -42,6 +42,13 @@ namespace hAngman
                 errorForm newErrorForm = new errorForm();
                 newErrorForm.Show();
             }
+        }
+
+        private void rndWordButton_Click(object sender, EventArgs e)
+        {
+            gameForm newGameForm = new gameForm();
+            newGameForm.Show();
+            Hide();
         }
     }
 }

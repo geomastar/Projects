@@ -63,6 +63,9 @@
             this.BButton = new System.Windows.Forms.Button();
             this.NButton = new System.Windows.Forms.Button();
             this.MButton = new System.Windows.Forms.Button();
+            this.Letter9Label = new System.Windows.Forms.Label();
+            this.Letter10Label = new System.Windows.Forms.Label();
+            this.Letter11Label = new System.Windows.Forms.Label();
             this.hangmanPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.hangmanPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -70,96 +73,96 @@
             // Letter0Label
             // 
             this.Letter0Label.AutoSize = true;
-            this.Letter0Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Letter0Label.Location = new System.Drawing.Point(29, 536);
+            this.Letter0Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter0Label.Location = new System.Drawing.Point(10, 550);
             this.Letter0Label.Name = "Letter0Label";
-            this.Letter0Label.Size = new System.Drawing.Size(76, 79);
+            this.Letter0Label.Size = new System.Drawing.Size(54, 60);
             this.Letter0Label.TabIndex = 0;
-            this.Letter0Label.Text = "_";
+            this.Letter0Label.Text = "x";
             // 
             // Letter1Label
             // 
             this.Letter1Label.AutoSize = true;
-            this.Letter1Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Letter1Label.Location = new System.Drawing.Point(111, 536);
+            this.Letter1Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter1Label.Location = new System.Drawing.Point(60, 550);
             this.Letter1Label.Name = "Letter1Label";
-            this.Letter1Label.Size = new System.Drawing.Size(76, 79);
+            this.Letter1Label.Size = new System.Drawing.Size(54, 60);
             this.Letter1Label.TabIndex = 1;
-            this.Letter1Label.Text = "_";
+            this.Letter1Label.Text = "x";
             // 
             // Letter2Label
             // 
             this.Letter2Label.AutoSize = true;
-            this.Letter2Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Letter2Label.Location = new System.Drawing.Point(193, 536);
+            this.Letter2Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter2Label.Location = new System.Drawing.Point(110, 550);
             this.Letter2Label.Name = "Letter2Label";
-            this.Letter2Label.Size = new System.Drawing.Size(76, 79);
+            this.Letter2Label.Size = new System.Drawing.Size(54, 60);
             this.Letter2Label.TabIndex = 2;
-            this.Letter2Label.Text = "_";
+            this.Letter2Label.Text = "x";
             // 
             // Letter3Label
             // 
             this.Letter3Label.AutoSize = true;
-            this.Letter3Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Letter3Label.Location = new System.Drawing.Point(275, 536);
+            this.Letter3Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter3Label.Location = new System.Drawing.Point(160, 550);
             this.Letter3Label.Name = "Letter3Label";
-            this.Letter3Label.Size = new System.Drawing.Size(76, 79);
+            this.Letter3Label.Size = new System.Drawing.Size(54, 60);
             this.Letter3Label.TabIndex = 3;
-            this.Letter3Label.Text = "_";
+            this.Letter3Label.Text = "x";
             // 
             // Letter4Label
             // 
             this.Letter4Label.AutoSize = true;
-            this.Letter4Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Letter4Label.Location = new System.Drawing.Point(357, 536);
+            this.Letter4Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter4Label.Location = new System.Drawing.Point(210, 550);
             this.Letter4Label.Name = "Letter4Label";
-            this.Letter4Label.Size = new System.Drawing.Size(76, 79);
+            this.Letter4Label.Size = new System.Drawing.Size(54, 60);
             this.Letter4Label.TabIndex = 4;
-            this.Letter4Label.Text = "_";
+            this.Letter4Label.Text = "x";
             // 
             // Letter5Label
             // 
             this.Letter5Label.AutoSize = true;
-            this.Letter5Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Letter5Label.Location = new System.Drawing.Point(439, 536);
+            this.Letter5Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter5Label.Location = new System.Drawing.Point(260, 550);
             this.Letter5Label.Name = "Letter5Label";
-            this.Letter5Label.Size = new System.Drawing.Size(76, 79);
+            this.Letter5Label.Size = new System.Drawing.Size(54, 60);
             this.Letter5Label.TabIndex = 5;
-            this.Letter5Label.Text = "_";
+            this.Letter5Label.Text = "x";
             // 
             // Letter6Label
             // 
             this.Letter6Label.AutoSize = true;
-            this.Letter6Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Letter6Label.Location = new System.Drawing.Point(521, 536);
+            this.Letter6Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter6Label.Location = new System.Drawing.Point(310, 550);
             this.Letter6Label.Name = "Letter6Label";
-            this.Letter6Label.Size = new System.Drawing.Size(76, 79);
+            this.Letter6Label.Size = new System.Drawing.Size(54, 60);
             this.Letter6Label.TabIndex = 6;
-            this.Letter6Label.Text = "_";
+            this.Letter6Label.Text = "x";
             // 
             // Letter7Label
             // 
             this.Letter7Label.AutoSize = true;
-            this.Letter7Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Letter7Label.Location = new System.Drawing.Point(603, 536);
+            this.Letter7Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter7Label.Location = new System.Drawing.Point(360, 550);
             this.Letter7Label.Name = "Letter7Label";
-            this.Letter7Label.Size = new System.Drawing.Size(76, 79);
+            this.Letter7Label.Size = new System.Drawing.Size(54, 60);
             this.Letter7Label.TabIndex = 7;
-            this.Letter7Label.Text = "_";
+            this.Letter7Label.Text = "x";
             // 
             // Letter8Label
             // 
             this.Letter8Label.AutoSize = true;
-            this.Letter8Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Letter8Label.Location = new System.Drawing.Point(685, 536);
+            this.Letter8Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter8Label.Location = new System.Drawing.Point(410, 550);
             this.Letter8Label.Name = "Letter8Label";
-            this.Letter8Label.Size = new System.Drawing.Size(76, 79);
+            this.Letter8Label.Size = new System.Drawing.Size(54, 60);
             this.Letter8Label.TabIndex = 8;
-            this.Letter8Label.Text = "_";
+            this.Letter8Label.Text = "x";
             // 
             // QButton
             // 
-            this.QButton.Location = new System.Drawing.Point(114, 651);
+            this.QButton.Location = new System.Drawing.Point(35, 635);
             this.QButton.Name = "QButton";
             this.QButton.Size = new System.Drawing.Size(50, 23);
             this.QButton.TabIndex = 9;
@@ -169,7 +172,7 @@
             // 
             // WButton
             // 
-            this.WButton.Location = new System.Drawing.Point(170, 651);
+            this.WButton.Location = new System.Drawing.Point(91, 635);
             this.WButton.Name = "WButton";
             this.WButton.Size = new System.Drawing.Size(50, 23);
             this.WButton.TabIndex = 10;
@@ -179,7 +182,7 @@
             // 
             // EButton
             // 
-            this.EButton.Location = new System.Drawing.Point(226, 651);
+            this.EButton.Location = new System.Drawing.Point(147, 635);
             this.EButton.Name = "EButton";
             this.EButton.Size = new System.Drawing.Size(50, 23);
             this.EButton.TabIndex = 11;
@@ -189,7 +192,7 @@
             // 
             // RButton
             // 
-            this.RButton.Location = new System.Drawing.Point(282, 651);
+            this.RButton.Location = new System.Drawing.Point(203, 635);
             this.RButton.Name = "RButton";
             this.RButton.Size = new System.Drawing.Size(50, 23);
             this.RButton.TabIndex = 12;
@@ -199,7 +202,7 @@
             // 
             // TButton
             // 
-            this.TButton.Location = new System.Drawing.Point(338, 651);
+            this.TButton.Location = new System.Drawing.Point(259, 635);
             this.TButton.Name = "TButton";
             this.TButton.Size = new System.Drawing.Size(50, 23);
             this.TButton.TabIndex = 13;
@@ -209,7 +212,7 @@
             // 
             // YButton
             // 
-            this.YButton.Location = new System.Drawing.Point(394, 651);
+            this.YButton.Location = new System.Drawing.Point(315, 635);
             this.YButton.Name = "YButton";
             this.YButton.Size = new System.Drawing.Size(50, 23);
             this.YButton.TabIndex = 14;
@@ -219,7 +222,7 @@
             // 
             // UButton
             // 
-            this.UButton.Location = new System.Drawing.Point(450, 651);
+            this.UButton.Location = new System.Drawing.Point(371, 635);
             this.UButton.Name = "UButton";
             this.UButton.Size = new System.Drawing.Size(50, 23);
             this.UButton.TabIndex = 15;
@@ -229,7 +232,7 @@
             // 
             // IButton
             // 
-            this.IButton.Location = new System.Drawing.Point(506, 651);
+            this.IButton.Location = new System.Drawing.Point(427, 635);
             this.IButton.Name = "IButton";
             this.IButton.Size = new System.Drawing.Size(50, 23);
             this.IButton.TabIndex = 16;
@@ -239,7 +242,7 @@
             // 
             // OButton
             // 
-            this.OButton.Location = new System.Drawing.Point(562, 651);
+            this.OButton.Location = new System.Drawing.Point(483, 635);
             this.OButton.Name = "OButton";
             this.OButton.Size = new System.Drawing.Size(50, 23);
             this.OButton.TabIndex = 17;
@@ -249,7 +252,7 @@
             // 
             // PButton
             // 
-            this.PButton.Location = new System.Drawing.Point(618, 651);
+            this.PButton.Location = new System.Drawing.Point(539, 635);
             this.PButton.Name = "PButton";
             this.PButton.Size = new System.Drawing.Size(50, 23);
             this.PButton.TabIndex = 18;
@@ -259,7 +262,7 @@
             // 
             // AButton
             // 
-            this.AButton.Location = new System.Drawing.Point(125, 680);
+            this.AButton.Location = new System.Drawing.Point(46, 664);
             this.AButton.Name = "AButton";
             this.AButton.Size = new System.Drawing.Size(50, 23);
             this.AButton.TabIndex = 19;
@@ -269,7 +272,7 @@
             // 
             // SButton
             // 
-            this.SButton.Location = new System.Drawing.Point(181, 680);
+            this.SButton.Location = new System.Drawing.Point(102, 664);
             this.SButton.Name = "SButton";
             this.SButton.Size = new System.Drawing.Size(50, 23);
             this.SButton.TabIndex = 20;
@@ -279,7 +282,7 @@
             // 
             // DButton
             // 
-            this.DButton.Location = new System.Drawing.Point(237, 680);
+            this.DButton.Location = new System.Drawing.Point(158, 664);
             this.DButton.Name = "DButton";
             this.DButton.Size = new System.Drawing.Size(50, 23);
             this.DButton.TabIndex = 21;
@@ -289,7 +292,7 @@
             // 
             // FButton
             // 
-            this.FButton.Location = new System.Drawing.Point(293, 680);
+            this.FButton.Location = new System.Drawing.Point(214, 664);
             this.FButton.Name = "FButton";
             this.FButton.Size = new System.Drawing.Size(50, 23);
             this.FButton.TabIndex = 22;
@@ -299,7 +302,7 @@
             // 
             // GButton
             // 
-            this.GButton.Location = new System.Drawing.Point(349, 680);
+            this.GButton.Location = new System.Drawing.Point(270, 664);
             this.GButton.Name = "GButton";
             this.GButton.Size = new System.Drawing.Size(50, 23);
             this.GButton.TabIndex = 23;
@@ -309,7 +312,7 @@
             // 
             // HButton
             // 
-            this.HButton.Location = new System.Drawing.Point(405, 680);
+            this.HButton.Location = new System.Drawing.Point(326, 664);
             this.HButton.Name = "HButton";
             this.HButton.Size = new System.Drawing.Size(50, 23);
             this.HButton.TabIndex = 24;
@@ -319,7 +322,7 @@
             // 
             // JButton
             // 
-            this.JButton.Location = new System.Drawing.Point(461, 680);
+            this.JButton.Location = new System.Drawing.Point(382, 664);
             this.JButton.Name = "JButton";
             this.JButton.Size = new System.Drawing.Size(50, 23);
             this.JButton.TabIndex = 25;
@@ -329,7 +332,7 @@
             // 
             // KButton
             // 
-            this.KButton.Location = new System.Drawing.Point(517, 680);
+            this.KButton.Location = new System.Drawing.Point(438, 664);
             this.KButton.Name = "KButton";
             this.KButton.Size = new System.Drawing.Size(50, 23);
             this.KButton.TabIndex = 26;
@@ -339,7 +342,7 @@
             // 
             // LButton
             // 
-            this.LButton.Location = new System.Drawing.Point(573, 680);
+            this.LButton.Location = new System.Drawing.Point(494, 664);
             this.LButton.Name = "LButton";
             this.LButton.Size = new System.Drawing.Size(50, 23);
             this.LButton.TabIndex = 27;
@@ -349,7 +352,7 @@
             // 
             // ZButton
             // 
-            this.ZButton.Location = new System.Drawing.Point(137, 709);
+            this.ZButton.Location = new System.Drawing.Point(58, 693);
             this.ZButton.Name = "ZButton";
             this.ZButton.Size = new System.Drawing.Size(50, 23);
             this.ZButton.TabIndex = 28;
@@ -359,7 +362,7 @@
             // 
             // XButton
             // 
-            this.XButton.Location = new System.Drawing.Point(193, 709);
+            this.XButton.Location = new System.Drawing.Point(114, 693);
             this.XButton.Name = "XButton";
             this.XButton.Size = new System.Drawing.Size(50, 23);
             this.XButton.TabIndex = 29;
@@ -369,7 +372,7 @@
             // 
             // CButton
             // 
-            this.CButton.Location = new System.Drawing.Point(249, 709);
+            this.CButton.Location = new System.Drawing.Point(170, 693);
             this.CButton.Name = "CButton";
             this.CButton.Size = new System.Drawing.Size(50, 23);
             this.CButton.TabIndex = 30;
@@ -379,7 +382,7 @@
             // 
             // VButton
             // 
-            this.VButton.Location = new System.Drawing.Point(305, 709);
+            this.VButton.Location = new System.Drawing.Point(226, 693);
             this.VButton.Name = "VButton";
             this.VButton.Size = new System.Drawing.Size(50, 23);
             this.VButton.TabIndex = 31;
@@ -389,7 +392,7 @@
             // 
             // BButton
             // 
-            this.BButton.Location = new System.Drawing.Point(361, 709);
+            this.BButton.Location = new System.Drawing.Point(282, 693);
             this.BButton.Name = "BButton";
             this.BButton.Size = new System.Drawing.Size(50, 23);
             this.BButton.TabIndex = 32;
@@ -399,7 +402,7 @@
             // 
             // NButton
             // 
-            this.NButton.Location = new System.Drawing.Point(417, 709);
+            this.NButton.Location = new System.Drawing.Point(338, 693);
             this.NButton.Name = "NButton";
             this.NButton.Size = new System.Drawing.Size(50, 23);
             this.NButton.TabIndex = 33;
@@ -409,13 +412,43 @@
             // 
             // MButton
             // 
-            this.MButton.Location = new System.Drawing.Point(473, 709);
+            this.MButton.Location = new System.Drawing.Point(394, 693);
             this.MButton.Name = "MButton";
             this.MButton.Size = new System.Drawing.Size(50, 23);
             this.MButton.TabIndex = 34;
             this.MButton.Text = "M";
             this.MButton.UseVisualStyleBackColor = true;
             this.MButton.Click += new System.EventHandler(this.MButton_Click);
+            // 
+            // Letter9Label
+            // 
+            this.Letter9Label.AutoSize = true;
+            this.Letter9Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter9Label.Location = new System.Drawing.Point(460, 550);
+            this.Letter9Label.Name = "Letter9Label";
+            this.Letter9Label.Size = new System.Drawing.Size(54, 60);
+            this.Letter9Label.TabIndex = 36;
+            this.Letter9Label.Text = "x";
+            // 
+            // Letter10Label
+            // 
+            this.Letter10Label.AutoSize = true;
+            this.Letter10Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter10Label.Location = new System.Drawing.Point(510, 550);
+            this.Letter10Label.Name = "Letter10Label";
+            this.Letter10Label.Size = new System.Drawing.Size(54, 60);
+            this.Letter10Label.TabIndex = 37;
+            this.Letter10Label.Text = "x";
+            // 
+            // Letter11Label
+            // 
+            this.Letter11Label.AutoSize = true;
+            this.Letter11Label.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Letter11Label.Location = new System.Drawing.Point(560, 550);
+            this.Letter11Label.Name = "Letter11Label";
+            this.Letter11Label.Size = new System.Drawing.Size(54, 60);
+            this.Letter11Label.TabIndex = 38;
+            this.Letter11Label.Text = "x";
             // 
             // hangmanPictureBox
             // 
@@ -429,7 +462,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 761);
+            this.ClientSize = new System.Drawing.Size(634, 761);
+            this.Controls.Add(this.Letter11Label);
+            this.Controls.Add(this.Letter10Label);
+            this.Controls.Add(this.Letter9Label);
             this.Controls.Add(this.hangmanPictureBox);
             this.Controls.Add(this.MButton);
             this.Controls.Add(this.NButton);
@@ -513,5 +549,8 @@
         private System.Windows.Forms.Button NButton;
         private System.Windows.Forms.Button MButton;
         private System.Windows.Forms.PictureBox hangmanPictureBox;
+        private System.Windows.Forms.Label Letter9Label;
+        private System.Windows.Forms.Label Letter10Label;
+        private System.Windows.Forms.Label Letter11Label;
     }
 }
