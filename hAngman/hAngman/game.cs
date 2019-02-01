@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using hAngman.Properties;
 
 namespace hAngman
 {
@@ -14,16 +15,16 @@ namespace hAngman
         private int wrongGuesses;
         private List<string> dictionary;
         private Random rnd;
-        private StreamReader sr;
+        private StringReader sr;
 
         public int GetWrongGuesses() { return wrongGuesses; }
         public string GetWordString() { return wordString; }
 
         public game()
-        {
+        {          
             dictionary = new List<string>();
             rnd = new Random();
-            sr = new StreamReader(@"C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\hAngman\hAngman\Resources\dictionary.txt");            
+            sr = new StringReader(Resources.dictionary);            
             while (sr.Peek() >= 0)
             {
                 string line = sr.ReadLine();

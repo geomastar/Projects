@@ -199,5 +199,77 @@ namespace hAngman.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to operating
+        ///circle
+        ///things
+        ///Paris
+        ///limited
+        ///doom
+        ///harbour
+        ///leaving
+        ///feel
+        ///standards
+        ///significant
+        ///using
+        ///appear
+        ///beauty
+        ///distance
+        ///assuage
+        ///thither
+        ///neighborhood
+        ///noted
+        ///corslet
+        ///order
+        ///home
+        ///also
+        ///gray
+        ///burn
+        ///sport
+        ///sun
+        ///clear
+        ///wildered
+        ///why
+        ///ready
+        ///key
+        ///performance
+        ///corps
+        ///tarry
+        ///loan
+        ///application
+        ///shoulder
+        ///bear
+        ///hue
+        ///control
+        ///barrel
+        ///where
+        ///stood
+        ///sweep
+        ///red
+        ///depth
+        ///leaders
+        ///British
+        ///so
+        ///disease
+        ///mouth
+        ///discussed
+        ///seize
+        ///watch
+        ///moonshine
+        ///latter
+        ///aircraft
+        ///especially
+        ///certainly
+        ///other
+        ///head
+        ///battle
+        ///them [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string dictionary {
+            get {
+                return ResourceManager.GetString("dictionary", resourceCulture);
+            }
+        }
     }
 }

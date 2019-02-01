@@ -16,6 +16,7 @@ namespace hAngman
         string word;
         Label[] letterLabels;
         Image[] images;
+        Button[] buttons;
         game game;
 
         public gameForm(string theWord)
@@ -65,6 +66,14 @@ namespace hAngman
                 Resources._11,
                 Resources._12,                
             };
+            buttons = new Button[26]
+            {
+                AButton, BButton, CButton, DButton, EButton, FButton,
+                GButton, HButton, IButton, JButton, KButton, LButton,
+                MButton, NButton, OButton, PButton, QButton, RButton,
+                SButton, TButton, UButton, VButton, WButton, XButton,
+                YButton, ZButton
+            };
             foreach (Label label in letterLabels)
             {
                 label.Text = "";
@@ -112,6 +121,15 @@ namespace hAngman
             }
         }
 
+        private void keyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                newAttempt(e.KeyChar, buttons[e.KeyChar - 97]);
+            }
+        }
+
+        #region Buttons
         private void QButton_Click(object sender, EventArgs e)
         {
             newAttempt('Q', QButton);
@@ -216,5 +234,6 @@ namespace hAngman
         {
             newAttempt('M', MButton);
         }
+        #endregion
     }
 }
