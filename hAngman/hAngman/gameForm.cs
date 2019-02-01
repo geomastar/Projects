@@ -121,18 +121,10 @@ namespace hAngman
             }
         }
 
-        private void keyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar))
-            {
-                newAttempt(e.KeyChar, buttons[e.KeyChar - 97]);
-            }
-        }
-
         #region Buttons
         private void QButton_Click(object sender, EventArgs e)
         {
-            newAttempt('Q', QButton);
+            newAttempt('Q', QButton);            
         }
         private void WButton_Click(object sender, EventArgs e)
         {
