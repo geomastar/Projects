@@ -20,9 +20,14 @@ const letterSpans =
 const dictionary = createDictionary();
 var wrongGuesses = 0;
 
-function createDictionary()
+function readTextFile(file)
 {
 	
+}
+
+function createDictionary()
+{
+	readTextFile("Resources\dictionary.txt")
 }
 
 function createLetter(theLetter)
