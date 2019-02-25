@@ -20,14 +20,19 @@ const letterSpans =
 const dictionary = createDictionary();
 var wrongGuesses = 0;
 
-function readTextFile(file)
-{
-	
-}
-
 function createDictionary()
 {
-	readTextFile("Resources\dictionary.txt")
+	var file = new FileReader();
+	file.onreadystatechange = function()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+			document.getElementById("demo").innerHTML =
+				this.responseText;
+		}
+	};
+	file.open("GET", "Resources/dictionary.txt", true);
+	file.send();
 }
 
 function createLetter(theLetter)
@@ -41,7 +46,8 @@ function createLetter(theLetter)
 
 function main()
 {
-	console.log(createLetter('I')[1])
+	console.log(createLetter('I')[1]);
+	//createDictionary();
 }
 
 main();
