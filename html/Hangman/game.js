@@ -26,6 +26,7 @@ function main(array)
 {	
 	dictionary = array;
 	createWord(generateRandomWord());
+	console.log(word);
 }
 
 function playGame(file)
