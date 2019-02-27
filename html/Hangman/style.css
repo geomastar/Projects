@@ -8,24 +8,22 @@ body
 {
 	margin: 20px;
 }
+#outcome
+{
+	font-family: sans-serif;
+	font-size: 30px;
+	text-decoration: underline;
+}
 
 .letter
 {	
 	padding-left: 5px;
 	font-family: sans-serif;
-	font-size: 36;
+	font-size: 25px;
 	font-weight: bold;
 	text-decoration: underline;
 }
-
 .buttonContainer
 {
 	margin: 5px;
-}
-
-#outcome
-{
-	font-family: sans-serif;
-	font-size: 50;
-	text-decoration: underline;
 }

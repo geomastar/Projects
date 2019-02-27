@@ -216,12 +216,10 @@ function fin(resultBool)
 {
 	if (resultBool) 
 	{ 
-		console.log("win"); 
 		outcome.textContent = outcomeText[0]; 
 	}
 	else 
 	{ 
-		console.log("lose"); 
 		outcome.textContent = outcomeText[1] + wordString; 
 	}
 	
