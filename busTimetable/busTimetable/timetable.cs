@@ -9,15 +9,16 @@ namespace busTimetable
 {
     class timetable
     {
-        StreamReader sr;
+        private StreamReader sr;
+        private List<routeStruct> timeTableList;
 
-        struct routeStruct
+        private struct routeStruct
         {
-            private string startPoint;
-            private string destination;
-            private List<int> times;
+            string startPoint;
+            string destination;
+            List<string> times;
             
-            public routeStruct(string newStartPoint, string newDestination, List<int> newTimes)
+            public routeStruct(string newStartPoint, string newDestination, List<string> newTimes)
             {
                 startPoint = newStartPoint;
                 destination = newDestination;
@@ -27,11 +28,12 @@ namespace busTimetable
 
         public timetable(string path)
         {
+            timeTableList = new List<routeStruct>();
             string newLine;
             string[] tempLineArray;
             string tempStartPoint;
             string tempDestination;
-            List<int> tempTimes;
+            List<string> tempTimes;
 
             sr = new StreamReader(path);        
             while(sr.Peek() > 0)
@@ -39,8 +41,20 @@ namespace busTimetable
                 newLine = sr.ReadLine();
                 tempLineArray = newLine.Split(' ');
                 tempStartPoint = tempLineArray[0];
+                tempDestination = tempLineArray[1];
+                tempTimes = new List<string>();
+                for(int i = 2; i <= tempLineArray.Length; i++)
+                {
+                    tempTimes.Add(tempLineArray[i]);
+                }
 
+                timeTableList.Add(new routeStruct(tempStartPoint, tempDestination, tempTimes));
             }
+        }
+
+        public temp(int i)
+        {
+            Console.WriteLine(timeTableList[i.startPoint]);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace busTimetable
     {
         static void Main(string[] args)
         {
-
+            timetable newTimeTable = new timetable();
         }
     }
 }
