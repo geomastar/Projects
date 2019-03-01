@@ -1,0 +1,27 @@
+array timeTableArray[10]
+arrayLength = 0
+
+timeTableFile = openRead("timeTableFile.txt")
+while NOT timeTableFile.endOfFile()
+	timeTableArray[arrayLength]
+	arrayLength++
+endwhile
+
+Location = input("Enter the location: ")
+startTime = input("Enter the start time: ")
+endTime = input("Enter the end time: ")
+
+for i=0 to arrayLength
+	tempChar = ""
+	tempCount = 0
+	while tempChar != " "
+		tempChar = timeTableArray[i][tempCount]
+		if tempChar != " "
+			tempCount++
+		endif
+	endwhile
+	
+	if timeTableArray[i].subString(0, tempCount) = 
+		
+	endif
+next i
