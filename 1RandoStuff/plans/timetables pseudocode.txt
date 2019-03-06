@@ -1,11 +1,14 @@
+array resultsArray[10]
 array timeTableArray[10]
 arrayLength = 0
+resultsArrayLength = 0
 
 timeTableFile = openRead("timeTableFile.txt")
 while NOT timeTableFile.endOfFile()
-	timeTableArray[arrayLength]
+	timeTableArray[arrayLength] = timeTableFile.readLine()
 	arrayLength++
 endwhile
+timeTableFile.close()
 
 Location = input("Enter the location: ")
 startTime = input("Enter the start time: ")
@@ -13,15 +16,54 @@ endTime = input("Enter the end time: ")
 
 for i=0 to arrayLength
 	tempChar = ""
-	tempCount = 0
+	wordLength = 0
 	while tempChar != " "
-		tempChar = timeTableArray[i][tempCount]
+		tempChar = timeTableArray[i][wordLength]
 		if tempChar != " "
-			tempCount++
+			wordLength++
 		endif
 	endwhile
 	
-	if timeTableArray[i].subString(0, tempCount) = 
+	if timeTableArray[i].subString(0, wordLength) == Location
+		tempChar = ""
+		tempCount = wordLength + 2
+		while tempChar != " "
+			tempChar = timeTableArray[i][tempCount]
+			if tempChar != " "
+				tempCount++
+			endif
+		endwhile
 		
+		resultsArray[resultsArrayLength] = timeTableArray[i].subString(wordLength + 2, tempCount)
+		
+		start = tempCount + 2
+		end = start
+		fin = false
+		tempChar = ""
+		tempCount = 0
+		while NOT fin
+			tempChar = timeTableArray[i][tempCount]
+			if tempChar != " "
+				tempCount++
+			endif
+		endwhile
 	endif
 next i
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
