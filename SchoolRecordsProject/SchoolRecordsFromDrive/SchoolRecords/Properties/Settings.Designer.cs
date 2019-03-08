@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace schoolRecords.Properties
+namespace SchoolRecords.Properties
 {
 
 

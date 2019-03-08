@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace schoolRecords
+namespace SchoolRecords
 {
-    class Person
+    class Students
     {
+        private Student[] theList;
     }
 }
