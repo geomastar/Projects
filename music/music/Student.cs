@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace music
 {
-    class Student
+    public class Student
     {
         string firstName;
         string lastName;
@@ -40,6 +40,12 @@ namespace music
                 return true;
             }
             else { return false; }
+        }
+
+
+        public string getUsername()
+        {
+            return username;
         }
     }
 }

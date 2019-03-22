@@ -8,11 +8,13 @@ namespace music
 {
     class Playlist
     {
+        /*
         Track[] collection;
-
+        
         public Track searchCollection(string title)
         {
 
         }
+        */
     }
 }
