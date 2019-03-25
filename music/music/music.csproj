@@ -69,6 +69,9 @@
     <Compile Include="Student.cs" />
     <Compile Include="StudentList.cs" />
     <Compile Include="Track.cs" />
+    <EmbeddedResource Include="CreateStudentForm.resx">
+      <DependentUpon>CreateStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

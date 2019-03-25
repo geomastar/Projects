@@ -8,28 +8,29 @@ namespace music
 {
     public class Student
     {
-        string firstName;
-        string lastName;
-        int age;
-        string username;
-        string password;
-        Playlist musicCollection;
+        private string firstName;
+        private string lastName;
+        private int age;
+        private string username;
+        private string password;
+        private Playlist musicCollection;
 
-        public Student(string newFirstName, string newLastName, int newAge, string newPassword, string newPasswordReentered)
+        public Student(string newFirstName, string newLastName, int newAge, string newPassword, int count)
         {
             firstName = newFirstName;
             lastName = newLastName;
             age = newAge;
+            password = newPassword;
 
-            username = createUsername(newFirstName, newLastName, newAge);
+            username = createUsername(newFirstName, newLastName, newAge, count);
 
             musicCollection = new Playlist(); 
         }
 
-        private string createUsername(string theFirstName, string theLastName, int theAge)
+        private string createUsername(string theFirstName, string theLastName, int theAge, int count)
         {
             string theUserName;
-            theUserName = theFirstName[0] + theLastName[0] + theAge.ToString();
+            theUserName = theFirstName[0].ToString().ToUpper() + theLastName[0].ToString().ToUpper() + theAge.ToString() + count.ToString();
             return theUserName;
         }
 
@@ -41,7 +42,6 @@ namespace music
             }
             else { return false; }
         }
-
 
         public string getUsername()
         {

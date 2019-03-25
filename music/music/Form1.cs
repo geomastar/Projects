@@ -21,18 +21,21 @@ namespace music
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            students = new StudentList(@"H:\My Documents\Computer science\github projects repo\Projects\music\music\students.txt");
+            students = new StudentList();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
             LogInForm newForm = new LogInForm(students);
+            this.Hide();
             newForm.Show();
         }
 
         private void createUserButton_Click(object sender, EventArgs e)
         {
-
+            CreateStudentForm newForm = new CreateStudentForm(students);
+            this.Hide();
+            newForm.Show();
         }
     }
 }

@@ -35,17 +35,18 @@ namespace music
                 if (students.getStudents()[index].checkPassword(passwordTextBox.Text))
                 {
                     //proceed
-                    Debug.WriteLine("coool");
+                    
                 }
                 else
                 {
                     //wrong password
-                    Debug.WriteLine("not coool");
+                    errorMessageLabel.Text = "Incorrect Password!";
                 }
             }
             else
             {
                 //wrong username
+                errorMessageLabel.Text = "Incorrect Username!";
             }
         }
     }

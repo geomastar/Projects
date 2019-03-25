@@ -8,10 +8,10 @@ namespace music
 {
     class Track
     {
-        string title;
-        double length;
-        string artist;
-        string album;
+        private string title;
+        private double length;
+        private string artist;
+        private string album;
 
         public Track(string theTitle, double theLength, string theArtist, string theAlbum)
         {

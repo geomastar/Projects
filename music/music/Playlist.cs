@@ -9,7 +9,7 @@ namespace music
     class Playlist
     {
         /*
-        Track[] collection;
+        Private Track[] collection;
         
         public Track searchCollection(string title)
         {
