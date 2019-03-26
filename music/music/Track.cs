@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace music
 {
-    class Track
+    public class Track
     {
         private string title;
         private double length;

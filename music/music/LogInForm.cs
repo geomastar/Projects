@@ -14,9 +14,11 @@ namespace music
     public partial class LogInForm : Form
     {
         private StudentList students;
+        private Library library;
 
-        public LogInForm(StudentList studentList)
+        public LogInForm(StudentList studentList, Library newLibrary)
         {
+            library = newLibrary; 
             students = studentList;
             InitializeComponent();
         }
@@ -35,7 +37,9 @@ namespace music
                 if (students.getStudents()[index].checkPassword(passwordTextBox.Text))
                 {
                     //proceed
-                    
+                    PlaylistEditorForm newForm = new PlaylistEditorForm(students.getStudents()[index], library);
+                    this.Close();
+                    newForm.Show();
                 }
                 else
                 {

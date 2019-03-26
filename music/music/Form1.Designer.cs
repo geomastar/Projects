@@ -35,7 +35,7 @@
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(12, 85);
+            this.loginButton.Location = new System.Drawing.Point(11, 80);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
             this.loginButton.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             // createUserButton
             // 
-            this.createUserButton.Location = new System.Drawing.Point(97, 85);
+            this.createUserButton.Location = new System.Drawing.Point(91, 80);
             this.createUserButton.Name = "createUserButton";
             this.createUserButton.Size = new System.Drawing.Size(75, 23);
             this.createUserButton.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(11, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 20);
             this.label1.TabIndex = 2;

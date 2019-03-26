@@ -15,7 +15,7 @@ namespace music
         private StreamWriter sw;
         private string path;
 
-        public StudentList()
+        public StudentList(Library library)
         {
             path = 
                 //@"H:\My Documents\Computer science\github projects repo\Projects\music\music\students.txt"
@@ -31,8 +31,9 @@ namespace music
                 string lastName = line[1];
                 int age = Convert.ToInt32(line[2]);
                 string password = line[3];
+                string[] tracks = line[4].Split(' ');
 
-                students.Add(new Student(firstName, lastName, age, password, count));
+                students.Add(new Student(firstName, lastName, age, password, count, tracks, library));
 
                 count++;
             }
@@ -40,14 +41,14 @@ namespace music
             sr.Close();
         }
 
-        public void addStudent(string newFirstName, string newLastName, int newAge, string newPassword)
+        public void addStudent(string newFirstName, string newLastName, int newAge, string newPassword, Library library)
         {
             sw = new StreamWriter(path, append: true);
 
             sw.WriteLine("{0},{1},{2},{3}", newFirstName, newLastName, newAge, newPassword);
             sw.Close();
 
-            students.Add(new Student(newFirstName, newLastName, newAge, newPassword, count));
+            students.Add(new Student(newFirstName, newLastName, newAge, newPassword, count, new string[0], library));
 
             count++;
         }

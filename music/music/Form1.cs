@@ -12,6 +12,7 @@ namespace music
 {
     public partial class Form1 : Form
     {
+        private Library library;
         private StudentList students;
 
         public Form1()
@@ -21,19 +22,20 @@ namespace music
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            students = new StudentList();
+            Library library = new Library();
+            students = new StudentList(library);
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            LogInForm newForm = new LogInForm(students);
+            LogInForm newForm = new LogInForm(students, library);
             this.Hide();
             newForm.Show();
         }
 
         private void createUserButton_Click(object sender, EventArgs e)
         {
-            CreateStudentForm newForm = new CreateStudentForm(students);
+            CreateStudentForm newForm = new CreateStudentForm(students, library);
             this.Hide();
             newForm.Show();
         }

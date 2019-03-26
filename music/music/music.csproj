@@ -64,6 +64,12 @@
       <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Playlist.cs" />
+    <Compile Include="PlaylistEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlaylistEditorForm.Designer.cs">
+      <DependentUpon>PlaylistEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlaylistEditorForm.resx">
+      <DependentUpon>PlaylistEditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

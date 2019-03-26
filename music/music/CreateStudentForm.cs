@@ -13,9 +13,11 @@ namespace music
     public partial class CreateStudentForm : Form
     {
         private StudentList students;
+        private Library library;
 
-        public CreateStudentForm(StudentList studentList)
+        public CreateStudentForm(StudentList studentList, Library newLibrary)
         {
+            library = newLibrary;
             students = studentList;
             InitializeComponent();
         }
@@ -65,8 +67,11 @@ namespace music
 
             if (ready)
             {
-                students.addStudent(firstNameTextBox.Text, lastNameTextBox.Text, Convert.ToInt32(ageTextBox.Text), passwordTextBox.Text);
+                students.addStudent(firstNameTextBox.Text, lastNameTextBox.Text, Convert.ToInt32(ageTextBox.Text), passwordTextBox.Text, library);
                 //proceed
+                PlaylistEditorForm newForm = new PlaylistEditorForm(students.getStudents()[students.getCount() - 1], library);
+                this.Close();
+                newForm.Show();
             }
         }
 
