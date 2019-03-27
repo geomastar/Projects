@@ -22,7 +22,7 @@ namespace music
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Library library = new Library();
+            library = new Library();
             students = new StudentList(library);
         }
 

@@ -24,7 +24,8 @@ namespace music
 
         private void PlaylistEditorForm_Load(object sender, EventArgs e)
         {
-
+            createStudentTable();
+            createLibraryTable();
         }
 
         private void addMusicButton_Click(object sender, EventArgs e)
@@ -40,6 +41,34 @@ namespace music
         private void endButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void createStudentTable()
+        {
+            List<string[]> studentTracksTable = new List<string[]>();
+
+            foreach (Track t in student.getPlaylist().getCollection())
+            {
+                studentTracksTable.Add(new string[4] { t.getTitle(), t.getLength().ToString(), t.getArtist(), t.getAlbum() });
+            }
+
+            BindingSource StudentSource = new BindingSource();
+            StudentSource.DataSource = studentTracksTable;
+            studentDataGridView.DataSource = StudentSource;
+        }
+
+        private void createLibraryTable()
+        {
+            List<string[]> libraryTracksTable = new List<string[]>();
+
+            foreach (Track t in library.getCollection())
+            {
+                libraryTracksTable.Add(new string[4] { t.getTitle(), t.getLength().ToString(), t.getArtist(), t.getAlbum() });
+            }
+
+            BindingSource librarySource = new BindingSource();
+            librarySource.DataSource = libraryTracksTable;
+            libraryDataGridView.DataSource = librarySource;
         }
     }
 }

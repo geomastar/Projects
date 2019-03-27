@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,10 @@ namespace music
 
             if (tracks.Length > 0)
             {
-                addPlaylist(library, theTracks);
+                if (tracks[0] != "")
+                {
+                    addPlaylist(library, theTracks);
+                }
             }
             else
             {
@@ -77,6 +81,11 @@ namespace music
         public void setTracks(string[] theTracks)
         {
             tracks = theTracks;
+        }
+
+        public Playlist getPlaylist()
+        {
+            return musicCollection;
         }
     }
 }

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.musicDataGridView = new System.Windows.Forms.DataGridView();
+            this.libraryDataGridView = new System.Windows.Forms.DataGridView();
             this.titleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lengthColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artistColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.albumColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.studentDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,8 +46,8 @@
             this.addMusicButton = new System.Windows.Forms.Button();
             this.removeMusicButton = new System.Windows.Forms.Button();
             this.endButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.musicDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.libraryDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -60,22 +60,22 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Playlist Editor";
             // 
-            // musicDataGridView
+            // libraryDataGridView
             // 
-            this.musicDataGridView.AllowUserToAddRows = false;
-            this.musicDataGridView.AllowUserToDeleteRows = false;
-            this.musicDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.musicDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.libraryDataGridView.AllowUserToAddRows = false;
+            this.libraryDataGridView.AllowUserToDeleteRows = false;
+            this.libraryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.libraryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.titleColumn,
             this.lengthColumn,
             this.artistColumn,
             this.albumColumn,
             this.checkBoxColumn});
-            this.musicDataGridView.Location = new System.Drawing.Point(12, 126);
-            this.musicDataGridView.Name = "musicDataGridView";
-            this.musicDataGridView.ReadOnly = true;
-            this.musicDataGridView.Size = new System.Drawing.Size(420, 150);
-            this.musicDataGridView.TabIndex = 6;
+            this.libraryDataGridView.Location = new System.Drawing.Point(12, 126);
+            this.libraryDataGridView.Name = "libraryDataGridView";
+            this.libraryDataGridView.ReadOnly = true;
+            this.libraryDataGridView.Size = new System.Drawing.Size(420, 150);
+            this.libraryDataGridView.TabIndex = 6;
             // 
             // titleColumn
             // 
@@ -110,22 +110,22 @@
             this.checkBoxColumn.ReadOnly = true;
             this.checkBoxColumn.Width = 20;
             // 
-            // dataGridView1
+            // studentDataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.studentDataGridView.AllowUserToAddRows = false;
+            this.studentDataGridView.AllowUserToDeleteRows = false;
+            this.studentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.studentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
-            this.dataGridView1.Location = new System.Drawing.Point(628, 126);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(420, 150);
-            this.dataGridView1.TabIndex = 7;
+            this.studentDataGridView.Location = new System.Drawing.Point(628, 126);
+            this.studentDataGridView.Name = "studentDataGridView";
+            this.studentDataGridView.ReadOnly = true;
+            this.studentDataGridView.Size = new System.Drawing.Size(420, 150);
+            this.studentDataGridView.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -220,14 +220,14 @@
             this.Controls.Add(this.addMusicButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.musicDataGridView);
+            this.Controls.Add(this.studentDataGridView);
+            this.Controls.Add(this.libraryDataGridView);
             this.Controls.Add(this.label2);
             this.Name = "PlaylistEditorForm";
             this.Text = "Playlist Creater: Playlist Editor";
             this.Load += new System.EventHandler(this.PlaylistEditorForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.musicDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.libraryDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,13 +236,13 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView musicDataGridView;
+        private System.Windows.Forms.DataGridView libraryDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lengthColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn artistColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn albumColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn checkBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView studentDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
