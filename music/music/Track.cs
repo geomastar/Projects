@@ -21,8 +21,8 @@ namespace music
             artist = theArtist;
             album = theAlbum;
             URL =
-                //@"H:\My Documents\Computer science\github projects repo\Projects\music\music\library\" + title + @".mp3";
-                @"C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\music\music\library\" + title + @".mp3";
+                @"H:\My Documents\Computer science\github projects repo\Projects\music\music\library\" + title + @".mp3";
+                //@"C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\music\music\library\" + title + @".mp3";
         }
 
         #region getters
