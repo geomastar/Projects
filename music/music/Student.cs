@@ -16,10 +16,10 @@ namespace music
         private string username;
         private string password;
         private int count;
-        public string[] tracks;
+        public List<string> tracks;
         private Playlist musicCollection;
 
-        public Student(string newFirstName, string newLastName, int newAge, string newPassword, int newCount, string[] theTracks, Library library)
+        public Student(string newFirstName, string newLastName, int newAge, string newPassword, int newCount, List<string> theTracks, Library library)
         {
             firstName = newFirstName;
             lastName = newLastName;
@@ -30,11 +30,15 @@ namespace music
 
             username = createUsername(newFirstName, newLastName, newAge, newCount);
 
-            if (tracks.Length > 0)
+            if (tracks.Count > 0)
             {
                 if (tracks[0] != "")
                 {
                     addPlaylist(library, theTracks);
+                }
+                else
+                {
+                    musicCollection = new Playlist();
                 }
             }
             else
@@ -59,7 +63,7 @@ namespace music
             else { return false; }
         }
 
-        public void addPlaylist(Library library, string[] tracks)
+        public void addPlaylist(Library library, List<String> tracks)
         {
             musicCollection = new Playlist();
 
@@ -69,16 +73,21 @@ namespace music
             }
         }
 
+        public void addTrack(string theTrack)
+        {
+            tracks.Add(theTrack);
+        }
+
         public string getUsername()
         {
             return username;
         }
 
-        public string[] getTracks()
+        public List<string> getTracks()
         {
             return tracks;
         }
-        public void setTracks(string[] theTracks)
+        public void setTracks(List<string> theTracks)
         {
             tracks = theTracks;
         }
@@ -86,6 +95,26 @@ namespace music
         public Playlist getPlaylist()
         {
             return musicCollection;
+        }
+
+        public string getFirstName()
+        {
+            return firstName;
+        }
+
+        public string getLastName()
+        {
+            return lastName;
+        }
+
+        public int getAge()
+        {
+            return age;
+        }
+
+        public string getPassword()
+        {
+            return password;
         }
     }
 }

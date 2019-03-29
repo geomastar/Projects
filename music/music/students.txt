@@ -1,1 +1,3 @@
-George,Osborne,17,password,
+George,Osborne,17,password,2 0 1 3 
+Jimmy,Nuetron,12,science,0 0 0 0 
+king,dedede,69,gordo,4 4 4 

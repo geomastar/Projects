@@ -1,1 +1,6 @@
-Waluigi Pinball, 2.02, Nintendo, Super Smash Bros. Brawl
+Waluigi Pinball,2.02,Nintendo,Super Smash Bros. Brawl
+Mii Channel Theme,1.53,Nintendo,Nintendo Wii
+NOOT NOOT,0.01,Otmar Gutmann,Pingu
+Never Gonna Give You Up,3.32,Rick Astley,Greatest Hits
+King Dedede's Theme,3.21,Nintendo,Super Smash Bros. Ultimate
+Gangplank Galleom,4.53,Nintendo,Super Smash Bros. Ultimate

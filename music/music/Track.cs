@@ -12,6 +12,7 @@ namespace music
         private double length;
         private string artist;
         private string album;
+        private string URL;
 
         public Track(string theTitle, double theLength, string theArtist, string theAlbum)
         {
@@ -19,6 +20,9 @@ namespace music
             length = theLength;
             artist = theArtist;
             album = theAlbum;
+            URL =
+                //@"H:\My Documents\Computer science\github projects repo\Projects\music\music\library\" + title + @".mp3";
+                @"C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\music\music\library\" + title + @".mp3";
         }
 
         #region getters
@@ -37,6 +41,10 @@ namespace music
         public string getAlbum()
         {
             return album;
+        }
+        public string getURL()
+        {
+            return URL;
         }
         #endregion getters
 

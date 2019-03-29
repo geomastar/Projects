@@ -24,7 +24,7 @@ namespace music
         public List<Track> getCollection()
         {
             return collection;
-        }
+        }        
     }
 
     public class Library : Playlist
@@ -36,8 +36,8 @@ namespace music
         public Library()
         {
             path =
-                @"H:\My Documents\Computer science\github projects repo\Projects\music\music\library.txt";
-                //@"C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\music\music\playlists.txt";
+                //@"H:\My Documents\Computer science\github projects repo\Projects\music\music\library.txt";
+                @"C:\Users\geodu\OneDrive\Documents\Work\Computer science\Code\GitHub projects\Projects\music\music\library.txt";
 
             collection = new List<Track>();
 

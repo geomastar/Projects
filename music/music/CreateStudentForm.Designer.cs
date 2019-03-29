@@ -172,7 +172,7 @@
             // 
             this.UsernamePreviewLabel.AutoSize = true;
             this.UsernamePreviewLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsernamePreviewLabel.Location = new System.Drawing.Point(107, 255);
+            this.UsernamePreviewLabel.Location = new System.Drawing.Point(151, 280);
             this.UsernamePreviewLabel.Name = "UsernamePreviewLabel";
             this.UsernamePreviewLabel.Size = new System.Drawing.Size(0, 16);
             this.UsernamePreviewLabel.TabIndex = 17;

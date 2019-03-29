@@ -37,7 +37,7 @@ namespace music
                 if (students.getStudents()[index].checkPassword(passwordTextBox.Text))
                 {
                     //proceed
-                    PlaylistEditorForm newForm = new PlaylistEditorForm(students.getStudents()[index], library);
+                    PlaylistEditorForm newForm = new PlaylistEditorForm(students, students.getStudents()[index], library);
                     this.Close();
                     newForm.Show();
                 }

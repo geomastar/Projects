@@ -69,7 +69,7 @@ namespace music
             {
                 students.addStudent(firstNameTextBox.Text, lastNameTextBox.Text, Convert.ToInt32(ageTextBox.Text), passwordTextBox.Text, library);
                 //proceed
-                PlaylistEditorForm newForm = new PlaylistEditorForm(students.getStudents()[students.getCount() - 1], library);
+                PlaylistEditorForm newForm = new PlaylistEditorForm(students, students.getStudents()[students.getCount() - 1], library);
                 this.Close();
                 newForm.Show();
             }
