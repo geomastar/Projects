@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:deletepls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="50" Margin="0,350,0,0" Stroke="Black" VerticalAlignment="Top" Width="50"/>
+    <Canvas>
+        <Rectangle x:Name="jim" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Stroke="Black" VerticalAlignment="Top" Width="20" Canvas.Left="0" Canvas.Bottom="0"/>
+        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-    </Grid>
+    </Canvas>
 </Window>
