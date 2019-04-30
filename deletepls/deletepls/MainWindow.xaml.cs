@@ -37,13 +37,13 @@ namespace deletepls
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            x += 5;
+            x += 10;
             y = function(x, 70, 45);
 
             label1.Content = x.ToString() + ", " + y.ToString();
 
-            Canvas.SetLeft(jim, x);
-            Canvas.SetBottom(jim, y);
+            Canvas.SetLeft(box, x);
+            Canvas.SetBottom(box, y);
         }
 
         public double function(double x, double u, double angle)
