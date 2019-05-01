@@ -24,10 +24,14 @@ namespace deletepls
         public int g = 10;
         public double x = 0;
         public double y = 0;
+        public Rect target;
+        public Rect hitbox;
 
         public MainWindow()
         {
             InitializeComponent();
+            target = new Rect(100, 0, 1000, 500);
+            hitbox = new Rect(0, 0, 5, 5);
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
@@ -44,6 +48,14 @@ namespace deletepls
 
             Canvas.SetLeft(box, x);
             Canvas.SetBottom(box, y);
+
+            hitbox.X = x;
+            hitbox.Y = y;
+
+            if (target.IntersectsWith(hitbox))
+            {
+                ((DispatcherTimer)sender).Stop();
+            }
         }
 
         public double function(double x, double u, double angle)
