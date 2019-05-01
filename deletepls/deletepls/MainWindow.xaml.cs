@@ -38,7 +38,7 @@ namespace deletepls
         private void timer_Tick(object sender, EventArgs e)
         {
             x += 10;
-            y = function(x, 70, 45);
+            y = function(x, 70, 45);            
 
             label1.Content = x.ToString() + ", " + y.ToString();
 
