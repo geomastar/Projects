@@ -6,9 +6,7 @@
         xmlns:local="clr-namespace:deletepls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Canvas>
-        <Rectangle x:Name="box" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="5" Stroke="Black" VerticalAlignment="Top" Width="5" Canvas.Left="0" Canvas.Bottom="0"/>
+    <Canvas Name="testCanvas">
         <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-
     </Canvas>
 </Window>

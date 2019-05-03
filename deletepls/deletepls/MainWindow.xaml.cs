@@ -22,16 +22,15 @@ namespace deletepls
     public partial class MainWindow : Window
     {
         public int g = 10;
-        public double x = 0;
-        public double y = 0;
-        public Rect target;
-        public Rect hitbox;
+        public box projectile = new box(0, 0, 5, 5);
+        public box target = new box(400, 0, 100, 10);
 
         public MainWindow()
         {
             InitializeComponent();
-            target = new Rect(100, 0, 1000, 500);
-            hitbox = new Rect(0, 0, 5, 5);
+
+            testCanvas.Children.Add(projectile.getVisualBox());
+            testCanvas.Children.Add(target.getVisualBox());
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
@@ -41,21 +40,15 @@ namespace deletepls
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            x += 10;
-            y = function(x, 70, 45);            
+            projectile.setX(projectile.getX() + 10);
+            projectile.setY(function(projectile.getX(), 70, 45));
 
-            label1.Content = x.ToString() + ", " + y.ToString();
-
-            Canvas.SetLeft(box, x);
-            Canvas.SetBottom(box, y);
-
-            hitbox.X = x;
-            hitbox.Y = y;
-
-            if (target.IntersectsWith(hitbox))
+            if(projectile.checkIntersect(target.getHitBox()))
             {
                 ((DispatcherTimer)sender).Stop();
             }
+
+            label1.Content = projectile.getY();
         }
 
         public double function(double x, double u, double angle)
