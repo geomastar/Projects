@@ -26,12 +26,15 @@ namespace dynamic_surface
         {            
             InitializeComponent();
 
-            theLine = new Line();
-
-            theLine.X1 = 10;
-            theLine.Y1 = 10;
-            theLine.X2 = 50;
-            theLine.Y2 = 10;
+            theLine = new Line
+            {
+                X1 = 50,
+                Y1 = 50,
+                X2 = 50,
+                Y2 = 100,
+                Stroke = Brushes.Black,
+                StrokeThickness = 2
+            };
 
             theCanvas.Children.Add(theLine);
         }
