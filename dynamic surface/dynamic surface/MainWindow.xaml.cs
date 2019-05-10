@@ -28,36 +28,11 @@ namespace dynamic_surface
         {            
             InitializeComponent();
 
-            theLine = new Line
-            {
-                X1 = 0,
-                Y1 = 300,
-                X2 = 800,
-                Y2 = 300,
-                Stroke = Brushes.Black,
-                StrokeThickness = 2
-            };
+            Path floor = new Path();
+            floor.Stroke = Brushes.Black;
 
 
-
-            theEllipseGeometry = new EllipseGeometry
-            {
-                Center = new Point(50, 50),
-                RadiusX = 25,
-                RadiusY = 25
-            };
-
-            thePath = new Path
-            {
-                Stroke = Brushes.Blue,
-                Fill = Brushes.MediumBlue,
-                StrokeThickness = 2,
-                Data = theEllipseGeometry
-            };
-
-
-
-            theCanvas.Children.Add(thePath);
+            theCanvas.Children.Add(floor);
         }
     }
 }
