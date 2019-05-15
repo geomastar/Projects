@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,9 +37,24 @@ namespace map_prototype
             floor_Path.StrokeThickness = 2;
         }
 
-        public void AddCrater(double X, double Y)
+        public void AddCrater(double X)
         {
-            
+            floor_PointCollection.Insert(1, new Point(X-20, 350)); //control point
+            floor_PointCollection.Insert(2, new Point(X-20, 350)); //end point
+
+            floor_PointCollection.Insert(3, new Point(X-20, 350)); //start point
+            floor_PointCollection.Insert(4, new Point(X-5, 360)); //control point
+
+            floor_PointCollection.Insert(5, new Point(X+5, 360)); //control point
+            floor_PointCollection.Insert(6, new Point(X+20, 370)); //end point
+
+            floor_PointCollection.Insert(7, new Point(X+20, 370)); //start point
+            floor_PointCollection.Insert(8, new Point(X+20, 360)); //control point
+
+            foreach (Point p in floor_PointCollection)
+            {
+                Debug.WriteLine(p.X + "," + p.Y);
+            }
         }
 
         public Path GetFloor_Path()

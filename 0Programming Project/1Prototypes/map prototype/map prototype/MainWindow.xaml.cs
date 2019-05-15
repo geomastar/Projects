@@ -30,5 +30,12 @@ namespace map_prototype
 
             VisualLayer.Children.Add(newFloor.GetFloor_Path());
         }
+
+        private void addCraterButton_Click(object sender, RoutedEventArgs e)
+        {
+            newFloor.AddCrater(Convert.ToDouble(addCraterXTextBox.Text));
+
+            addCraterButton.IsEnabled = false;
+        }
     }
 }
