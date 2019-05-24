@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,14 +22,18 @@ namespace map_prototype
     public partial class MainWindow : Window
     {
         Floor newFloor;
+        Projectile newProjectile;
+        Timer newTimer;
 
         public MainWindow()
         {
             InitializeComponent();
 
             newFloor = new Floor(0, 350, 800, 350);
+            newProjectile = new Projectile(10, 10, 400, 200);
 
-            VisualLayer.Children.Add(newFloor.GetFloor_Path());
+            newCanvas.Children.Add(newFloor.GetFloor_Path());
+            newCanvas.Children.Add(newProjectile.GetProjectile_Path());
         }
 
         private void addCraterButton_Click(object sender, RoutedEventArgs e)

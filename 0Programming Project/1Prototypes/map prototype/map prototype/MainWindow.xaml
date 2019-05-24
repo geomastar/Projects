@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:map_prototype"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Canvas Name="VisualLayer">
+    <Canvas Name="newCanvas">
         <Button Name="addCraterButton" Content="Add crater to X coordinate:" Height="23" Canvas.Left="40" Canvas.Top="34" Width="162" Click="addCraterButton_Click"/>
         <TextBox Name="addCraterXTextBox" Height="23" Canvas.Left="207" TextWrapping="Wrap" Text="" Canvas.Top="34" Width="38"/>
     </Canvas>
