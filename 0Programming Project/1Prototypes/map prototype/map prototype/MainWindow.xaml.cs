@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace map_prototype
 {
@@ -22,18 +23,14 @@ namespace map_prototype
     public partial class MainWindow : Window
     {
         Floor newFloor;
-        Projectile newProjectile;
-        Timer newTimer;
 
         public MainWindow()
         {
             InitializeComponent();
 
             newFloor = new Floor(0, 350, 800, 350);
-            newProjectile = new Projectile(10, 10, 400, 200);
 
             newCanvas.Children.Add(newFloor.GetFloor_Path());
-            newCanvas.Children.Add(newProjectile.GetProjectile_Path());
         }
 
         private void addCraterButton_Click(object sender, RoutedEventArgs e)
