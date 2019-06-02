@@ -22,33 +22,22 @@ namespace projectilePrototype
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Stopwatch timer = new Stopwatch();
-        public bool fred = false;
+        Projectile theProjectile;
+
+        Rectangle jim;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            timer.Start();
+            theProjectile = new Projectile(20, 20, 100, 300, 45, 70, 10);
 
-            CompositionTarget.Rendering += newEvent;
+            theCanvas.Children.Add(theProjectile.GetProjectile_Path());
         }
 
-        private void newEvent(object sender, EventArgs e)
-        {           
-            if (jim.Width < 200)
-            {
-                jim.Width++;
-            }
-            else
-            {                
-                if (!fred)
-                {
-                    Debug.WriteLine(timer.Elapsed);
-                }
-
-                fred = true;
-            }
+        private void launchButton_Click(object sender, RoutedEventArgs e)
+        {
+            theProjectile.SendProjectile();
         }
     }
 }
