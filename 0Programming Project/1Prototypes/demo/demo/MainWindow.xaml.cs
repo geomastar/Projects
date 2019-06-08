@@ -23,8 +23,7 @@ namespace demo
         public MainWindow()
         {
             InitializeComponent();
-
-            Game demo_Game = new Game();
+            Game demo_Game = new Game(gameCanvas);
         }
     }
 }
