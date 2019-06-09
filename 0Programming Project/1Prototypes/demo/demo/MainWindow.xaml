@@ -7,21 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="808" MaxHeight="500" MaxWidth="808" MinHeight="500" MinWidth="808">
     <Canvas x:Name="gameCanvas">
-        <Path Stroke="Black" StrokeThickness="1">
+        <Path Name="circleboi" Stroke="Black" StrokeThickness="1" Canvas.Left="113" Canvas.Top="128">
             <Path.Data>
-                <PathGeometry>
-                    <PathGeometry.Figures>
-                        <PathFigureCollection>
-                            <PathFigure StartPoint="100,100">
-                                <PathFigure.Segments>
-                                    <PathSegmentCollection>
-                                        <ArcSegment Point="130,100" Size="100,1000" SweepDirection="Clockwise"/>
-                                    </PathSegmentCollection>
-                                </PathFigure.Segments>
-                            </PathFigure>
-                        </PathFigureCollection>
-                    </PathGeometry.Figures>
-                </PathGeometry>
+                <EllipseGeometry RadiusX="50" RadiusY="50"/>
+            </Path.Data>
+        </Path>
+        <Path Name="squareboi" Stroke="Black" StrokeThickness="1" Canvas.Left="143" Canvas.Top="128">
+            <Path.Data>
+                <RectangleGeometry Rect="10,10,10,10"/>
             </Path.Data>
         </Path>
     </Canvas>

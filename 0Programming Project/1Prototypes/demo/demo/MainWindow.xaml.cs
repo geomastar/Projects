@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,6 @@ namespace demo
         {
             InitializeComponent();
             Game demo_Game = new Game(gameCanvas);
-        }
+        }        
     }
 }
