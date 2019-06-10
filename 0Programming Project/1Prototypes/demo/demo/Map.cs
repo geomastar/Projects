@@ -17,7 +17,9 @@ namespace demo
         private PathFigure map_PathFigure;
         private PathSegmentCollection map_PathSegmentCollection;
         private PolyBezierSegment map_PolyBezierSegment;
-        private PointCollection map_PointCollection;
+        private PolyLineSegment map_PolyLineSegment;
+        private PointCollection map_BezierPointCollection;
+        private PointCollection map_LinePointCollection;
 
         public Map(int mapID)
         {
@@ -37,15 +39,29 @@ namespace demo
 
         private void GenerateMap(Point startPoint, PointCollection points)
         {
-            map_PointCollection = points;
+            map_LinePointCollection = new PointCollection()
+            {
+                points.Last(),
+                new Point(points.Last().X, 500),
+                new Point(startPoint.X, 500),
+                startPoint
+            };
+
+            map_PolyLineSegment = new PolyLineSegment()
+            {
+                Points = map_LinePointCollection
+            };
+
+            map_BezierPointCollection = points;
 
             map_PolyBezierSegment = new PolyBezierSegment()
             {
-                Points = map_PointCollection
+                Points = map_BezierPointCollection
             };
 
             map_PathSegmentCollection = new PathSegmentCollection();
             map_PathSegmentCollection.Add(map_PolyBezierSegment);
+            map_PathSegmentCollection.Add(map_PolyLineSegment);
 
             map_PathFigure = new PathFigure()
             {
@@ -64,6 +80,7 @@ namespace demo
             map_Path = new Path()
             {
                 Stroke = Brushes.Black,
+                Fill = Brushes.Green,
                 StrokeThickness = 2,
                 Data = map_PathGeometry
             };
