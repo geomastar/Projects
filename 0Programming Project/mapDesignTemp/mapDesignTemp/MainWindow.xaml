@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Canvas>
-        <Path>
+        <Path Stroke="Black" StrokeThickness="2">
             <Path.Data>
                 <PathGeometry>
                     <PathFigureCollection>
-                        <PathFigure StartPoint="">
+                        <PathFigure StartPoint="0,350">
                             <PathSegmentCollection>
-                                <PolyBezierSegment/>
+                                <PolyBezierSegment Points="0,350 200,350 200,350"/>
                             </PathSegmentCollection>
                         </PathFigure>
                     </PathFigureCollection>
