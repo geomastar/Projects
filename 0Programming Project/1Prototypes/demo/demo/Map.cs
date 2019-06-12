@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -84,6 +85,11 @@ namespace demo
                 StrokeThickness = 2,
                 Data = map_PathGeometry
             };
+        }
+
+        public void AddToCanvas(Canvas gameCanvas)
+        {
+            gameCanvas.Children.Add(map_Path);
         }
 
         public Path GetMap_Path()

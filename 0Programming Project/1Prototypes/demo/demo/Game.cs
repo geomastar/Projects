@@ -19,6 +19,7 @@ namespace demo
         private Tank game_Player;
         private Tank game_target;
         private Projectile game_CurrentProjectile;
+        private Tank[] game_TankArray;
 
         private int gravity = 10;
 
@@ -29,9 +30,13 @@ namespace demo
 
             game_Map = new Map(2);
             game_Player = new Tank(100);
+            game_target = new Tank(700);
 
-            game_Canvas.Children.Add(game_Map.GetMap_Path());
-            game_Canvas.Children.Add(game_Player.GetTank_Path());
+            game_TankArray = new Tank[2] { game_Player, game_target };
+
+            game_Map.AddToCanvas(game_Canvas);
+            game_Player.AddToCanvas(game_Canvas);
+            game_target.AddToCanvas(game_Canvas);
 
             CompositionTarget.Rendering += UpdateEvent;
             game_Window.KeyDown += KeyPressEvent;
@@ -39,17 +44,21 @@ namespace demo
 
         private void UpdateEvent(object Sender, EventArgs e)
         {
-            IntersectionDetail intersectionDetail_PlayerMap = game_Player.GetTank_Path().Data.FillContainsWithDetail(game_Map.GetMap_Path().Data);
-            
-            switch(intersectionDetail_PlayerMap)
+            foreach (Tank tank in game_TankArray)
             {
-                case IntersectionDetail.Empty:
-                    game_Player.MoveTankDown();
-                    break;
-                case IntersectionDetail.Intersects:
-                    game_Player.MoveTankUp();
-                    break;
-            }            
+                IntersectionDetail innerTankMapIntersection = tank.GetTank_Path(false).Data.FillContainsWithDetail(game_Map.GetMap_Path().Data);
+                IntersectionDetail outerTankMapIntersection = tank.GetTank_Path(true).Data.FillContainsWithDetail(game_Map.GetMap_Path().Data);
+
+                if (outerTankMapIntersection == IntersectionDetail.Empty)
+                {
+                    tank.MoveTankDown();
+                }
+
+                if (innerTankMapIntersection == IntersectionDetail.Intersects)
+                {
+                    tank.MoveTankUp();
+                }
+            }
         }
 
         private void KeyPressEvent(object sender, KeyEventArgs e)
