@@ -49,8 +49,7 @@ namespace demo
                 case IntersectionDetail.Intersects:
                     game_Player.MoveTankUp();
                     break;
-            }
-            
+            }            
         }
 
         private void KeyPressEvent(object sender, KeyEventArgs e)
