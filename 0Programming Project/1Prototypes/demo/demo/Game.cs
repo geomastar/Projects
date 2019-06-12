@@ -27,7 +27,7 @@ namespace demo
             game_Window = window;
             game_Canvas = canvas;
 
-            game_Map = new Map(1);
+            game_Map = new Map(2);
             game_Player = new Tank(100);
 
             game_Canvas.Children.Add(game_Map.GetMap_Path());
