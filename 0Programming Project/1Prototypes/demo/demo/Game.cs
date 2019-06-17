@@ -46,6 +46,8 @@ namespace demo
         {
             foreach (Tank tank in game_TankArray)
             {
+                Point point1 = game_Player.GetTankPosition();
+
                 IntersectionDetail innerTankMapIntersection = tank.GetTank_Path(false).Data.FillContainsWithDetail(game_Map.GetMap_Path().Data);
                 IntersectionDetail outerTankMapIntersection = tank.GetTank_Path(true).Data.FillContainsWithDetail(game_Map.GetMap_Path().Data);
 
@@ -58,15 +60,17 @@ namespace demo
                 {
                     tank.MoveTankUp();
                 }
+
+                //game_Player.ChangeAngle(point1);
             }
         }
 
         private void KeyPressEvent(object sender, KeyEventArgs e)
         {
-            switch(e.Key)
-            {
-                case Key.A:
-                    game_Player.MoveTankLeft();
+            switch (e.Key)
+            {                
+                case Key.A:                    
+                    game_Player.MoveTankLeft();                    
                     break;
                 case Key.D:
                     game_Player.MoveTankRight();

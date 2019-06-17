@@ -32,8 +32,11 @@ namespace demo
                 case 2:
                     GenerateMap(new Point(0,350), new PointCollection { new Point(300,200), new Point(500,200), new Point(800,350) });
                     break;
+                case 3:
+                    GenerateMap(new Point(0,350), new PointCollection { new Point(300,-5000), new Point(500,-5000), new Point(800,350) });
+                    break;
                 default:
-                    GenerateMap(new Point(0, 350), new PointCollection { new Point(0, 350), new Point(800, 350), new Point(800, 350) });
+                    GenerateMap(new Point(0,350), new PointCollection { new Point(0,350), new Point(800,350), new Point(800,350) });
                     break;
             }
         }
