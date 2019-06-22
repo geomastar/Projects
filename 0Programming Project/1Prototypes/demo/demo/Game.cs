@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace demo
 {
@@ -20,6 +21,8 @@ namespace demo
         private Tank game_target;
         private Projectile game_CurrentProjectile;
         private Tank[] game_TankArray;
+        private ImageBrush game_SkyBrush;
+        private BitmapImage game_SkyTexture;
 
         private int gravity = 10;
 
@@ -28,15 +31,19 @@ namespace demo
             game_Window = window;
             game_Canvas = canvas;
 
-            game_Map = new Map(2);
+            game_Map = new Map(1);
             game_Player = new Tank(100);
             game_target = new Tank(700);
 
             game_TankArray = new Tank[2] { game_Player, game_target };
 
+            game_SkyTexture = new BitmapImage(new Uri(@"Resources/Sky texture.png", UriKind.Relative));
+            game_SkyBrush = new ImageBrush(game_SkyTexture);
+
+            game_Canvas.Background = game_SkyBrush;
             game_Map.AddToCanvas(game_Canvas);
-            game_Player.AddToCanvas(game_Canvas);
-            game_target.AddToCanvas(game_Canvas);
+            //game_Player.AddToCanvas(game_Canvas);
+            //game_target.AddToCanvas(game_Canvas);
 
             CompositionTarget.Rendering += UpdateEvent;
             game_Window.KeyDown += KeyPressEvent;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace demo
@@ -21,6 +22,8 @@ namespace demo
         private PolyLineSegment map_PolyLineSegment;
         private PointCollection map_BezierPointCollection;
         private PointCollection map_LinePointCollection;
+        private ImageBrush map_DirtBrush;
+        private BitmapImage map_DirtTexture;
 
         public Map(int mapID)
         {
@@ -32,9 +35,6 @@ namespace demo
                 case 2:
                     GenerateMap(new Point(0,350), new PointCollection { new Point(300,200), new Point(500,200), new Point(800,350) });
                     break;
-                case 3:
-                    GenerateMap(new Point(0,350), new PointCollection { new Point(300,-5000), new Point(500,-5000), new Point(800,350) });
-                    break;
                 default:
                     GenerateMap(new Point(0,350), new PointCollection { new Point(0,350), new Point(800,350), new Point(800,350) });
                     break;
@@ -43,6 +43,9 @@ namespace demo
 
         private void GenerateMap(Point startPoint, PointCollection points)
         {
+            map_DirtTexture = new BitmapImage(new Uri(@"Resources/Dirt texture.png", UriKind.Relative));
+            map_DirtBrush = new ImageBrush(map_DirtTexture);
+
             map_LinePointCollection = new PointCollection()
             {
                 points.Last(),
@@ -83,8 +86,8 @@ namespace demo
 
             map_Path = new Path()
             {
-                Stroke = Brushes.Black,
-                Fill = Brushes.Green,
+                Stroke = map_DirtBrush,
+                Fill = map_DirtBrush,
                 StrokeThickness = 2,
                 Data = map_PathGeometry
             };
