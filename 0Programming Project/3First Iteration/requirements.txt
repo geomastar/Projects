@@ -1,0 +1,18 @@
+1.	There will be atleast one playable map, with hitboxes to
+	detect and stop objects like tanks or projectiles from
+	moving through it.
+2. 	There will be one playable tank, moveable with the 'A'
+	and 'D' keys.
+3.	There will be one dud tank for the player to shoot at
+	that doesn't move, with a hitbox to detect when projectiles
+	hit it.
+4.	There will be atleast one available weapon.
+5.	The user will be able to aim their weapon by dragging an
+	icon with their cursor.
+6.	The user will be able to fire their weapon by pressing a
+	'fire' button with their cursor.
+7.	A projectile will be launched by weapons, on a trajectory
+	effected by gravity, that deals damage when it hits an
+	enemy tank.
+8.	There will be a text box on the screen that displays stats
+	about each turn, like the damage dealt to the enemy.
