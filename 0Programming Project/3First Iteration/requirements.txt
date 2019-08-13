@@ -1,4 +1,4 @@
-1.	There will be atleast one playable map, with hitboxes to
+1.	There will be at least one playable map, with hitboxes to
 	detect and stop objects like tanks or projectiles from
 	moving through it.
 2. 	There will be one playable tank, moveable with the 'A'

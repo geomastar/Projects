@@ -1,0 +1,13 @@
+SCR3.1	I will implement a training mode, where the player must aim
+	and fire against a tank with unlimited health as aiming
+	practice.
+SCR4.1	User’s should be able to move across the map with the ‘A’
+	and ‘D’ keys.
+SCR4.2	The maps should have hitboxes that prevent the player’s
+	tanks from falling through the map.
+SCR5.1	The users should be able to aim their weapon by using the
+	mouse to drag a pointer in the direction they want to aim.
+SCR5.2	Weapons should shoot projectiles at enemies, with a
+	trajectory that can be changed between turns.
+SCR5.3	When projectiles land on tanks they should decrease that
+	tank’s health.
