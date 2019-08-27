@@ -27,7 +27,7 @@ namespace demo
         private int gravity = 10;
 
         public Game(Window window, Canvas canvas)
-        {            
+        {
             game_Window = window;
             game_Canvas = canvas;
 
@@ -42,8 +42,8 @@ namespace demo
 
             game_Canvas.Background = game_SkyBrush;
             game_Map.AddToCanvas(game_Canvas);
-            //game_Player.AddToCanvas(game_Canvas);
-            //game_target.AddToCanvas(game_Canvas);
+            game_Player.AddToCanvas(game_Canvas);
+            game_target.AddToCanvas(game_Canvas);
 
             CompositionTarget.Rendering += UpdateEvent;
             game_Window.KeyDown += KeyPressEvent;
