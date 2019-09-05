@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Metal_Lynch__v1._0_
 {
-    class Map
+    public class Map
     {
+
     }
 }

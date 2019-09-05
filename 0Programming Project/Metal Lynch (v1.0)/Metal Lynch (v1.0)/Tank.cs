@@ -10,7 +10,7 @@ using System.Windows.Shapes;
 
 namespace Metal_Lynch__v1._0_
 {
-    class Tank
+    public class Tank
     {
         private Path tank_Path;
         private RectangleGeometry tank_RectangleGeometry;
@@ -58,6 +58,12 @@ namespace Metal_Lynch__v1._0_
 
             canvas.Children.Add(tank_Path);
             //Adds the Tank's Path object to the Canvas.
+        }
+
+        public void MoveDown()
+        {
+            tank_TranslateTransform.Y += 1;
+            //Moves the Tank down on the canvas.
         }
 
         public Path GetTank_Path()
