@@ -60,10 +60,28 @@ namespace Metal_Lynch__v1._0_
             //Adds the Tank's Path object to the Canvas.
         }
 
+        public void MoveUp()
+        {
+            tank_TranslateTransform.Y -= 1;
+            //Moves the Tank up on the canvas.
+        }
+
         public void MoveDown()
         {
             tank_TranslateTransform.Y += 1;
             //Moves the Tank down on the canvas.
+        }
+
+        public void MoveLeft()
+        {
+            tank_TranslateTransform.X -= 1;
+            //Moves the Tank left on the canvas.
+        }
+
+        public void MoveRight()
+        {
+            tank_TranslateTransform.X += 1;
+            //Moves the Tank right on the canvas.
         }
 
         public Path GetTank_Path()

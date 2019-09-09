@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Projectile.cs" />
     <Compile Include="Tank.cs" />
+    <Compile Include="TankBarrier.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
