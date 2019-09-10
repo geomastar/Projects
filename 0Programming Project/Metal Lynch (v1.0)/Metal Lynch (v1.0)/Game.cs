@@ -14,6 +14,8 @@ namespace Metal_Lynch__v1._0_
     {
         private Window game_Window;
         private Canvas game_Canvas;
+        private Canvas game_GUICanvas;
+
         private Map game_Map;
         private Tank game_Player;
         private Tank[] game_TankArray;
@@ -22,11 +24,12 @@ namespace Metal_Lynch__v1._0_
 
         private int gravity;
 
-        public Game(Window window, Canvas canvas)
+        public Game(Window window, Canvas canvas, Canvas GUIcanvas)
         {
             game_Window = window;
             game_Canvas = canvas;
-            //Gives the Game object access to the window and canvas.
+            game_GUICanvas = GUIcanvas;
+            //Gives the Game object access to the window and canvases.
 
             game_Map = new Map(game_Canvas);
             //Instantiates the Map object.
@@ -126,6 +129,11 @@ namespace Metal_Lynch__v1._0_
                 }
                 //This code is done for all Tank objects in the array.
             }
+        }
+
+        private void FireButtonClickEvent(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -20,9 +20,19 @@ namespace GUI_prototype
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int increment = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+            fireButton.Click += clicked;
+        }
+
+        private void clicked(object sender, RoutedEventArgs e)
+        {
+            messageBox.AppendText(increment.ToString());
+            messageBox.ScrollToEnd();
+            increment++;
         }
     }
 }
