@@ -29,6 +29,8 @@ namespace Metal_Lynch__v1._0_
 
             tankBarrier_Path = new Path()
             {
+                //Stroke = Brushes.Green,
+                //StrokeThickness = 2,
                 Data = tankBarrier_LineGeometry
                 //Instantiates the Path object and assigns the LineGeometry
                 //object as it's data.
