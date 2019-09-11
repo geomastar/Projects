@@ -22,6 +22,9 @@ namespace Metal_Lynch__v1._0_
         private TankBarrier game_TankBarrierLeft;
         private TankBarrier game_TankBarrierRight;
 
+        private TextBlock game_MessageBox;
+        private Button game_FireButton;
+
         private int gravity;
 
         public Game(Window window, Canvas canvas, Canvas GUIcanvas)
@@ -44,6 +47,10 @@ namespace Metal_Lynch__v1._0_
             game_TankArray = new Tank[1] { game_Player };
             //Instantiates the Tank array and adds all the Tank objects to
             //the Tank array.
+
+            InstantiateGame_FireButton();
+            InstantiateGame_MessageBox();
+            //Calls the methods that will instantiate the GUI objects.
 
             gravity = 10;
             //Sets gravity to the default acceleration of 10.
@@ -131,9 +138,42 @@ namespace Metal_Lynch__v1._0_
             }
         }
 
-        private void FireButtonClickEvent(object sender, RoutedEventArgs e)
+        private void InstantiateGame_FireButton()
         {
-            
+            game_FireButton = new Button()
+            {
+                Width = 60,
+                Height = 40,
+                Content = "Fire",
+                FontSize = 20,
+                RenderTransform = new TranslateTransform(400, 35)
+                //Instantiates the Fire Button, defining its size, content
+                //position on the GUICanvas.
+            };
+
+            game_GUICanvas.Children.Add(game_FireButton);
+            //Adds the Fire button to the GUICanvas.
+        }
+
+        private void InstantiateGame_MessageBox()
+        {
+            game_MessageBox = new TextBlock()
+            {
+                Width = 100,
+                Height = 100,
+                FontSize = 12,
+                TextWrapping = TextWrapping.Wrap,
+                
+                RenderTransform = new TranslateTransform(0, 0)
+            };
+
+            ScrollViewer messageBox_ScrollViewer = new ScrollViewer()
+            {
+                VerticalScrollBarVisibility = ScrollBarVisibility.Hidden,
+
+            };
+
+            game_GUICanvas.Children.Add(game_MessageBox);
         }
     }
 }

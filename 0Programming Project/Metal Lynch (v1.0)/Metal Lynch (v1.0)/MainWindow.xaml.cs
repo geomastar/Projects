@@ -25,7 +25,7 @@ namespace Metal_Lynch__v1._0_
             InitializeComponent();
             Game game = new Game(gameWindow, gameCanvas, GUICanvas);
             //Creates the instance of the Game class, and gives it access
-            //to the gameWindow and gameCanvas.
+            //to the gameWindow, gameCanvas and GUICanvas.
         }
     }
 }
