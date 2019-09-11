@@ -22,7 +22,7 @@ namespace Metal_Lynch__v1._0_
         private PointCollection map_BezierPointCollection;
         private PointCollection map_LinePointCollection;
 
-        public Map(Canvas canvas)
+        public Map(Canvas Gamecanvas)
         {
             map_BezierPointCollection = new PointCollection()
             {
@@ -98,7 +98,7 @@ namespace Metal_Lynch__v1._0_
                 //to the Path's data variable.
             };
 
-            canvas.Children.Add(map_Path);
+            Gamecanvas.Children.Add(map_Path);
             //Adds the Map's Path object to the Canvas.
         }
 

@@ -22,35 +22,36 @@ namespace Metal_Lynch__v1._0_
         private TankBarrier game_TankBarrierLeft;
         private TankBarrier game_TankBarrierRight;
 
-        private TextBlock game_MessageBox;
+        private MessageBox game_MessageBox;
+        private AimingIcon game_AimingIcon;
         private Button game_FireButton;
 
         private int gravity;
 
-        public Game(Window window, Canvas canvas, Canvas GUIcanvas)
+        public Game(Window window, Canvas Gamecanvas, Canvas GUIcanvas)
         {
             game_Window = window;
-            game_Canvas = canvas;
+            game_Canvas = Gamecanvas;
             game_GUICanvas = GUIcanvas;
             //Gives the Game object access to the window and canvases.
 
             game_Map = new Map(game_Canvas);
             //Instantiates the Map object.
-
             game_TankBarrierLeft = new TankBarrier(game_Canvas, 0);
             game_TankBarrierRight = new TankBarrier(game_Canvas, 400);
             //Instantiates the TankBarrier objects.
-
             game_Player = new Tank(game_Canvas, 100, 100);
             //Instantiates the Tank object.
-
             game_TankArray = new Tank[1] { game_Player };
             //Instantiates the Tank array and adds all the Tank objects to
             //the Tank array.
 
             InstantiateGame_FireButton();
-            InstantiateGame_MessageBox();
-            //Calls the methods that will instantiate the GUI objects.
+            //Calls the method that will instantiate the Fire Button object.
+            game_MessageBox = new MessageBox(game_GUICanvas);
+            //Instantiates the MessageBox object.
+            game_AimingIcon = new AimingIcon(game_GUICanvas);
+            //Instantiates the AimingIcon object.
 
             gravity = 10;
             //Sets gravity to the default acceleration of 10.
@@ -100,6 +101,11 @@ namespace Metal_Lynch__v1._0_
                 game_Player.MoveRight();
                 //Moves the player's Tank object right if the 'D' key is
                 //pressed down.
+            }
+
+            if(game_AimingIcon.GetAimingIcon_BeingDragged())
+            {
+                game_AimingIcon.DragIconEvent();
             }
 
             foreach (Tank tank in game_TankArray)
@@ -153,33 +159,6 @@ namespace Metal_Lynch__v1._0_
 
             game_GUICanvas.Children.Add(game_FireButton);
             //Adds the Fire button to the GUICanvas.
-        }
-
-        private void InstantiateGame_MessageBox()
-        {
-            game_MessageBox = new TextBlock()
-            {
-                Width = 250,
-
-                FontSize = 12,
-                TextWrapping = TextWrapping.Wrap,
-                Background = Brushes.Black,
-                Foreground = Brushes.Green,
-                RenderTransform = new TranslateTransform(0, 0),
-                Text = ">tfw this is a test \n>pepehands\n>pepehands\n>pepehands\n>pepehands\n>Everybody walk the dinosour."                
-            };
-            
-            ScrollViewer messageBox_ScrollViewer = new ScrollViewer()
-            {
-                VerticalScrollBarVisibility = ScrollBarVisibility.Hidden,
-                Content = game_MessageBox,
-                CanContentScroll = true,
-                Height = 112,
-            };
-
-            game_GUICanvas.Children.Add(messageBox_ScrollViewer);
-
-            messageBox_ScrollViewer.ScrollToEnd();
         }
     }
 }

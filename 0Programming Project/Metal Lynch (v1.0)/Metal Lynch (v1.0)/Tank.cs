@@ -18,7 +18,7 @@ namespace Metal_Lynch__v1._0_
         private TransformGroup tank_TransformGroup;
         private TranslateTransform tank_TranslateTransform;
 
-        public Tank(Canvas canvas, int X, int Y)
+        public Tank(Canvas Gamecanvas, int X, int Y)
         {
             tank_TranslateTransform = new TranslateTransform(X, Y);
             //Instantiates the TranslateTransform object that will define
@@ -56,7 +56,7 @@ namespace Metal_Lynch__v1._0_
                 //to the Path's data variable.
             };
 
-            canvas.Children.Add(tank_Path);
+            Gamecanvas.Children.Add(tank_Path);
             //Adds the Tank's Path object to the Canvas.
         }
 

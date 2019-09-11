@@ -19,7 +19,9 @@
         <Canvas Name="GUI_Canvas" Grid.Row="1">
             <Button x:Name="fireButton" Content="Fire" Canvas.Left="571" Canvas.Top="42" Width="128" Height="58" FontSize="40" FontWeight="Bold"></Button>
             <TextBox x:Name="messageBox" Canvas.Left="10" Canvas.Top="10" FontSize="25" Width="253" Height="67" VerticalScrollBarVisibility="Hidden" TextWrapping="Wrap" IsReadOnly="True">fghf</TextBox>
-            <TextBox Canvas.Left="428" Canvas.Top="140"></TextBox>
+            <Ellipse Fill="#FFF4F4F5" Height="30" Canvas.Left="344" Stroke="Black" Canvas.Top="70" Width="30"/>
+            <Rectangle Fill="#FFF4F4F5" Height="100" Canvas.Left="306" Stroke="Black" Canvas.Top="42" Width="100"/>
+
         </Canvas>
     </Grid>
 </Window>

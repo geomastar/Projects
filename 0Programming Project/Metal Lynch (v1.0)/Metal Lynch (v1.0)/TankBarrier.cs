@@ -15,7 +15,7 @@ namespace Metal_Lynch__v1._0_
         private Path tankBarrier_Path;
         private LineGeometry tankBarrier_LineGeometry;
 
-        public TankBarrier(Canvas canvas, int X)
+        public TankBarrier(Canvas Gamecanvas, int X)
         {
             tankBarrier_LineGeometry = new LineGeometry()
             {
@@ -36,7 +36,7 @@ namespace Metal_Lynch__v1._0_
                 //object as it's data.
             };
 
-            canvas.Children.Add(tankBarrier_Path);
+            Gamecanvas.Children.Add(tankBarrier_Path);
         }
 
         public Path GetTankBarrier_Path()
