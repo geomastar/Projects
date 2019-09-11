@@ -146,7 +146,7 @@ namespace Metal_Lynch__v1._0_
                 Height = 40,
                 Content = "Fire",
                 FontSize = 20,
-                RenderTransform = new TranslateTransform(400, 35)
+                RenderTransform = new TranslateTransform(600, 35)
                 //Instantiates the Fire Button, defining its size, content
                 //position on the GUICanvas.
             };
@@ -159,21 +159,27 @@ namespace Metal_Lynch__v1._0_
         {
             game_MessageBox = new TextBlock()
             {
-                Width = 100,
-                Height = 100,
+                Width = 250,
+
                 FontSize = 12,
                 TextWrapping = TextWrapping.Wrap,
-                
-                RenderTransform = new TranslateTransform(0, 0)
+                Background = Brushes.Black,
+                Foreground = Brushes.Green,
+                RenderTransform = new TranslateTransform(0, 0),
+                Text = ">tfw this is a test \n>pepehands\n>pepehands\n>pepehands\n>pepehands\n>Everybody walk the dinosour."                
             };
-
+            
             ScrollViewer messageBox_ScrollViewer = new ScrollViewer()
             {
                 VerticalScrollBarVisibility = ScrollBarVisibility.Hidden,
-
+                Content = game_MessageBox,
+                CanContentScroll = true,
+                Height = 112,
             };
 
-            game_GUICanvas.Children.Add(game_MessageBox);
+            game_GUICanvas.Children.Add(messageBox_ScrollViewer);
+
+            messageBox_ScrollViewer.ScrollToEnd();
         }
     }
 }

@@ -12,7 +12,7 @@
     <Grid x:Name="gameGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="450"/>
-            <RowDefinition Height="150" />
+            <RowDefinition Height="120" />
         </Grid.RowDefinitions>
         <!--This code defines the rows of the grid that will seperate the gameplay
             from the GUI.-->
