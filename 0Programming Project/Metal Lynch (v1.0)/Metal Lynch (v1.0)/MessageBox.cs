@@ -19,7 +19,7 @@ namespace Metal_Lynch__v1._0_
             messageBox_TextBlock = new TextBlock()
             {
                 Background = Brushes.Black,                
-
+                Foreground = Brushes.Green,
                 Width = 250,
                 FontSize = 12,
                 TextWrapping = TextWrapping.Wrap,

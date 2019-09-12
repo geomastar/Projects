@@ -161,6 +161,7 @@ namespace Metal_Lynch__v1._0_
         public void DragIconEvent()
         {
             Point MousePos = Mouse.GetPosition(GUICanvas);
+            //Gets the position of the mouse on the GUICanvas.
 
             if (MousePos.X > aimingIcon_BorderRightLimit ||
                 MousePos.X < aimingIcon_BorderLeftLimit ||
@@ -168,11 +169,15 @@ namespace Metal_Lynch__v1._0_
                 MousePos.Y < aimingIcon_BorderUpperLimit)
             {
                 aimingIcon_BeingDragged = false;
+                //Stops the icon from following the mouse when the mouse
+                //exceeds the border's limits.
             }
             else
             {
                 aimingIcon_IconTranslateTransform.X = MousePos.X;
                 aimingIcon_IconTranslateTransform.Y = MousePos.Y;
+                //Moves the icon to the mouse's position if it doesn't exceed
+                //the border limits.
             }
         }
 
