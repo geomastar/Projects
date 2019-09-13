@@ -28,6 +28,9 @@ namespace Metal_Lynch__v1._0_
 
         private int gravity;
 
+
+        Projectile testprojectile;
+
         public Game(Window window, Canvas Gamecanvas, Canvas GUIcanvas)
         {
             game_Window = window;
@@ -59,6 +62,9 @@ namespace Metal_Lynch__v1._0_
             CompositionTarget.Rendering += UpdateEvent;
             //Adds the UpdateEvent method to the Rendering event that fires
             //every time a frame is rendered.
+
+
+            testprojectile = new Projectile(game_Canvas);
         }
 
         private void UpdateEvent(object sender, EventArgs e)
@@ -142,6 +148,12 @@ namespace Metal_Lynch__v1._0_
                 }
                 //This code is done for all Tank objects in the array.
             }
+
+
+            if(testprojectile.GetProjectile_InMotion())
+            {
+                testprojectile.MoveAlongTrajectory(gravity);
+            }
         }
 
         private void InstantiateGame_FireButton()
@@ -157,8 +169,15 @@ namespace Metal_Lynch__v1._0_
                 //position on the GUICanvas.
             };
 
+            game_FireButton.Click += FireButtonClickEvent;
+
             game_GUICanvas.Children.Add(game_FireButton);
             //Adds the Fire button to the GUICanvas.
+        }
+
+        private void FireButtonClickEvent(object sender, RoutedEventArgs e)
+        {
+            testprojectile.SetAndStartTrajectory(new Point(20, 500), 2, 5);
         }
     }
 }
