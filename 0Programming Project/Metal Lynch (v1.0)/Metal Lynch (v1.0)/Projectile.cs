@@ -86,5 +86,12 @@ namespace Metal_Lynch__v1._0_
         {
             return projectile_InMotion;
         }
+
+        public TranslateTransform GetProjectile_TranslateTransform()
+        {
+            return projectile_TranslateTransform;
+        }
+
+
     }
 }

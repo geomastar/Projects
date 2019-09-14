@@ -41,5 +41,10 @@ namespace Metal_Lynch__v1._0_
             GUIcanvas.Children.Add(messageBox_ScrollViewer);
             //Adds the ScrollViewer to the GUICanvas.
         }
+
+        public void addmessagetest(string jim)
+        {
+            messageBox_TextBlock.Text += jim;
+        }
     }
 }

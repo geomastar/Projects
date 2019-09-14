@@ -153,6 +153,7 @@ namespace Metal_Lynch__v1._0_
             if(testprojectile.GetProjectile_InMotion())
             {
                 testprojectile.MoveAlongTrajectory(gravity);
+                game_MessageBox.addmessagetest(testprojectile.GetProjectile_TranslateTransform().X + "  " + testprojectile.GetProjectile_TranslateTransform().Y + "\n");
             }
         }
 
@@ -177,7 +178,7 @@ namespace Metal_Lynch__v1._0_
 
         private void FireButtonClickEvent(object sender, RoutedEventArgs e)
         {
-            testprojectile.SetAndStartTrajectory(new Point(20, 500), 2, 5);
+            testprojectile.SetAndStartTrajectory(new Point(20, 300), 2, 1);
         }
     }
 }
