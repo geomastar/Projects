@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Metal_Lynch__v1._0_
 {
@@ -18,7 +19,9 @@ namespace Metal_Lynch__v1._0_
 
         private Map game_Map;
         private Tank game_Player;
+        private Tank game_Enemy;
         private Tank[] game_TankArray;
+        private Projectile game_CurrentProjectile;
         private TankBarrier game_TankBarrierLeft;
         private TankBarrier game_TankBarrierRight;
 
@@ -26,10 +29,16 @@ namespace Metal_Lynch__v1._0_
         private AimingIcon game_AimingIcon;
         private Button game_FireButton;
 
-        private int gravity;
+        private BitmapImage game_SkyTexture;
+        private ImageBrush game_SkyBrush;
+        private BitmapImage game_SteelTexture;
+        private ImageBrush game_SteelBrush;
 
+        private int game_LeftProjectileLimit = -50;
+        private int game_RightProjectileLimit = 850;
 
-        Projectile testprojectile;
+        private int game_Gravity;
+        private int game_Turn;
 
         public Game(Window window, Canvas Gamecanvas, Canvas GUIcanvas)
         {
@@ -44,10 +53,14 @@ namespace Metal_Lynch__v1._0_
             game_TankBarrierRight = new TankBarrier(game_Canvas, 400);
             //Instantiates the TankBarrier objects.
             game_Player = new Tank(game_Canvas, 100, 100);
-            //Instantiates the Tank object.
-            game_TankArray = new Tank[1] { game_Player };
+            //Instantiates the player's Tank object.
+            game_Enemy = new Tank(game_Canvas, 700, 100);
+            //Instantiates the enemy's Tank object.
+            game_TankArray = new Tank[2] { game_Player, game_Enemy };
             //Instantiates the Tank array and adds all the Tank objects to
             //the Tank array.
+            game_CurrentProjectile = new Projectile(game_Canvas);
+            //Instantiates the Projectile object.
 
             InstantiateGame_FireButton();
             //Calls the method that will instantiate the Fire Button object.
@@ -56,15 +69,21 @@ namespace Metal_Lynch__v1._0_
             game_AimingIcon = new AimingIcon(game_GUICanvas);
             //Instantiates the AimingIcon object.
 
-            gravity = 10;
+            game_SkyTexture = new BitmapImage(new Uri(@"Resources/Sky texture.png", UriKind.Relative));
+            game_SkyBrush = new ImageBrush(game_SkyTexture);
+            game_Canvas.Background = game_SkyBrush;
+            //Adds the Sky Texture to the Canvas background.
+            game_SteelTexture = new BitmapImage(new Uri(@"Resources/GUI texture.png", UriKind.Relative));
+            game_SteelBrush = new ImageBrush(game_SteelTexture);
+            game_GUICanvas.Background = game_SteelBrush;
+            //Adds the Steel Texture to the GUICanvas background.
+
+            game_Gravity = 10;
             //Sets gravity to the default acceleration of 10.
 
             CompositionTarget.Rendering += UpdateEvent;
             //Adds the UpdateEvent method to the Rendering event that fires
             //every time a frame is rendered.
-
-
-            testprojectile = new Projectile(game_Canvas);
         }
 
         private void UpdateEvent(object sender, EventArgs e)
@@ -96,27 +115,9 @@ namespace Metal_Lynch__v1._0_
                 //the TankBarrier object to its left.
             }
 
-            if (Keyboard.IsKeyDown(Key.A))
-            {
-                game_Player.MoveLeft();
-                //Moves the player's Tank object left if the 'A' key is
-                //pressed down.
-            }
-            if (Keyboard.IsKeyDown(Key.D))
-            {
-                game_Player.MoveRight();
-                //Moves the player's Tank object right if the 'D' key is
-                //pressed down.
-            }
-
-            if(game_AimingIcon.GetAimingIcon_BeingDragged())
-            {
-                game_AimingIcon.DragIconEvent();
-            }
-
             foreach (Tank tank in game_TankArray)
             {
-                int i = gravity;
+                int i = game_Gravity;
                 //Assigns a temporary integer variable the value of gravity
                 //for use as a decrement in the following while loop.
                 bool intersectionFound = false;
@@ -149,11 +150,74 @@ namespace Metal_Lynch__v1._0_
                 //This code is done for all Tank objects in the array.
             }
 
-
-            if(testprojectile.GetProjectile_InMotion())
+            if(game_CurrentProjectile.GetProjectile_InMotion())
             {
-                testprojectile.MoveAlongTrajectory(gravity);
-                game_MessageBox.addmessagetest(testprojectile.GetProjectile_TranslateTransform().X + "  " + testprojectile.GetProjectile_TranslateTransform().Y + "\n");
+                double i = game_CurrentProjectile.GetProjectile_Speed() *
+                    game_CurrentProjectile.GetXVelocity();
+                //Assigns a temporary integer variable for use as a decrement
+                //In the following while loop.
+                bool intersectionFound = false;
+                //Assigns a temporary Boolean variable the value false for
+                //use as an argument in the following while loop.
+
+                while (i > 0 & !intersectionFound)
+                {
+                    game_CurrentProjectile.MoveAlongTrajectory(game_Gravity);
+                    //Moves the Projectile along its trajectory.
+
+                    IntersectionDetail projectileMapIntersection =
+                        game_CurrentProjectile.GetProjectile_Path().Data.FillContainsWithDetail
+                        (game_Map.GetMap_Path().Data);
+                    IntersectionDetail projectileEnemyIntersection =
+                        game_CurrentProjectile.GetProjectile_Path().Data.FillContainsWithDetail
+                        (game_Enemy.GetTank_Path().Data);
+                    //Assigns the results from hitbox tests between the Projectile
+                    //object and the Map and Enemy Tank objects to variables.
+
+                    if (projectileEnemyIntersection == IntersectionDetail.Intersects)
+                    {
+                        EndTurn(game_Enemy.TakeDamage(game_CurrentProjectile));
+                        intersectionFound = true;
+                        //If the projectile hits the enemy it will deal damage and
+                        //stop the while loop.
+                    }
+                    else if(projectileMapIntersection == IntersectionDetail.Intersects | projectileMapIntersection == IntersectionDetail.FullyInside)
+                    {
+                        EndTurn(0);
+                        intersectionFound = true;
+                        //If the projectile hits the map it stop the while loop.
+                    }
+                    else if(game_CurrentProjectile.GetProjectile_TranslateTransform().X < game_LeftProjectileLimit |
+                        game_CurrentProjectile.GetProjectile_TranslateTransform().X > game_RightProjectileLimit)
+                    {
+                        EndTurn(0);
+                        intersectionFound = true;
+                        //If the projectile leaves the map it stop the while loop.
+                    }
+
+                    i--;
+                    //Decrements the while loop.
+                }
+            }
+            else
+            {
+                if (Keyboard.IsKeyDown(Key.A))
+                {
+                    game_Player.MoveLeft();
+                    //Moves the player's Tank object left if the 'A' key is
+                    //pressed down.
+                }
+                if (Keyboard.IsKeyDown(Key.D))
+                {
+                    game_Player.MoveRight();
+                    //Moves the player's Tank object right if the 'D' key is
+                    //pressed down.
+                }
+
+                if (game_AimingIcon.GetAimingIcon_BeingDragged())
+                {
+                    game_AimingIcon.DragIconEvent();
+                }
             }
         }
 
@@ -165,12 +229,15 @@ namespace Metal_Lynch__v1._0_
                 Height = 40,
                 Content = "Fire",
                 FontSize = 20,
+                Background = Brushes.Gray,                
                 RenderTransform = new TranslateTransform(600, 35)
                 //Instantiates the Fire Button, defining its size, content
                 //position on the GUICanvas.
             };
 
             game_FireButton.Click += FireButtonClickEvent;
+            //Adds the method that fires a projectile to the Click event of
+            //the button.
 
             game_GUICanvas.Children.Add(game_FireButton);
             //Adds the Fire button to the GUICanvas.
@@ -178,7 +245,31 @@ namespace Metal_Lynch__v1._0_
 
         private void FireButtonClickEvent(object sender, RoutedEventArgs e)
         {
-            testprojectile.SetAndStartTrajectory(new Point(20, 300), 2, 1);
+            if(!game_AimingIcon.IconCentred())
+            {
+                game_CurrentProjectile.SetAndStartTrajectory
+                    (new Point(game_Player.GetTank_TranslateTransform().X,
+                        game_Player.GetTank_TranslateTransform().Y),
+                    game_AimingIcon.GetAngleRadians(),
+                    game_AimingIcon.GetInitialVelocity(),
+                    game_AimingIcon.GetTrajectoryDirection());
+                //Starts the trajectory of the Projectile.
+
+                game_FireButton.IsEnabled = false;
+                //Disables the FireButton so that it cannot be clicked.
+            }
+        }
+
+        private void EndTurn(int damageDealt)
+        {
+            game_CurrentProjectile.StopTrajectory();
+            //Stops the trajectory of the Projectile.
+            game_MessageBox.EndTurnMessage(damageDealt, game_Turn);
+            //Adds an end of turn message to the MessageBox.
+            game_Turn++;
+            //Increments the turn counter.
+            game_FireButton.IsEnabled = true;
+            //Enables the fire button.
         }
     }
 }

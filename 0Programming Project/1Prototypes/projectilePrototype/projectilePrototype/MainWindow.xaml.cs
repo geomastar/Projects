@@ -30,7 +30,9 @@ namespace projectilePrototype
         {
             InitializeComponent();
 
-            theProjectile = new Projectile(20, 20, 100, 300, 60, 70, 10);
+            theProjectile = new Projectile(20, 20, 300, 300,
+                95, 50,
+                10);
 
             theCanvas.Children.Add(theProjectile.GetProjectile_Path());
         }

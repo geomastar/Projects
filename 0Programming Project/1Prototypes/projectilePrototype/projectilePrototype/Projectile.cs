@@ -52,7 +52,7 @@ namespace projectilePrototype
         {
             if (projectile_InMotion)
             {
-                projectile_ChangeInX += 5;
+                projectile_ChangeInX -= 5;
                 projectile_ChangeInY = calculateYPos(projectile_ChangeInX);
 
                 projectile_Point.X = projectile_StartPoint.X + projectile_ChangeInX;

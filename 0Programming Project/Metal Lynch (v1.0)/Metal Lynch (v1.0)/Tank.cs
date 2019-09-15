@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Metal_Lynch__v1._0_
@@ -17,6 +18,11 @@ namespace Metal_Lynch__v1._0_
         private Rect tank_Rect;
         private TransformGroup tank_TransformGroup;
         private TranslateTransform tank_TranslateTransform;
+
+        private BitmapImage tank_Sprite;
+        private ImageBrush tank_SpriteBrush;
+
+        private int tank_Health;
 
         public Tank(Canvas Gamecanvas, int X, int Y)
         {
@@ -42,11 +48,18 @@ namespace Metal_Lynch__v1._0_
                 //Instantiates the RectangleGeometry object that will define
                 //the tank's shape, size and location. Assigns it the
                 //TransformGroup and Rect objects instantiated earlier.
-            };            
+            };
+
+            /*
+            tank_Sprite = new BitmapImage(new Uri(@"Resources/Tank sprite.png", UriKind.Relative));
+            tank_SpriteBrush = new ImageBrush(tank_Sprite);
+            //Creates the Brush for the Sprite.
+            */
 
             tank_Path = new Path()
             {
                 Stroke = Brushes.Blue,
+                Fill = tank_SpriteBrush,
                 StrokeThickness = 2,
                 Data = tank_RectangleGeometry
                 //Instantiates the Path object that will define the tank's
@@ -55,6 +68,9 @@ namespace Metal_Lynch__v1._0_
                 //Assigns the RectangleGeometry object instantiated earlier
                 //to the Path's data variable.
             };
+
+            tank_Health = 0;
+            //Sets the Tank's health to 0.
 
             Gamecanvas.Children.Add(tank_Path);
             //Adds the Tank's Path object to the Canvas.
@@ -84,10 +100,29 @@ namespace Metal_Lynch__v1._0_
             //Moves the Tank right on the canvas.
         }
 
+        public int TakeDamage(Projectile projectile)
+        {
+            tank_Health =- projectile.GetProjectile_Damage();
+            //Subtracts the damage of the projectile from the Tank's health.
+            return projectile.GetProjectile_Damage();
+            //Returns the damage of the projectile.
+        }
+
         public Path GetTank_Path()
         {
             return tank_Path;
             //returns the Tank's Path object.
+        }
+
+        public int GetTank_Health()
+        {
+            return tank_Health;
+            //Returns the Tank's health.
+        }
+
+        public TranslateTransform GetTank_TranslateTransform()
+        {
+            return tank_TranslateTransform;
         }
     }
 }

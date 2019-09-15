@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Metal_Lynch__v1._0_
@@ -21,6 +22,9 @@ namespace Metal_Lynch__v1._0_
         private PolyLineSegment map_PolyLineSegment;
         private PointCollection map_BezierPointCollection;
         private PointCollection map_LinePointCollection;
+
+        private BitmapImage map_DirtTexture;
+        private ImageBrush map_DirtBrush;
 
         public Map(Canvas Gamecanvas)
         {
@@ -86,9 +90,14 @@ namespace Metal_Lynch__v1._0_
                 //Adds the PathFigureCollection to the PathGeometry.
             };
 
+            map_DirtTexture = new BitmapImage(new Uri(@"Resources/Dirt texture.png", UriKind.Relative));
+            map_DirtBrush = new ImageBrush(map_DirtTexture);
+            //Creates the Brush for the Dirt Texture.
+
             map_Path = new Path()
             {
-                Stroke = Brushes.Brown,
+                Stroke = map_DirtBrush,
+                Fill = map_DirtBrush,
                 StrokeThickness = 2,
                 Data = map_PathGeometry
                 //Instantiates the Path object that will define the Map's

@@ -28,14 +28,19 @@ namespace Metal_Lynch__v1._0_
         private TransformGroup aimingIcon_IconTransformGroup;
         private TranslateTransform aimingIcon_IconTranslateTransform;
 
+        private Point aimingIcon_Centre;
+
         private int aimingIcon_BorderUpperLimit;
         private int aimingIcon_BorderLowerLimit;
         private int aimingIcon_BorderLeftLimit;
         private int aimingIcon_BorderRightLimit;
-        private bool aimingIcon_BeingDragged;
+        private bool aimingIcon_BeingDragged;        
 
         public AimingIcon(Canvas GUIcanvas)
         {
+            aimingIcon_Centre = new Point(425, 55);
+            //Instantiates the start point.
+
             BuildAimingIcon_Border();
             BuildAimingIcon_Icon();
             //Calls the methods that Instantiate the two Path objects.
@@ -113,7 +118,8 @@ namespace Metal_Lynch__v1._0_
 
         private void BuildAimingIcon_Icon()
         {
-            aimingIcon_IconTranslateTransform = new TranslateTransform(425, 55);
+            aimingIcon_IconTranslateTransform = new TranslateTransform
+                (aimingIcon_Centre.X, aimingIcon_Centre.Y);
             //Instantiates the TranslateTransform for the icon.
 
             aimingIcon_IconTransformGroup = new TransformGroup();
@@ -192,6 +198,57 @@ namespace Metal_Lynch__v1._0_
             return aimingIcon_BeingDragged;
             //Returns the boolean variable for whether the icon is being
             //dragged.
+        }
+
+        public double GetInitialVelocity()
+        {
+            double X = aimingIcon_IconTranslateTransform.X - aimingIcon_Centre.X;
+            double Y = aimingIcon_Centre.Y - aimingIcon_IconTranslateTransform.Y;
+            //Finds difference in both the X and Y values between the icon
+            //and the centre.
+            return 2 * Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2));
+            //Finds the displacement between the icon and the centre.
+        }
+
+        public double GetAngleRadians()
+        {
+            double X = aimingIcon_IconTranslateTransform.X - aimingIcon_Centre.X;
+            double Y = aimingIcon_Centre.Y - aimingIcon_IconTranslateTransform.Y;
+            //Finds difference in both the X and Y values between the icon
+            //and the centre.
+            double a = Math.Atan(Y / X);
+            //Finds the angle.
+            if(X < 0)
+            {               
+                if(Y > 0)
+                {
+                    return a + Math.PI;
+                    //Finds the angle if facing in the opposite direction.
+                }
+            }
+            return a;
+            //returns the angle.
+        }
+
+        public bool GetTrajectoryDirection()
+        {
+            if(aimingIcon_IconTranslateTransform.X > aimingIcon_Centre.X)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool IconCentred()
+        {
+            if(aimingIcon_IconTranslateTransform.X == aimingIcon_Centre.X &
+               aimingIcon_IconTranslateTransform.Y == aimingIcon_Centre.Y)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

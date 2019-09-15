@@ -18,8 +18,8 @@ namespace Metal_Lynch__v1._0_
         {
             messageBox_TextBlock = new TextBlock()
             {
-                Background = Brushes.Black,                
-                Foreground = Brushes.Green,
+                Background = Brushes.Gray,                
+                Foreground = Brushes.Black,
                 Width = 250,
                 FontSize = 12,
                 TextWrapping = TextWrapping.Wrap,
@@ -42,9 +42,15 @@ namespace Metal_Lynch__v1._0_
             //Adds the ScrollViewer to the GUICanvas.
         }
 
-        public void addmessagetest(string jim)
+        public void EndTurnMessage(int damageDealt, int turn)
         {
-            messageBox_TextBlock.Text += jim;
+            messageBox_TextBlock.Text += "End of turn " + turn + ".\n   " +
+                damageDealt + " damage was dealt.\nStarting turn " +
+                (turn + 1) + ".\n";
+            //Adds a message to the MessageBox describing the turn number
+            //and damage dealt each turn.
+            messageBox_ScrollViewer.ScrollToEnd();
+            //Scrolls to the end of the MessageBox.
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Metal_Lynch__v1._0_"
         mc:Ignorable="d"
-        Title="gameWindow" Height="600" Width="800"> 
+        Title="gameWindow" Height="600" Width="800" MaxHeight="600" MinHeight="600" MaxWidth="800" MinWidth="800"> 
     <!--The above code gives the Window a name and title of 'gameWindow', and
         gives it a height of 600 and a width of 800.-->
     
