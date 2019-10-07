@@ -1,0 +1,11 @@
+--HIGH PRIORITY--
+	-Implement tank sprites
+	-2 player 1v1 mode
+	-Menu selection
+
+--LOW PRIORITY--
+	-At least 1 more map
+		-System for changing tank angle
+	-At least 1 more weapon
+	-Sound effects
+	-General improvements and fixes and tidying code
