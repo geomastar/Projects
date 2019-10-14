@@ -15,4 +15,4 @@
 	effected by gravity, that deals damage when it hits an
 	enemy tank.
 8.	There will be a text box on the screen that displays stats
-	about each turn, like the damage dealt to the 
+	about each turn, like the damage dealt to the enemy.
