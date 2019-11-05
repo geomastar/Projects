@@ -1,0 +1,19 @@
+1.(H)	I will implement at least one sprite for the tanks.
+2.(H)	I will implement a main menu selection screen which will
+	appear when the game runs.
+3.(H)	I will implement a game mode selection screen where users
+	will be able to select a game mode to play.
+4.(H)	I will implement a settings selection screen where users
+	will be able to change settings.
+5.(H)	I will implement a 2 player 1v1 mode where two players take
+	turns aiming and firing at each other.
+6.(H)	I will create and implement an end of game screen that
+	displays stats about the game.
+7.(L)	I will create and implement more maps of varying shape and
+	size.
+8.(L)	I will create and implement more weapons with varying
+	trajectories and damage output.
+9.(L)	I will implement sound effects for button pressing, weapon
+	firing, etc.
+10.(L)	I will implement a tutorial mode where the player is guided
+	through the controls and mechanics of the game.

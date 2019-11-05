@@ -1,0 +1,28 @@
+SCR1.1	Each selection screen must use the same world war 2 themed
+	font and layout.
+SCR1.2	Each selection screen must have the same world war 2 themed
+	background.
+SCR1.3	The GUI of the in-game battle must be representative of the
+	overall world war 2 theme and replicate the GUI of the
+	selection screens.
+SCR3.2	I will implement a 1V1 mode, where two players will take
+	turns firing at each other.
+SCR3.5	Users will be able to choose from these game modes via a
+	game mode selection screen.
+SCR9.1	There should be a settings screen, that is accessible from
+	the main menu.
+SCR9.4	There will be a setting that changes the volume of the sound
+	effects.
+SCR10.1	There should be a sound effect for when the user clicks on a
+	button.
+SCR10.2	There should be a sound effect for when the player fires a
+	projectile.
+SCR10.3	There should be a sound effect for when the player’s
+	projectile hits an opponent.
+SCR10.4	There should be a sound effect for when the player’s
+	projectile hits the map.
+SCR10.5	There should be a sound effect for when a game has ended.
+SCR11.1	There should be a victory screen, allowing the user to
+	either play again or exit to the main menu.
+SCR11.2	The victory screen should show the amount of damage each
+	player had taken throughout the game.
