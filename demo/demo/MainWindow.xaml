@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Canvas>
-        
+        <Separator Height="55" Canvas.Left="138" Margin="0" Canvas.Top="209" Width="151"/>
     </Canvas>
 </Window>
