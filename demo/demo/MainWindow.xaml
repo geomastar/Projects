@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:demo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Canvas>
-        <Separator Height="55" Canvas.Left="138" Margin="0" Canvas.Top="209" Width="151"/>
+    <Canvas x:Name="GUICanvas">
+        <Canvas Height="192" Canvas.Left="188" Canvas.Top="165" Width="315">
+            <Button Content="Button" Canvas.Left="152" Canvas.Top="60" Width="75"/>
+        </Canvas>
+        <Button Content="Button" Canvas.Left="393" Canvas.Top="236" Width="75"/>
     </Canvas>
 </Window>
