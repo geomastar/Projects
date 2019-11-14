@@ -23,6 +23,10 @@ namespace Metal_Lynch__v2._0_
         public MainWindow()
         {
             InitializeComponent();
+
+            Framework framework = new Framework(Window);
+            //Creates an instance of the Framework class and gives it access
+            //to the Window.
         }
     }
 }
