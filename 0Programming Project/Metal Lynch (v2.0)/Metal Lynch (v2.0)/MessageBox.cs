@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Metal_Lynch__v2._0_
 {
-    public abstract class GUIObject
+    public class MessageBox : GUIObject
     {
-        protected Game game;
+
     }
 }

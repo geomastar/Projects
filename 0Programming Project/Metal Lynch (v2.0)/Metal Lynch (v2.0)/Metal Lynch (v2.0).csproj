@@ -55,6 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Map.cs" />
+    <Compile Include="MessageBox.cs" />
     <Compile Include="Projectile.cs" />
     <Compile Include="Tank.cs" />
     <Page Include="MainWindow.xaml">
