@@ -54,6 +54,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AimingIcon.cs" />
+    <Compile Include="FireButton.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="Projectile.cs" />

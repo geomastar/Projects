@@ -30,7 +30,7 @@ namespace Metal_Lynch__v1._0_
         private int aimingIcon_BorderLowerLimit;
         private int aimingIcon_BorderLeftLimit;
         private int aimingIcon_BorderRightLimit;
-        private bool aimingIcon_BeingDragged;        
+        private bool aimingIcon_BeingDragged;
 
         public AimingIcon(Canvas GUIcanvas)
         {

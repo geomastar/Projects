@@ -15,6 +15,11 @@ namespace Metal_Lynch__v2._0_
         protected Path path;
         protected Geometry geometry;
 
+        protected void AddToCanvas()
+        {
+
+        }
+
         public Path GetPath()
         {
             return path;
