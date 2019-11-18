@@ -5,6 +5,64 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metal Lynch (v2.0)", "Metal Lynch (v2.0)\Metal Lynch (v2.0).csproj", "{08B80DBA-8CEE-4DDC-B1C9-AA48AB50D5A8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GUIObject", "GUIObject", "{04127B94-B58A-44FD-B46D-91230DE93FD2}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\GUIObject.cs = Metal Lynch (v2.0)\GUIObject.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{2251A60E-13EA-413D-9590-E0C0548F62C3}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\AimingIcon.cs = Metal Lynch (v2.0)\AimingIcon.cs
+		Metal Lynch (v2.0)\FireButton.cs = Metal Lynch (v2.0)\FireButton.cs
+		Metal Lynch (v2.0)\MessageBox.cs = Metal Lynch (v2.0)\MessageBox.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameObject", "GameObject", "{74BE5C3C-D22E-4586-987E-A55C5A0ABF6B}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\GameObject.cs = Metal Lynch (v2.0)\GameObject.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{CABECB5D-A4C2-423F-BD54-5AE3135FA321}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\Map.cs = Metal Lynch (v2.0)\Map.cs
+		Metal Lynch (v2.0)\Projectile.cs = Metal Lynch (v2.0)\Projectile.cs
+		Metal Lynch (v2.0)\Tank.cs = Metal Lynch (v2.0)\Tank.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{E582936C-C312-46A0-9E3B-F3D07B508EDB}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\Game.cs = Metal Lynch (v2.0)\Game.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{D53CD060-FFD3-4BB7-9292-832CECED8B39}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\1v1.cs = Metal Lynch (v2.0)\1v1.cs
+		Metal Lynch (v2.0)\Training.cs = Metal Lynch (v2.0)\Training.cs
+		Metal Lynch (v2.0)\Tutorial.cs = Metal Lynch (v2.0)\Tutorial.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Menu", "Menu", "{1C8CC75D-E731-4E62-A73A-2AD30068EF47}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\Menu.cs = Metal Lynch (v2.0)\Menu.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{D98B5389-CB05-43F4-B864-B6328738ABB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{49CECEA4-AC59-446E-B4A0-54EB625122FE}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\Framework.cs = Metal Lynch (v2.0)\Framework.cs
+		Metal Lynch (v2.0)\MainWindow.xaml = Metal Lynch (v2.0)\MainWindow.xaml
+		Metal Lynch (v2.0)\MainWindow.xaml.cs = Metal Lynch (v2.0)\MainWindow.xaml.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{27ECB48B-C7B3-4F2C-A475-24440BFF5430}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\Resources\Dirt texture.png = Metal Lynch (v2.0)\Resources\Dirt texture.png
+		Metal Lynch (v2.0)\Resources\GUI texture.png = Metal Lynch (v2.0)\Resources\GUI texture.png
+		Metal Lynch (v2.0)\Resources\Sky texture.png = Metal Lynch (v2.0)\Resources\Sky texture.png
+		Metal Lynch (v2.0)\Resources\Tank sprite.png = Metal Lynch (v2.0)\Resources\Tank sprite.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +76,17 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04127B94-B58A-44FD-B46D-91230DE93FD2} = {49CECEA4-AC59-446E-B4A0-54EB625122FE}
+		{2251A60E-13EA-413D-9590-E0C0548F62C3} = {04127B94-B58A-44FD-B46D-91230DE93FD2}
+		{74BE5C3C-D22E-4586-987E-A55C5A0ABF6B} = {49CECEA4-AC59-446E-B4A0-54EB625122FE}
+		{CABECB5D-A4C2-423F-BD54-5AE3135FA321} = {74BE5C3C-D22E-4586-987E-A55C5A0ABF6B}
+		{E582936C-C312-46A0-9E3B-F3D07B508EDB} = {49CECEA4-AC59-446E-B4A0-54EB625122FE}
+		{D53CD060-FFD3-4BB7-9292-832CECED8B39} = {E582936C-C312-46A0-9E3B-F3D07B508EDB}
+		{1C8CC75D-E731-4E62-A73A-2AD30068EF47} = {49CECEA4-AC59-446E-B4A0-54EB625122FE}
+		{D98B5389-CB05-43F4-B864-B6328738ABB8} = {1C8CC75D-E731-4E62-A73A-2AD30068EF47}
+		{27ECB48B-C7B3-4F2C-A475-24440BFF5430} = {49CECEA4-AC59-446E-B4A0-54EB625122FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {057D5F7C-87A4-4A2B-B122-7CF18EB4B95E}
