@@ -10,5 +10,10 @@ namespace Metal_Lynch__v2._0_
     {
         private Tank training_Player1;
         private Tank training_Target;
+
+        public Training(Framework framework)
+        {
+            game_Framework = framework;
+        }
     }
 }

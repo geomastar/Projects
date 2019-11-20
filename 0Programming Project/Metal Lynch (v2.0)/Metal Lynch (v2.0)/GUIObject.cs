@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Metal_Lynch__v2._0_
 {
@@ -10,9 +11,13 @@ namespace Metal_Lynch__v2._0_
     {
         protected Game game;
 
+        protected UIElement GUIMainElement;
+
         protected void AddToCanvas()
         {
-
+            game.GetGame_GUICanvas().Children.Add(GUIMainElement);
+            //Adds the object's main element to the Canvas of the Game that
+            //it belongs to.
         }
     }
 }

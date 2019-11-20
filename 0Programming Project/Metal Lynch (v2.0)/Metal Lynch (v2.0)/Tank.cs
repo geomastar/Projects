@@ -24,7 +24,7 @@ namespace Metal_Lynch__v2._0_
         {
             game = tank_Game;
             //Sets the game variable of the base class to the parameter
-            //tank_Game.
+            //tank_Game.            
 
             tank_Health = health;
             //Sets the health variable to the corresponding parameter.

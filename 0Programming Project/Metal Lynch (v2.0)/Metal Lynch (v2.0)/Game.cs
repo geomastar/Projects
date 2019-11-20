@@ -25,14 +25,40 @@ namespace Metal_Lynch__v2._0_
         protected int game_Gravity;
         protected int game_Turn;
 
-        public Canvas Getgame_MainCanvas()
+        public void AddToCanvas()
         {
-            return game_MainCanvas;
+            game_Framework.GetFramework_Canvas().Children.Add(game_MainCanvas);
+            game_Framework.GetFramework_Canvas().Children.Add(game_MainCanvas);
+            //Adds the two Canvas objects to the Canvas of the Framework.
         }
 
-        public Canvas Getgame_GUICanvas()
+        protected void BaseConstructor(Framework framework)
+        {
+            game_Framework = framework;
+
+            game_MainCanvas = new Canvas()
+            {
+                Height = 450,
+                Width = 1280
+            };
+
+            game_GUICanvas = new Canvas()
+            {
+                Height = 240,
+                Width = 1280
+            };
+        }
+
+        public Canvas GetGame_MainCanvas()
+        {
+            return game_MainCanvas;
+            //Returns the main Canvas.
+        }
+
+        public Canvas GetGame_GUICanvas()
         {
             return game_GUICanvas;
+            //Returns the GUI Canvas.
         }
     }
 }

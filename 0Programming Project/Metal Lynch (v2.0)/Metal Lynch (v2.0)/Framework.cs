@@ -33,5 +33,11 @@ namespace Metal_Lynch__v2._0_
             framework_Window.Content = framework_Canvas;
             //Adds the Canvas to the Window.
         }
+
+        public Canvas GetFramework_Canvas()
+        {
+            return framework_Canvas;
+            //Returns the Canvas.
+        }
     }
 }
