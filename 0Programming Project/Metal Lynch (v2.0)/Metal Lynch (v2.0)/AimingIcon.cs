@@ -33,7 +33,7 @@ namespace Metal_Lynch__v2._0_
 
         public void DragIconEvent()
         {
-            Point MousePos = Mouse.GetPosition(game.Getgame_GUICanvas());
+            Point MousePos = Mouse.GetPosition(game.GetGame_GUICanvas());
             //Gets the position of the mouse on the GUICanvas.
 
             if (MousePos.X > border.border_RightLimit ||

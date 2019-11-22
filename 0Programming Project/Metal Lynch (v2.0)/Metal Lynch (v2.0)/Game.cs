@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -23,6 +24,7 @@ namespace Metal_Lynch__v2._0_
 
         protected Map game_Map;
         protected Projectile game_Projectile;
+        protected Tank game_CurrentPlayer;
         protected Tank[] game_TankArray;
 
         protected MessageBox game_MessageBox;
@@ -38,11 +40,10 @@ namespace Metal_Lynch__v2._0_
         protected int game_Gravity;
         protected int game_Turn;
 
-        public void AddToCanvas()
+        protected void AddToCanvas()
         {
-            game_Framework.GetFramework_Canvas().Children.Add(game_MainCanvas);
-            game_Framework.GetFramework_Canvas().Children.Add(game_MainCanvas);
-            //Adds the two Canvas objects to the Canvas of the Framework.
+            game_Framework.GetFramework_Canvas().Children.Add(game_Grid);
+            //Adds the Grid object to the Canvas of the Framework.
         }
 
         protected void BaseConstructor(Framework framework)
@@ -107,7 +108,7 @@ namespace Metal_Lynch__v2._0_
             //Sets the gravity and turn counter.
         }
 
-        protected void BaseUpdateEvent()
+        protected void BaseUpdateEvent(Tank[] enemyTankArray)
         {
             foreach (Tank tank in game_TankArray)
             {
@@ -141,8 +142,132 @@ namespace Metal_Lynch__v2._0_
                     //Will move the tank down according to the value of
                     //gravity.
                 }
-                //This code is done for all Tank objects in the array.
+
+                if (tank.GetTank_TranslateTransform().X
+                    < game_LeftBoundary)
+                {
+                    tank.MoveRight();
+                    //Moves the tank object right if it crosses the left
+                    //boundary.
+                }
+                if (tank.GetTank_TranslateTransform().X + tank.GetPath().Width
+                    > game_RightBoundary)
+                {
+                    tank.MoveLeft();
+                    //Moves the tank object left if it crosses the right
+                    //boundary.
+                }
+                //This code is done for all Tank objects in the array.                
             }
+
+            if (game_Projectile.GetProjectile_InMotion())
+            {
+                double i = game_Projectile.GetProjectile_Speed() *
+                    game_Projectile.GetXVelocity();
+                //Assigns a temporary integer variable for use as a decrement
+                //In the following while loop.
+                bool intersectionFound = false;
+                //Assigns a temporary Boolean variable the value false for
+                //use as an argument in the following while loop.
+
+                while (i > 0 & !intersectionFound)
+                {
+                    game_Projectile.MoveAlongTrajectory(game_Gravity);
+                    //Moves the Projectile along its trajectory.
+
+                    IntersectionDetail projectileMapIntersection =
+                        game_Projectile.GetGeometry().FillContainsWithDetail
+                        (game_Map.GetGeometry());
+                    //Assigns the results from a hitbox test between the Projectile
+                    //object and the Map object to a variable.
+
+                    foreach (Tank tank in enemyTankArray)
+                    {
+                        IntersectionDetail projectileEnemyIntersection =
+                            game_Projectile.GetGeometry().FillContainsWithDetail
+                            (tank.GetGeometry());
+                        //Assigns the results from a hitbox test between the Projectile
+                        //object and the tank object to a variable.
+
+                        if (projectileEnemyIntersection == IntersectionDetail.Intersects
+                            & !intersectionFound)
+                        {
+                            EndTurn(tank.TakeDamage(game_Projectile));
+                            intersectionFound = true;
+                            //If the projectile hits the enemy it will deal damage and
+                            //stop the while loop.
+                        }
+                    }
+
+                    if ((projectileMapIntersection == IntersectionDetail.Intersects | projectileMapIntersection == IntersectionDetail.FullyInside)
+                        & !intersectionFound)
+                    {
+                        EndTurn(0);
+                        intersectionFound = true;
+                        //If the projectile hits the map it stops the while loop.
+                    }
+                    else if ((game_Projectile.GetProjectile_TranslateTransform().X < game_LeftBoundary |
+                        game_Projectile.GetProjectile_TranslateTransform().X > game_RightBoundary)
+                        & !intersectionFound)
+                    {
+                        EndTurn(0);
+                        intersectionFound = true;
+                        //If the projectile leaves the map it stops the while loop.
+                    }
+
+                    i--;
+                    //Decrements the while loop.
+                }
+            }
+            else
+            {
+                if (Keyboard.IsKeyDown(Key.A))
+                {
+                    game_CurrentPlayer.MoveLeft();
+                    //Moves the player's Tank object left if the 'A' key is
+                    //pressed down.
+                }
+                if (Keyboard.IsKeyDown(Key.D))
+                {
+                    game_CurrentPlayer.MoveRight();
+                    //Moves the player's Tank object right if the 'D' key is
+                    //pressed down.
+                }
+
+                if (game_AimingIcon.BeingDragged())
+                {
+                    game_AimingIcon.DragIconEvent();
+                }
+            }
+        }
+
+        public void FireProjectile()
+        {
+            if (!game_AimingIcon.IconCentred())
+            {
+                game_Projectile.SetAndStartTrajectory
+                    (new Point(game_CurrentPlayer.GetTank_TranslateTransform().X,
+                        game_CurrentPlayer.GetTank_TranslateTransform().Y),
+                        game_AimingIcon.GetAngleRadians(),
+                        game_AimingIcon.GetInitialVelocity(),
+                        game_AimingIcon.GetTrajectoryDirection());
+                //Starts the trajectory of the Projectile.
+
+                game_FireButton.Toggle();
+                //Disables the FireButton so that it cannot be clicked.
+            }
+        }
+
+        private void EndTurn(int damageDealt)
+        {
+            game_Projectile.StopTrajectory();
+            //Stops the trajectory of the Projectile.
+            game_MessageBox.EndTurnMessage(damageDealt, game_Turn);
+            //Adds an end of turn message to the MessageBox.
+            game_Turn++;
+            //Increments the turn counter.
+            game_FireButton.Toggle();
+            //Enables the fire button.
         }
 
         public Canvas GetGame_MainCanvas()
@@ -155,6 +280,12 @@ namespace Metal_Lynch__v2._0_
         {
             return game_GUICanvas;
             //Returns the GUI Canvas.
+        }
+
+        public Grid GetGame_Grid()
+        {
+            return game_Grid;
+            //Returns the Grid.
         }
     }
 }

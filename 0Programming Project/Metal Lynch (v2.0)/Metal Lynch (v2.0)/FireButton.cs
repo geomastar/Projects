@@ -46,7 +46,13 @@ namespace Metal_Lynch__v2._0_
 
         private void FireButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            game.FireProjectile();
+        }
 
+        public void Toggle()
+        {
+            fireButton_Button.IsEnabled = !fireButton_Button.IsEnabled;
+            //Toggles the fire button.
         }
     }
 }
