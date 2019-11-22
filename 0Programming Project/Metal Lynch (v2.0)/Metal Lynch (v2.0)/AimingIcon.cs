@@ -135,10 +135,6 @@ namespace Metal_Lynch__v2._0_
                 //Sets the game variable of the base class to the parameter
                 //border_Game.
 
-                GUIMainElement = border_Path;
-                //Makes the Path object the object that will be added to
-                //the GUICanvas.
-
                 border_UpperLimit = Convert.ToInt32(centre.Y) - 45;
                 border_LowerLimit = Convert.ToInt32(centre.Y) + 45;
                 border_LeftLimit = Convert.ToInt32(centre.X) - 45;
@@ -198,6 +194,10 @@ namespace Metal_Lynch__v2._0_
                     //its colour, thickness and adds the PathGeometry to it.
                 };
 
+                GUIMainElement = border_Path;
+                //Makes the Path object the object that will be added to
+                //the GUICanvas.
+
                 AddToCanvas();
                 //Adds the Path to the Canvas of the Game that it belongs to.
             }
@@ -217,10 +217,6 @@ namespace Metal_Lynch__v2._0_
                 game = border_Game;
                 //Sets the game variable of the base class to the parameter
                 //border_Game.
-
-                GUIMainElement = icon_Path;
-                //Makes the Path object the object that will be added to
-                //the GUICanvas.
 
                 icon_TranslateTransform = new TranslateTransform
                     (centre.X,
@@ -259,6 +255,10 @@ namespace Metal_Lynch__v2._0_
                 //Adds two event handlers to the MouseDown and MouseUp events.
                 //These will tell the program when the icon is being dragged and
                 //when it isn't.
+
+                GUIMainElement = icon_Path;
+                //Makes the Path object the object that will be added to
+                //the GUICanvas.
 
                 AddToCanvas();
                 //Adds the Path to the Canvas of the Game that it belongs to.

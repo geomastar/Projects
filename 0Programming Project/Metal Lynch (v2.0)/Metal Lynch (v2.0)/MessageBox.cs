@@ -20,10 +20,6 @@ namespace Metal_Lynch__v2._0_
             //Sets the game variable of the base class to the parameter
             //messageBox_Game.
 
-            GUIMainElement = messageBox_ScrollViewer;
-            //Makes the ScrollViewer object the object that will be added to
-            //the GUICanvas.
-
             messageBox_TextBlock = new TextBlock()
             {
                 Background = Brushes.Gray,
@@ -46,6 +42,10 @@ namespace Metal_Lynch__v2._0_
                 //TextBlock to its Content property.
             };
 
+            GUIMainElement = messageBox_ScrollViewer;
+            //Makes the ScrollViewer object the object that will be added to
+            //the GUICanvas.
+
             AddToCanvas();
             //Adds the ScrollViewer to the Canvas of the Game that it
             //belongs to.
@@ -58,6 +58,7 @@ namespace Metal_Lynch__v2._0_
                 (turn + 1) + ".\n";
             //Adds a message to the MessageBox describing the turn number
             //and damage dealt each turn.
+
             messageBox_ScrollViewer.ScrollToEnd();
             //Scrolls to the end of the MessageBox.
         }

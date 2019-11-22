@@ -143,15 +143,13 @@ namespace Metal_Lynch__v2._0_
                     //gravity.
                 }
 
-                if (tank.GetTank_TranslateTransform().X
-                    < game_LeftBoundary)
+                if (tank.GetTank_TranslateTransform().X < game_LeftBoundary)
                 {
                     tank.MoveRight();
                     //Moves the tank object right if it crosses the left
                     //boundary.
                 }
-                if (tank.GetTank_TranslateTransform().X + tank.GetPath().Width
-                    > game_RightBoundary)
+                if (tank.GetPath().ActualWidth + 15 > game_RightBoundary)
                 {
                     tank.MoveLeft();
                     //Moves the tank object left if it crosses the right

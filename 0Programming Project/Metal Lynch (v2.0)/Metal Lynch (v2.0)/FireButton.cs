@@ -19,10 +19,6 @@ namespace Metal_Lynch__v2._0_
             //Sets the game variable of the base class to the parameter
             //fireButton_Game.
 
-            GUIMainElement = fireButton_Button;
-            //Makes the Button object the object that will be added to
-            //the GUICanvas.
-
             fireButton_Button = new Button()
             {
                 Width = 60,
@@ -38,6 +34,10 @@ namespace Metal_Lynch__v2._0_
             fireButton_Button.Click += FireButtonClickEvent;
             //Adds the method that fires a projectile to the Click event of
             //the button.
+
+            GUIMainElement = fireButton_Button;
+            //Makes the Button object the object that will be added to
+            //the GUICanvas.
 
             AddToCanvas();
             //Adds the Button to the Canvas of the Game that it
