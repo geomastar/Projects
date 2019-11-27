@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-x
+
 namespace Metal_Lynch__v2._0_
 {
     public abstract class Game
