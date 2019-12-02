@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Metal_Lynch__v2._0_
@@ -36,10 +37,8 @@ namespace Metal_Lynch__v2._0_
             Point MousePos = Mouse.GetPosition(game.GetGame_GUICanvas());
             //Gets the position of the mouse on the GUICanvas.
 
-            if (MousePos.X > border.border_RightLimit ||
-                MousePos.X < border.border_LeftLimit ||
-                MousePos.Y > border.border_LowerLimit ||
-                MousePos.Y < border.border_UpperLimit)
+            if (Math.Sqrt(Math.Pow((MousePos.X - aimingIcon_Centre.X), 2) +
+                Math.Pow(aimingIcon_Centre.Y - MousePos.Y, 2)) > 100)
             {
                 icon.icon_BeingDragged = false;
                 //Stops the icon from following the mouse when the mouse
@@ -63,11 +62,11 @@ namespace Metal_Lynch__v2._0_
 
         public double GetInitialVelocity()
         {
-            double X = icon.icon_TranslateTransform.X - aimingIcon_Centre.X;
-            double Y = aimingIcon_Centre.Y - icon.icon_TranslateTransform.Y;
+            double X = (icon.icon_TranslateTransform.X - aimingIcon_Centre.X);
+            double Y = (aimingIcon_Centre.Y - icon.icon_TranslateTransform.Y);
             //Finds difference in both the X and Y values between the icon
             //and the centre.
-            return 2 * Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2));
+            return Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2));
             //Finds the displacement between the icon and the centre.
         }
 
@@ -117,17 +116,9 @@ namespace Metal_Lynch__v2._0_
         private class Border : GUIObject
         {
             private Path border_Path;
-            private PathGeometry border_PathGeometry;
-            private PathFigureCollection border_PathFigureCollection;
-            private PathFigure border_PathFigure;
-            private PathSegmentCollection border_PathSegmentCollection;
-            private PolyLineSegment border_PolyLineSegment;
-            private PointCollection border_PointCollection;
+            public EllipseGeometry border_EllipseGeometry;
 
-            public int border_UpperLimit;
-            public int border_LowerLimit;
-            public int border_LeftLimit;
-            public int border_RightLimit;
+            private BitmapImage border_TargetSprite;
 
             public Border(Game border_Game, Point centre)
             {
@@ -135,63 +126,25 @@ namespace Metal_Lynch__v2._0_
                 //Sets the game variable of the base class to the parameter
                 //border_Game.
 
-                border_UpperLimit = Convert.ToInt32(centre.Y) - 45;
-                border_LowerLimit = Convert.ToInt32(centre.Y) + 45;
-                border_LeftLimit = Convert.ToInt32(centre.X) - 45;
-                border_RightLimit = Convert.ToInt32(centre.X) + 45;
-                //Initialises the limits of the border.
-
-                border_PointCollection = new PointCollection()
+                border_EllipseGeometry = new EllipseGeometry()
                 {
-                    new Point(border_RightLimit, border_UpperLimit),
-                    new Point(border_RightLimit, border_LowerLimit),
-                    new Point(border_LeftLimit, border_LowerLimit),
-                    new Point(border_LeftLimit, border_UpperLimit)
-                    //Instantiates the PointCollection object, defining the
-                    //shape of the border. Adds the above points to the
-                    //collection.
+                    Center = centre,
+                    RadiusX = 100,
+                    RadiusY = 100                    
+                    //Instantiates the EllipseGeometry and gives it the
+                    //centre and a radius of 100.
                 };
 
-                border_PolyLineSegment = new PolyLineSegment()
-                {
-                    Points = border_PointCollection
-                    //Instantiates the PolyLineSegment object defining the
-                    //shape of the border. Adds the PointCollection to its
-                    //Points property.
-                };
-
-                border_PathSegmentCollection = new PathSegmentCollection();
-                border_PathSegmentCollection.Add(border_PolyLineSegment);
-                //Instantiates the PathSegmentCollection and adds the
-                //PolyLineSegment to it.
-
-                border_PathFigure = new PathFigure()
-                {
-                    StartPoint = new Point(border_LeftLimit, border_UpperLimit),
-                    Segments = border_PathSegmentCollection
-                    //Instantiates the PathFigure, gives it the starting point,
-                    //and adds the PathSegmentCollection to it.
-                };
-
-                border_PathFigureCollection = new PathFigureCollection();
-                border_PathFigureCollection.Add(border_PathFigure);
-                //Instantiates the PathFigureCollection and adds the PathFigure
-                //to it.
-
-                border_PathGeometry = new PathGeometry()
-                {
-                    Figures = border_PathFigureCollection
-                    //Instantiates the PathGeometry and adds the
-                    //PathFigureCollection to it.
-                };
+                border_TargetSprite = new BitmapImage(new Uri(@"Resources/Target sprite.png", UriKind.Relative));
 
                 border_Path = new Path()
                 {
                     Stroke = Brushes.Black,
                     StrokeThickness = 2,
-                    Data = border_PathGeometry
+                    Fill = new ImageBrush(border_TargetSprite),
+                    Data = border_EllipseGeometry                   
                     //Instantiates the Path object for the border and defines
-                    //its colour, thickness and adds the PathGeometry to it.
+                    //its colour, thickness and adds the EllipseGeometry to it.
                 };
 
                 GUIMainElement = border_Path;
@@ -206,7 +159,7 @@ namespace Metal_Lynch__v2._0_
         private class Icon : GUIObject
         {
             private Path icon_Path;
-            private EllipseGeometry icon_EllipseGeometry;
+            public EllipseGeometry icon_EllipseGeometry;
             private TransformGroup icon_TransformGroup;
             public TranslateTransform icon_TranslateTransform;
 

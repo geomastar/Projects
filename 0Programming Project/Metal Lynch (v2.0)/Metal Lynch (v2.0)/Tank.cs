@@ -17,6 +17,7 @@ namespace Metal_Lynch__v2._0_
         private TranslateTransform tank_TranslateTransform;
 
         private BitmapImage tank_Sprite;
+        private ScaleTransform tankSprite_ScaleTransform;
 
         private int tank_Health;
 
@@ -32,7 +33,7 @@ namespace Metal_Lynch__v2._0_
             tank_TranslateTransform = new TranslateTransform(X, Y);
             //Instantiates the TranslateTransform object that will define
             //the location of the tank. Its coordinates are assigned by the
-            //two integer parameters of the constructor.
+            //two integer parameters of the constructor.       
 
             tank_TransformGroup = new TransformGroup();
             tank_TransformGroup.Children.Add(tank_TranslateTransform);
@@ -53,19 +54,33 @@ namespace Metal_Lynch__v2._0_
                 //TransformGroup and Rect objects instantiated earlier.
             };
 
-            tank_Sprite = new BitmapImage(new Uri(@"Resources/Tank sprite.png", UriKind.Relative));
-            //Selects the image for the Tank's sprite.
+            tankSprite_ScaleTransform = new ScaleTransform();
+            if (X < 640)
+            {
+                tankSprite_ScaleTransform.ScaleX = -1;
+            }
+            //Instantiates the ScaleTransform for the sprite and flips the
+            //sprite in the Y-axes if it is to the left of the middle of the
+            //screen. This way the tanks will be facing each other.
+
+            tank_Sprite = new BitmapImage(
+                new Uri(@"Resources/Tank sprite.png", UriKind.Relative)
+                );            
+            //Selects the image for the Tank's sprite and assigns the
+            //ScaleTransform to the image.
 
             path = new Path()
             {
                 Stroke = Brushes.Blue,
-                Fill = new ImageBrush(tank_Sprite),
+                Fill = new ImageBrush(new TransformedBitmap(
+                    tank_Sprite, tankSprite_ScaleTransform)),
                 StrokeThickness = 2,
                 Data = geometry
                 //Instantiates the Path object that will define the tank's
                 //shape, size, location, stroke thickness and stroke colour.
                 //Assigns the stroke colour as blue and thickness as 2.
-                //Assigns the sprite to the tank_Sprite image.
+                //Assigns the sprite to the tank_Sprite image and assigns the
+                //ScaleTransform to the image.
                 //Assigns the RectangleGeometry object instantiated earlier
                 //to the Path's data variable.
             };

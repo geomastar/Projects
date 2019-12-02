@@ -10,7 +10,7 @@ using System.Windows.Media;
 namespace Metal_Lynch__v2._0_
 {
     public class MessageBox : GUIObject
-    {
+    {        
         private TextBlock messageBox_TextBlock;
         private ScrollViewer messageBox_ScrollViewer;
 
@@ -22,10 +22,9 @@ namespace Metal_Lynch__v2._0_
 
             messageBox_TextBlock = new TextBlock()
             {
-                Background = Brushes.Gray,
                 Foreground = Brushes.Black,
-                Width = 250,
-                FontSize = 12,
+                Width = 400,
+                FontSize = 16,
                 TextWrapping = TextWrapping.Wrap,
                 RenderTransform = new TranslateTransform(0, 0)
                 //Instantiates the TextBlock object defining the width,
@@ -34,7 +33,7 @@ namespace Metal_Lynch__v2._0_
 
             messageBox_ScrollViewer = new ScrollViewer()
             {
-                Height = 112,
+                Height = 250,
                 VerticalScrollBarVisibility = ScrollBarVisibility.Hidden,
                 Content = messageBox_TextBlock
                 //Instantiates the ScrollViewer object defining the height
@@ -53,8 +52,8 @@ namespace Metal_Lynch__v2._0_
 
         public void EndTurnMessage(int damageDealt, int turn)
         {
-            messageBox_TextBlock.Text += "End of turn " + turn + ".\n   " +
-                damageDealt + " damage was dealt.\nStarting turn " +
+            messageBox_TextBlock.Text += ">End of turn " + turn + ".\n   " +
+                damageDealt + " damage was dealt.\n\n>Starting turn " +
                 (turn + 1) + ".\n";
             //Adds a message to the MessageBox describing the turn number
             //and damage dealt each turn.

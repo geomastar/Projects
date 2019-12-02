@@ -95,7 +95,7 @@ namespace Metal_Lynch__v2._0_
             //Instantiates the game objects.
 
             game_MessageBox = new MessageBox(this);
-            game_AimingIcon = new AimingIcon(this, 425, 55);
+            game_AimingIcon = new AimingIcon(this, 500, 115);
             game_FireButton = new FireButton(this, 600, 35);
             //Instantiates the GUI objects.
 
