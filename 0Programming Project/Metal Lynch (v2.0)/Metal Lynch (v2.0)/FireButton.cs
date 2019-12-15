@@ -21,10 +21,10 @@ namespace Metal_Lynch__v2._0_
 
             fireButton_Button = new Button()
             {
-                Width = 60,
-                Height = 40,
+                Width = 120,
+                Height = 60,
                 Content = "Fire",
-                FontSize = 20,
+                FontSize = 30,
                 Background = Brushes.Gray,
                 RenderTransform = new TranslateTransform(X, Y)
                 //Instantiates the Fire Button, defining its size, content

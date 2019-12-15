@@ -184,16 +184,16 @@ namespace Metal_Lynch__v2._0_
                 icon_EllipseGeometry = new EllipseGeometry()
                 {
                     Transform = icon_TransformGroup,
-                    RadiusX = 5,
-                    RadiusY = 5
+                    RadiusX = 6,
+                    RadiusY = 6
                     //Instantiates the EllipseGeometry and adds the TransformGroup
                     //to it. Also defines the size of the ellipse.
                 };
 
                 icon_Path = new Path()
                 {
-                    Fill = Brushes.Black,
-                    Stroke = Brushes.Black,
+                    Fill = Brushes.Red,
+                    Stroke = Brushes.Red,
                     StrokeThickness = 2,
                     Data = icon_EllipseGeometry
                     //Instantiates the Path object for the icon and defines its

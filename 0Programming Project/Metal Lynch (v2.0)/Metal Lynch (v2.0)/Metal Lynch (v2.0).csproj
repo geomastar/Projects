@@ -57,9 +57,12 @@
     <Compile Include="1v1.cs" />
     <Compile Include="AimingIcon.cs" />
     <Compile Include="FireButton.cs" />
+    <Compile Include="GameMenu.cs" />
+    <Compile Include="MainMenu.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="Projectile.cs" />
+    <Compile Include="SettingsMenu.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="Training.cs" />
     <Compile Include="Tutorial.cs" />

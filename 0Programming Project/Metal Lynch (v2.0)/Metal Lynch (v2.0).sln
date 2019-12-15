@@ -47,6 +47,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Menu", "Menu", "{1C8CC75D-E
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{D98B5389-CB05-43F4-B864-B6328738ABB8}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v2.0)\GameMenu.cs = Metal Lynch (v2.0)\GameMenu.cs
+		Metal Lynch (v2.0)\MainMenu.cs = Metal Lynch (v2.0)\MainMenu.cs
+		Metal Lynch (v2.0)\SettingsMenu.cs = Metal Lynch (v2.0)\SettingsMenu.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{49CECEA4-AC59-446E-B4A0-54EB625122FE}"
 	ProjectSection(SolutionItems) = preProject

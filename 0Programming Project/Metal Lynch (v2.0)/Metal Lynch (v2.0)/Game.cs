@@ -96,7 +96,7 @@ namespace Metal_Lynch__v2._0_
 
             game_MessageBox = new MessageBox(this);
             game_AimingIcon = new AimingIcon(this, 500, 115);
-            game_FireButton = new FireButton(this, 600, 35);
+            game_FireButton = new FireButton(this, 700, 85);
             //Instantiates the GUI objects.
 
             game_LeftBoundary = 0;

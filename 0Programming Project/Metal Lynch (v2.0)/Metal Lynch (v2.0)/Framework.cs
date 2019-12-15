@@ -14,7 +14,7 @@ namespace Metal_Lynch__v2._0_
         private Canvas framework_Canvas;
 
         private Game framework_Game;
-        //private Menu framework_Menu;
+        private Menu framework_Menu;
 
         public Framework(Window window)
         {
@@ -31,6 +31,8 @@ namespace Metal_Lynch__v2._0_
             };
 
             framework_Game = new Training(this);
+
+            framework_Menu = new MainMenu(this);
 
             framework_Window.Content = framework_Canvas;
             //Adds the Canvas to the Window.
