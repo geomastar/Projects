@@ -40,6 +40,9 @@ namespace Metal_Lynch__v2._0_
         protected int game_Gravity;
         protected int game_Turn;
 
+        protected bool game_DemoMode;
+        protected int game_NextXLoc;
+
         protected void AddToCanvas()
         {
             game_Framework.GetFramework_Canvas().Children.Add(game_Grid);
@@ -106,6 +109,10 @@ namespace Metal_Lynch__v2._0_
             game_Gravity = 10;
             game_Turn = 1;
             //Sets the gravity and turn counter.
+
+            GenerateRandomXLoc();
+            ToggleDemoMode();
+            //Activates the demo mode.
         }
 
         protected void BaseUpdateEvent(Tank[] enemyTankArray)
@@ -217,6 +224,24 @@ namespace Metal_Lynch__v2._0_
                     //Decrements the while loop.
                 }
             }
+            else if(game_DemoMode)
+            {
+                if (game_NextXLoc > game_CurrentPlayer.GetTank_TranslateTransform().X)
+                {
+                    game_CurrentPlayer.MoveRight();
+                    //Moves the tank right if the game_NextXLoc is to its right.
+                }
+                else if (game_NextXLoc < game_CurrentPlayer.GetTank_TranslateTransform().X)
+                {
+                    game_CurrentPlayer.MoveLeft();
+                    //Moves the tank left if the game_NextXLoc is to its left.
+                }
+                else
+                {
+                    FireProjectileRandom();
+                    //Fires the projectile on a random trajectory.
+                }
+            }
             else
             {
                 if (Keyboard.IsKeyDown(Key.A))
@@ -246,14 +271,22 @@ namespace Metal_Lynch__v2._0_
                 game_Projectile.SetAndStartTrajectory
                     (new Point(game_CurrentPlayer.GetTank_TranslateTransform().X,
                         game_CurrentPlayer.GetTank_TranslateTransform().Y),
-                        game_AimingIcon.GetAngleRadians(),
-                        game_AimingIcon.GetInitialVelocity(),
-                        game_AimingIcon.GetTrajectoryDirection());
+                    game_AimingIcon.GetAngleRadians(),
+                    game_AimingIcon.GetInitialVelocity(),
+                    game_AimingIcon.GetTrajectoryDirection());
                 //Starts the trajectory of the Projectile.
 
                 game_FireButton.Toggle();
                 //Disables the FireButton so that it cannot be clicked.
             }
+        }
+
+        public void ToggleDemoMode()
+        {
+            game_DemoMode = !game_DemoMode;
+            game_FireButton.Toggle();
+            //Toggles the game_DemoMode variable as well as the FireButton
+            //object.
         }
 
         private void EndTurn(int damageDealt)
@@ -264,8 +297,28 @@ namespace Metal_Lynch__v2._0_
             //Adds an end of turn message to the MessageBox.
             game_Turn++;
             //Increments the turn counter.
-            game_FireButton.Toggle();
+            if (!game_DemoMode) { game_FireButton.Toggle(); }
+            else { GenerateRandomXLoc(); }
             //Enables the fire button.
+        }
+
+        private void GenerateRandomXLoc()
+        {
+            Random RNG = new Random();
+            game_NextXLoc = RNG.Next(100, 500);
+            //Assigns the game_NextXLoc variable to a random integer.
+        }
+
+        private void FireProjectileRandom()
+        {
+            Random RNG = new Random();
+            game_Projectile.SetAndStartTrajectory
+                (new Point(game_CurrentPlayer.GetTank_TranslateTransform().X,
+                    game_CurrentPlayer.GetTank_TranslateTransform().Y),
+                RNG.Next(40, Convert.ToInt32(((Math.PI * 100) - 30) / 2)) / 100D,
+                RNG.Next(60, 100),
+                true);
+            //Starts a random trajectory for the Projectile.
         }
 
         public Canvas GetGame_MainCanvas()

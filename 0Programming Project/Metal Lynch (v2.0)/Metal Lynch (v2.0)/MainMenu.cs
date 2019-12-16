@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Metal_Lynch__v2._0_
 {
@@ -22,20 +23,39 @@ namespace Metal_Lynch__v2._0_
         {
             BaseConstructor(framework);
 
-            mainMenu_TitleText = new TextBlock()
+            menu_BackgroundRectangleGeometry = new RectangleGeometry()
             {
-                Width = 320,
-                Height = 400,
-                Background = new SolidColorBrush()
+                Rect = new Rect(new Size(360, 420)),
+                Transform = new TranslateTransform(460, 30)
+                //Instantiates the RectangleGeometry, giving it a size and
+                //a location.
+            };
+
+            menu_BackgroundPath = new Path()
+            {
+                Data = menu_BackgroundRectangleGeometry,
+                Fill = new SolidColorBrush()
                 {
                     Color = Colors.Gray,
                     Opacity = 0.5
                 },
+                Stroke = Brushes.Black,
+                StrokeThickness = 2
+                //Instantiates the Path object, giving it a Geometry, colour,
+                //and stroke.
+            };
+            menu_Canvas.Children.Add(menu_BackgroundPath);
+            //Adds the Path to the Menu Canvas.
+
+            mainMenu_TitleText = new TextBlock()
+            {
                 FontSize = 60,
                 Text = "Metal Lynch",
                 RenderTransform = new TranslateTransform(480, 50)
+                //Instantiates the TextBlock for the game title.
             };
             menu_Canvas.Children.Add(mainMenu_TitleText);
+            //Adds the TextBlock to the Menu Canvas.
 
             mainMenu_PlayButton = new Button()
             {
@@ -44,8 +64,10 @@ namespace Metal_Lynch__v2._0_
                 FontSize = 40,
                 Content = "Play",
                 RenderTransform = new TranslateTransform(540, 150)
+                //Instantiates the play Button.
             };
             menu_Canvas.Children.Add(mainMenu_PlayButton);
+            //Adds the play Button to the Menu Canvas.
 
             mainMenu_TutorialButton = new Button()
             {
@@ -54,8 +76,10 @@ namespace Metal_Lynch__v2._0_
                 FontSize = 40,
                 Content = "Tutorial",
                 RenderTransform = new TranslateTransform(540, 220)
+                //Instantiates the tutorial Button.
             };
             menu_Canvas.Children.Add(mainMenu_TutorialButton);
+            //Adds the tutorial Button to the Menu Canvas.
 
             mainMenu_SettingsButton = new Button()
             {
@@ -64,8 +88,10 @@ namespace Metal_Lynch__v2._0_
                 FontSize = 40,
                 Content = "Settings",
                 RenderTransform = new TranslateTransform(540, 290)
+                //Instantiates the settings Button.
             };
             menu_Canvas.Children.Add(mainMenu_SettingsButton);
+            //Adds the settings Button to the Menu Canvas.
 
             mainMenu_QuitButton = new Button()
             {
@@ -74,10 +100,13 @@ namespace Metal_Lynch__v2._0_
                 FontSize = 40,
                 Content = "Quit Game",
                 RenderTransform = new TranslateTransform(540, 360)
+                //Instantiates the quit Button.
             };
             menu_Canvas.Children.Add(mainMenu_QuitButton);
+            //Adds the quit Button to the Menu Canvas.
 
             AddToCanvas();
+            //Adds the Menu Canvas to the Framework Canvas.
         }
     }
 }

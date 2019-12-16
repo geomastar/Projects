@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Metal_Lynch__v2._0_
 {
@@ -12,6 +14,9 @@ namespace Metal_Lynch__v2._0_
         protected Framework menu_Framework;
 
         protected Canvas menu_Canvas;
+
+        protected Path menu_BackgroundPath;
+        protected RectangleGeometry menu_BackgroundRectangleGeometry;
 
         protected void AddToCanvas()
         {
