@@ -149,7 +149,7 @@ namespace Metal_Lynch__v2._0_
                     //Will move the tank down according to the value of
                     //gravity.
                 }
-
+                
                 if (tank.GetTank_TranslateTransform().X < game_LeftBoundary)
                 {
                     tank.MoveRight();
@@ -162,6 +162,7 @@ namespace Metal_Lynch__v2._0_
                     //Moves the tank object left if it crosses the right
                     //boundary.
                 }
+
                 //This code is done for all Tank objects in the array.                
             }
 
