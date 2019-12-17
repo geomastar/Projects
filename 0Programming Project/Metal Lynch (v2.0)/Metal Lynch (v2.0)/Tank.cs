@@ -19,7 +19,10 @@ namespace Metal_Lynch__v2._0_
         private BitmapImage tank_Sprite;
         private ScaleTransform tankSprite_ScaleTransform;
 
+        private Point tank_IconPos;
+
         private int tank_Health;
+        private int tank_Fuel;
 
         public Tank(Game tank_Game, int health, int X, int Y)
         {
@@ -119,6 +122,17 @@ namespace Metal_Lynch__v2._0_
             //Subtracts the damage of the projectile from the Tank's health.
             return projectile.GetProjectile_Damage();
             //Returns the damage of the projectile.
+        }
+
+        public void SetTank_IconPos(Point point)
+        {
+            tank_IconPos = point;
+            //Sets the icon position.
+        }
+        public Point GetTank_IconPos()
+        {
+            return tank_IconPos;
+            //Returns the position of the aiming icon.
         }
 
         public TranslateTransform GetTank_TranslateTransform()

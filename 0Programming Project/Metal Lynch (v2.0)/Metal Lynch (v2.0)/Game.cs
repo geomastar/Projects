@@ -37,11 +37,15 @@ namespace Metal_Lynch__v2._0_
         protected int game_LeftBoundary;
         protected int game_RightBoundary;
 
+        protected bool game_NewTurn;
         protected int game_Gravity;
         protected int game_Turn;
 
         protected bool game_DemoMode;
         protected int game_NextXLoc;
+        protected int game_NextMinX;
+        protected int game_NextMaxX;
+        protected bool game_AngleDirection;
 
         protected void AddToCanvas()
         {
@@ -106,13 +110,18 @@ namespace Metal_Lynch__v2._0_
             game_RightBoundary = 1280;
             //Sets the boundaries for the Tank and Projectile objects.
 
+            game_NewTurn = true;
             game_Gravity = 10;
             game_Turn = 1;
-            //Sets the gravity and turn counter.
+            //Sets the gravity, turn counter and NewTurn bool.
 
+            game_NextMinX = 100;
+            game_NextMaxX = 500;
+            game_AngleDirection = true;
             GenerateRandomXLoc();
-            ToggleDemoMode();
-            //Activates the demo mode.
+            //ToggleDemoMode();
+            //Assigns the demo mode variables to their defaults and
+            //activates the demo mode.
         }
 
         protected void BaseUpdateEvent(Tank[] enemyTankArray)
@@ -277,6 +286,8 @@ namespace Metal_Lynch__v2._0_
                     game_AimingIcon.GetTrajectoryDirection());
                 //Starts the trajectory of the Projectile.
 
+                game_CurrentPlayer.SetTank_IconPos(game_AimingIcon.GetIconPos());
+
                 game_FireButton.Toggle();
                 //Disables the FireButton so that it cannot be clicked.
             }
@@ -299,27 +310,35 @@ namespace Metal_Lynch__v2._0_
             game_Turn++;
             //Increments the turn counter.
             if (!game_DemoMode) { game_FireButton.Toggle(); }
-            else { GenerateRandomXLoc(); }
-            //Enables the fire button.
+            //Enables the fire button if demo mode is not active.
+            game_NewTurn = true;
+            //Tells the program that a new turn has started.
         }
 
-        private void GenerateRandomXLoc()
+        protected void GenerateRandomXLoc()
         {
             Random RNG = new Random();
-            game_NextXLoc = RNG.Next(100, 500);
+            game_NextXLoc = RNG.Next(game_NextMinX, game_NextMaxX);
             //Assigns the game_NextXLoc variable to a random integer.
         }
 
         private void FireProjectileRandom()
         {
             Random RNG = new Random();
+
+            double calcAngle = RNG.Next(40, Convert.ToInt32(((Math.PI * 100) - 30) / 2)) / 100D;
+            if (!game_AngleDirection)
+            {
+                calcAngle = calcAngle * -1;
+            }
+
             game_Projectile.SetAndStartTrajectory
                 (new Point(game_CurrentPlayer.GetTank_TranslateTransform().X,
                     game_CurrentPlayer.GetTank_TranslateTransform().Y),
-                RNG.Next(40, Convert.ToInt32(((Math.PI * 100) - 30) / 2)) / 100D,
+                calcAngle,
                 RNG.Next(60, 100),
-                true);
-            //Starts a random trajectory for the Projectile.
+                game_AngleDirection);
+                //Starts a random trajectory for the Projectile.
         }
 
         public Canvas GetGame_MainCanvas()

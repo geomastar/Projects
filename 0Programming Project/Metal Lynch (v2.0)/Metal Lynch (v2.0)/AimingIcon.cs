@@ -111,6 +111,25 @@ namespace Metal_Lynch__v2._0_
             return false;
         }
 
+        public Point GetAimingIcon_Centre()
+        {
+            return aimingIcon_Centre;
+            //Returns the centre position of the AimingIcon object.
+        }
+
+        public void SetIconPos(Point point)
+        {
+            icon.icon_TranslateTransform.X = point.X;
+            icon.icon_TranslateTransform.Y = point.Y;
+            //Sets the icon position.
+        }
+        public Point GetIconPos()
+        {
+            return new Point(icon.icon_TranslateTransform.X,
+                icon.icon_TranslateTransform.Y);
+            //Returns the position of the Icon object.
+        }
+
 
 
         private class Border : GUIObject

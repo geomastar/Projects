@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace Metal_Lynch__v2._0_
@@ -25,6 +26,11 @@ namespace Metal_Lynch__v2._0_
 
             game_TankArray = new Tank[2] { _1v1_Player1, _1v1_Player2 };
 
+            foreach(Tank tank in game_TankArray)
+            {
+                tank.SetTank_IconPos(game_AimingIcon.GetAimingIcon_Centre());
+            }
+
             game_CentreBoundary = 640;
 
             CompositionTarget.Rendering += UpdateEvent;
@@ -36,6 +42,36 @@ namespace Metal_Lynch__v2._0_
         private void UpdateEvent(object sender, EventArgs e)
         {
             game_CurrentPlayer = game_TankArray[(game_Turn-1) % 2];
+            //Determines the player who's turn it is.
+
+            if (game_NewTurn)
+            {
+                if (game_DemoMode)
+                {
+                    if (game_CurrentPlayer == game_TankArray[0])
+                    {
+                        game_NextMinX = 100;
+                        game_NextMaxX = 500;
+                        game_AngleDirection = true;
+                    }
+                    else
+                    {
+                        game_NextMinX = 704;
+                        game_NextMaxX = 1104;
+                        game_AngleDirection = false;
+                    }
+                    GenerateRandomXLoc();
+                    //Changes the variables that determine how the tanks
+                    //automatically move while in demo mode, in order to
+                    //accomodate for the fact that the different tanks need to
+                    //shoot in different directions and move to different
+                    //locations.
+                }
+
+                game_AimingIcon.SetIconPos(game_CurrentPlayer.GetTank_IconPos());
+
+                game_NewTurn = false;
+            }
 
             foreach (Tank tank in game_TankArray)
             {
@@ -47,6 +83,7 @@ namespace Metal_Lynch__v2._0_
                 {
                     if (tank.GetTank_TranslateTransform().X < game_CentreBoundary) { tank.MoveRight(); }
                 }
+                //Keeps the tanks to their sides of the map.
             }
 
             BaseUpdateEvent(new Tank[1] { game_TankArray[game_Turn % 2] });
