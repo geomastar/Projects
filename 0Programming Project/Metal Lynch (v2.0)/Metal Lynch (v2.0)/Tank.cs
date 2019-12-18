@@ -22,9 +22,10 @@ namespace Metal_Lynch__v2._0_
         private Point tank_IconPos;
 
         private int tank_Health;
+        private int tank_MaxFuel;
         private int tank_Fuel;
 
-        public Tank(Game tank_Game, int health, int X, int Y)
+        public Tank(Game tank_Game, int health, int fuel, int X, int Y)
         {
             game = tank_Game;
             //Sets the game variable of the base class to the parameter
@@ -32,6 +33,8 @@ namespace Metal_Lynch__v2._0_
 
             tank_Health = health;
             //Sets the health variable to the corresponding parameter.
+            tank_MaxFuel = fuel; tank_Fuel = fuel;
+            //Sets the fuel variables to their corresponding parameter.
 
             tank_TranslateTransform = new TranslateTransform(X, Y);
             //Instantiates the TranslateTransform object that will define
@@ -97,31 +100,49 @@ namespace Metal_Lynch__v2._0_
             tank_TranslateTransform.Y -= 1;
             //Moves the Tank up on the canvas.
         }
-
         public void MoveDown()
         {
             tank_TranslateTransform.Y += 1;
             //Moves the Tank down on the canvas.
         }
-
         public void MoveLeft()
         {
             tank_TranslateTransform.X -= 1;
             //Moves the Tank left on the canvas.
+            tank_Fuel -= 1;
+            //Decrements the fuel value.
         }
-
         public void MoveRight()
         {
             tank_TranslateTransform.X += 1;
             //Moves the Tank right on the canvas.
+            tank_Fuel -= 1;
+            //Decrements the fuel value.
         }
 
         public int TakeDamage(Projectile projectile)
         {
-            tank_Health = -projectile.GetProjectile_Damage();
+            tank_Health -= projectile.GetProjectile_Damage();
             //Subtracts the damage of the projectile from the Tank's health.
             return projectile.GetProjectile_Damage();
             //Returns the damage of the projectile.
+        }
+
+        public int GetTank_Health()
+        {
+            return tank_Health;
+            //Returns the health value.
+        }
+
+        public int GetTank_Fuel()
+        {
+            return tank_Fuel;
+            //Returns the fuel value.
+        }
+        public void ResetFuel()
+        {
+            tank_Fuel = tank_MaxFuel;
+            //Resets the fuel value.
         }
 
         public void SetTank_IconPos(Point point)

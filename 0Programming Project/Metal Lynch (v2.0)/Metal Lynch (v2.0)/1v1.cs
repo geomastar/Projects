@@ -13,6 +13,11 @@ namespace Metal_Lynch__v2._0_
         private Tank _1v1_Player1;
         private Tank _1v1_Player2;
 
+        private ProgressBar _1v1_Player1HealthBar;
+        private ProgressBar _1v1_Player2HealthBar;
+
+        private ProgressBar _1v1_FuelBar;
+
         protected int game_CentreBoundary;
 
         public _1v1(Framework framework)
@@ -21,8 +26,8 @@ namespace Metal_Lynch__v2._0_
 
             BaseConstructor(game_Framework);
 
-            _1v1_Player1 = new Tank(this, 0, 320, 100);
-            _1v1_Player2 = new Tank(this, 0, 900, 100);
+            _1v1_Player1 = new Tank(this, 100, 100, 320, 100);
+            _1v1_Player2 = new Tank(this, 100, 100, 900, 100);
 
             game_TankArray = new Tank[2] { _1v1_Player1, _1v1_Player2 };
 
@@ -30,6 +35,14 @@ namespace Metal_Lynch__v2._0_
             {
                 tank.SetTank_IconPos(game_AimingIcon.GetAimingIcon_Centre());
             }
+
+            _1v1_Player1HealthBar = new ProgressBar(this, 1000, 50, 20,
+                "Player 1", true, _1v1_Player1.GetTank_Health());
+            _1v1_Player2HealthBar = new ProgressBar(this, 1000, 100, 20,
+                "Player 2", true, _1v1_Player2.GetTank_Health());
+
+            _1v1_FuelBar = new ProgressBar(this, 730, 175, 15,
+                "Fuel", false, game_TankArray[0].GetTank_Fuel());
 
             game_CentreBoundary = 640;
 
@@ -88,6 +101,10 @@ namespace Metal_Lynch__v2._0_
             }
 
             BaseUpdateEvent(new Tank[1] { game_TankArray[game_Turn % 2] });
+
+            _1v1_Player1HealthBar.Update(_1v1_Player1.GetTank_Health());
+            _1v1_Player2HealthBar.Update(_1v1_Player2.GetTank_Health());
+            _1v1_FuelBar.Update(game_CurrentPlayer.GetTank_Fuel());
         }
     }
 }

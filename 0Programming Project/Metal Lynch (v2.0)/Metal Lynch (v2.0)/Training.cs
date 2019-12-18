@@ -16,8 +16,8 @@ namespace Metal_Lynch__v2._0_
         {
             BaseConstructor(framework);
 
-            training_Player1 = new Tank(this, 0, 320, 100);
-            training_Target = new Tank(this, 0, 900, 100);
+            training_Player1 = new Tank(this, 0, -1, 320, 100);
+            training_Target = new Tank(this, 0, -1, 900, 100);
 
             game_TankArray = new Tank[2] { training_Player1, training_Target };
 

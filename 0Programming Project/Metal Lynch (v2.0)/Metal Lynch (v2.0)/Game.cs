@@ -122,9 +122,6 @@ namespace Metal_Lynch__v2._0_
             ToggleDemoMode();
             //Assigns the demo mode variables to their defaults and
             //activates the demo mode.
-
-
-            ProgressBar temp = new ProgressBar(this, 0, 0, 7);
         }
 
         protected void BaseUpdateEvent(Tank[] enemyTankArray)
@@ -239,12 +236,14 @@ namespace Metal_Lynch__v2._0_
             }
             else if(game_DemoMode)
             {
-                if (game_NextXLoc > game_CurrentPlayer.GetTank_TranslateTransform().X)
+                if (game_NextXLoc > game_CurrentPlayer.GetTank_TranslateTransform().X
+                    && game_CurrentPlayer.GetTank_Fuel() != 0)
                 {
                     game_CurrentPlayer.MoveRight();
                     //Moves the tank right if the game_NextXLoc is to its right.
                 }
-                else if (game_NextXLoc < game_CurrentPlayer.GetTank_TranslateTransform().X)
+                else if (game_NextXLoc < game_CurrentPlayer.GetTank_TranslateTransform().X
+                    && game_CurrentPlayer.GetTank_Fuel() != 0)
                 {
                     game_CurrentPlayer.MoveLeft();
                     //Moves the tank left if the game_NextXLoc is to its left.
@@ -257,17 +256,20 @@ namespace Metal_Lynch__v2._0_
             }
             else
             {
-                if (Keyboard.IsKeyDown(Key.A))
+                if (game_CurrentPlayer.GetTank_Fuel() != 0)
                 {
-                    game_CurrentPlayer.MoveLeft();
-                    //Moves the player's Tank object left if the 'A' key is
-                    //pressed down.
-                }
-                if (Keyboard.IsKeyDown(Key.D))
-                {
-                    game_CurrentPlayer.MoveRight();
-                    //Moves the player's Tank object right if the 'D' key is
-                    //pressed down.
+                    if (Keyboard.IsKeyDown(Key.A))
+                    {
+                        game_CurrentPlayer.MoveLeft();
+                        //Moves the player's Tank object left if the 'A' key is
+                        //pressed down.
+                    }
+                    if (Keyboard.IsKeyDown(Key.D))
+                    {
+                        game_CurrentPlayer.MoveRight();
+                        //Moves the player's Tank object right if the 'D' key is
+                        //pressed down.
+                    }
                 }
 
                 if (game_AimingIcon.BeingDragged())
@@ -313,6 +315,8 @@ namespace Metal_Lynch__v2._0_
             //Adds an end of turn message to the MessageBox.
             game_Turn++;
             //Increments the turn counter.
+            game_CurrentPlayer.ResetFuel();
+            //Resets the fuel value for the player who just played.
             if (!game_DemoMode) { game_FireButton.Toggle(); }
             //Enables the fire button if demo mode is not active.
             game_NewTurn = true;
