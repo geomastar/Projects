@@ -61,6 +61,7 @@
     <Compile Include="MainMenu.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MessageBox.cs" />
+    <Compile Include="ProgressBar.cs" />
     <Compile Include="Projectile.cs" />
     <Compile Include="SettingsMenu.cs" />
     <Compile Include="Tank.cs" />

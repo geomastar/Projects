@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{2251
 		Metal Lynch (v2.0)\AimingIcon.cs = Metal Lynch (v2.0)\AimingIcon.cs
 		Metal Lynch (v2.0)\FireButton.cs = Metal Lynch (v2.0)\FireButton.cs
 		Metal Lynch (v2.0)\MessageBox.cs = Metal Lynch (v2.0)\MessageBox.cs
+		Metal Lynch (v2.0)\ProgressBar.cs = Metal Lynch (v2.0)\ProgressBar.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameObject", "GameObject", "{74BE5C3C-D22E-4586-987E-A55C5A0ABF6B}"

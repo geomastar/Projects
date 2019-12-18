@@ -119,9 +119,12 @@ namespace Metal_Lynch__v2._0_
             game_NextMaxX = 500;
             game_AngleDirection = true;
             GenerateRandomXLoc();
-            //ToggleDemoMode();
+            ToggleDemoMode();
             //Assigns the demo mode variables to their defaults and
             //activates the demo mode.
+
+
+            ProgressBar temp = new ProgressBar(this, 0, 0, 7);
         }
 
         protected void BaseUpdateEvent(Tank[] enemyTankArray)
@@ -287,6 +290,7 @@ namespace Metal_Lynch__v2._0_
                 //Starts the trajectory of the Projectile.
 
                 game_CurrentPlayer.SetTank_IconPos(game_AimingIcon.GetIconPos());
+                //Sets the icon position variable of the Tank to the position of the aiming icon.
 
                 game_FireButton.Toggle();
                 //Disables the FireButton so that it cannot be clicked.

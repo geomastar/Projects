@@ -69,6 +69,7 @@ namespace Metal_Lynch__v2._0_
                 }
 
                 game_AimingIcon.SetIconPos(game_CurrentPlayer.GetTank_IconPos());
+                //Sets the icon position of the Tank to the icon position of the AimingIcon object.
 
                 game_NewTurn = false;
             }

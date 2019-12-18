@@ -32,7 +32,7 @@ namespace Metal_Lynch__v2._0_
 
             framework_Game = new _1v1(this);
 
-            //framework_Menu = new MainMenu(this);
+            framework_Menu = new MainMenu(this);
 
             framework_Window.Content = framework_Canvas;
             //Adds the Canvas to the Window.
