@@ -119,7 +119,7 @@ namespace Metal_Lynch__v2._0_
             game_NextMaxX = 500;
             game_AngleDirection = true;
             GenerateRandomXLoc();
-            ToggleDemoMode();
+            //ToggleDemoMode();
             //Assigns the demo mode variables to their defaults and
             //activates the demo mode.
         }
