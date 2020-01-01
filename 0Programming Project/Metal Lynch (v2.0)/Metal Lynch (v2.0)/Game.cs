@@ -119,7 +119,7 @@ namespace Metal_Lynch__v2._0_
             game_NextMaxX = 500;
             game_AngleDirection = true;
             GenerateRandomXLoc();
-            //ToggleDemoMode();
+            ToggleDemoMode();
             //Assigns the demo mode variables to their defaults and
             //activates the demo mode.
         }
@@ -162,12 +162,14 @@ namespace Metal_Lynch__v2._0_
                 if (tank.GetTank_TranslateTransform().X < game_LeftBoundary)
                 {
                     tank.MoveRight();
+                    tank.IncrementFuel(); tank.IncrementFuel();
                     //Moves the tank object right if it crosses the left
                     //boundary.
                 }
                 if (tank.GetPath().ActualWidth + 15 > game_RightBoundary)
                 {
                     tank.MoveLeft();
+                    tank.IncrementFuel(); tank.IncrementFuel();
                     //Moves the tank object left if it crosses the right
                     //boundary.
                 }

@@ -91,11 +91,19 @@ namespace Metal_Lynch__v2._0_
             {
                 if (tank == game_TankArray[0])
                 {
-                    if (tank.GetTank_TranslateTransform().X + 76 > _1v1_CentreBoundary) { tank.MoveLeft(); }
+                    if (tank.GetTank_TranslateTransform().X + 76 > _1v1_CentreBoundary)
+                    {
+                        tank.MoveLeft();
+                        tank.IncrementFuel(); tank.IncrementFuel();
+                    }
                 }
                 else
                 {
-                    if (tank.GetTank_TranslateTransform().X < _1v1_CentreBoundary) { tank.MoveRight(); }
+                    if (tank.GetTank_TranslateTransform().X < _1v1_CentreBoundary)
+                    {
+                        tank.MoveRight();
+                        tank.IncrementFuel(); tank.IncrementFuel();
+                    }
                 }
                 //Keeps the tanks to their sides of the map.
             }

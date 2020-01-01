@@ -144,6 +144,11 @@ namespace Metal_Lynch__v2._0_
             tank_Fuel = tank_MaxFuel;
             //Resets the fuel value.
         }
+        public void IncrementFuel()
+        {
+            tank_Fuel++;
+            //Increments the fuel value.
+        }
 
         public void SetTank_IconPos(Point point)
         {
