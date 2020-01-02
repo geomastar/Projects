@@ -20,11 +20,11 @@ namespace Metal_Lynch__v2._0_
 
         protected int _1v1_CentreBoundary;
 
-        public _1v1(Framework framework)
+        public _1v1(Framework framework, bool demoMode)
         {
             game_Framework = framework;
 
-            BaseConstructor(game_Framework);
+            BaseConstructor(game_Framework, demoMode);
 
             _1v1_Player1 = new Tank(this, 100, 100, 320, 100);
             _1v1_Player2 = new Tank(this, 100, 100, 900, 100);

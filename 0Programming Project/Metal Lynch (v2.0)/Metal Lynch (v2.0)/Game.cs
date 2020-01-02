@@ -53,7 +53,7 @@ namespace Metal_Lynch__v2._0_
             //Adds the Grid object to the Canvas of the Framework.
         }
 
-        protected void BaseConstructor(Framework framework)
+        protected void BaseConstructor(Framework framework, bool demoMode)
         {
             game_Framework = framework;
             //Assigns the framework parameter to the variable.
@@ -72,7 +72,7 @@ namespace Metal_Lynch__v2._0_
             {
                 Height = 240,
                 Width = 1280,
-                Background = new ImageBrush(game_SteelTexture)
+                Background = new ImageBrush(game_SteelTexture)                
             };
             //Instantiates the two Canvas objects, giving them heights
             //and widths, as well as applying their textures.
@@ -80,8 +80,8 @@ namespace Metal_Lynch__v2._0_
             game_Grid = new Grid()
             {
                 Height = 690,
-                Width = 1280
-            };
+                Width = 1280,                
+            };            
             //Instantiates the Grid control that will encapsulate the two
             //Canvas objects.
 
@@ -119,7 +119,7 @@ namespace Metal_Lynch__v2._0_
             game_NextMaxX = 500;
             game_AngleDirection = true;
             GenerateRandomXLoc();
-            ToggleDemoMode();
+            if (demoMode) { ToggleDemoMode(); }
             //Assigns the demo mode variables to their defaults and
             //activates the demo mode.
         }

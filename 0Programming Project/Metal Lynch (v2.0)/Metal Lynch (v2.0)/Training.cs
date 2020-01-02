@@ -12,9 +12,9 @@ namespace Metal_Lynch__v2._0_
         private Tank training_Player1;
         private Tank training_Target;
 
-        public Training(Framework framework)
+        public Training(Framework framework, bool demoMode)
         {
-            BaseConstructor(framework);
+            BaseConstructor(framework, demoMode);
 
             training_Player1 = new Tank(this, 0, -1, 320, 100);
             training_Target = new Tank(this, 0, -1, 900, 100);
@@ -31,6 +31,12 @@ namespace Metal_Lynch__v2._0_
 
         private void UpdateEvent(object sender, EventArgs e)
         {
+            if (game_NewTurn)
+            {
+                if (game_DemoMode) { GenerateRandomXLoc(); }
+                game_NewTurn = false;
+            }
+
             BaseUpdateEvent(new Tank[1] { training_Target });
         }
     }

@@ -37,5 +37,11 @@ namespace Metal_Lynch__v2._0_
                 //and width as the Framework Canvas.
             };            
         }
+
+        public Canvas GetMenu_Canvas()
+        {
+            return menu_Canvas;
+            //Returns the Grid.
+        }
     }
 }

@@ -16,6 +16,18 @@ namespace Metal_Lynch__v2._0_
         private Game framework_Game;
         private Menu framework_Menu;
 
+        public enum GameModes
+        {
+            Training,
+            _1v1
+        }
+        public enum Menus
+        {
+            MainMenu,
+            GameMenu,
+            SettingsMenu
+        }
+
         public Framework(Window window)
         {
             framework_Window = window;
@@ -30,12 +42,48 @@ namespace Metal_Lynch__v2._0_
                 //the window.
             };
 
-            framework_Game = new _1v1(this);
+            framework_Game = new Training(this, true);
 
-            framework_Menu = new GameMenu(this);
+            framework_Menu = new MainMenu(this);
 
             framework_Window.Content = framework_Canvas;
             //Adds the Canvas to the Window.
+        }
+
+        public void ChangeGameMode(GameModes gameMode, bool demoMode)
+        {
+            framework_Canvas.Children.Remove(framework_Game.GetGame_Grid());
+
+            switch (gameMode)
+            {
+                case GameModes.Training:
+                    framework_Game = new Training(this, demoMode);
+                    break;
+                case GameModes._1v1:
+                    framework_Game = new _1v1(this, demoMode);
+                    break;
+            }
+
+            Panel.SetZIndex(framework_Game.GetGame_Grid(), 0);
+            Panel.SetZIndex(framework_Menu.GetMenu_Canvas(), 1);
+        }
+
+        public void ChangeMenu(Menus menu)
+        {
+            framework_Canvas.Children.Remove(framework_Menu.GetMenu_Canvas());
+
+            switch (menu)
+            {
+                case Menus.MainMenu:
+                    framework_Menu = new MainMenu(this);
+                    break;
+                case Menus.GameMenu:
+                    framework_Menu = new GameMenu(this);
+                    break;
+            }
+
+            Panel.SetZIndex(framework_Game.GetGame_Grid(), 0);
+            Panel.SetZIndex(framework_Menu.GetMenu_Canvas(), 1);
         }
 
         public Canvas GetFramework_Canvas()

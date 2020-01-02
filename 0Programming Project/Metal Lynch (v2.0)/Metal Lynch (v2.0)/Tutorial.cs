@@ -18,11 +18,11 @@ namespace Metal_Lynch__v2._0_
 
         protected int tutorial_CentreBoundary;
 
-        public Tutorial(Framework framework)
+        public Tutorial(Framework framework, bool demoMode)
         {
             game_Framework = framework;
 
-            BaseConstructor(game_Framework);
+            BaseConstructor(game_Framework, demoMode);
         }
     }
 }

@@ -66,6 +66,7 @@ namespace Metal_Lynch__v2._0_
                 RenderTransform = new TranslateTransform(540, 150)
                 //Instantiates the play Button.
             };
+            mainMenu_PlayButton.Click += PlayButtonClickEvent;
             menu_Canvas.Children.Add(mainMenu_PlayButton);
             //Adds the play Button to the Menu Canvas.
 
@@ -107,6 +108,11 @@ namespace Metal_Lynch__v2._0_
 
             AddToCanvas();
             //Adds the Menu Canvas to the Framework Canvas.
+        }
+
+        private void PlayButtonClickEvent(object sender, RoutedEventArgs e)
+        {
+            menu_Framework.ChangeMenu(Framework.Menus.GameMenu);
         }
     }
 }
