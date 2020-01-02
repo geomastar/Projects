@@ -63,6 +63,7 @@
     <Compile Include="MessageBox.cs" />
     <Compile Include="ProgressBar.cs" />
     <Compile Include="Projectile.cs" />
+    <Compile Include="ResultsMenu.cs" />
     <Compile Include="SettingsMenu.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="Training.cs" />

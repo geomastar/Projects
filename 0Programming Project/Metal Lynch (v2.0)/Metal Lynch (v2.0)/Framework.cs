@@ -44,7 +44,7 @@ namespace Metal_Lynch__v2._0_
 
             framework_Game = new Training(this, true);
 
-            framework_Menu = new MainMenu(this);
+            framework_Menu = new ResultsMenu(this);
 
             framework_Window.Content = framework_Canvas;
             //Adds the Canvas to the Window.
@@ -90,6 +90,18 @@ namespace Metal_Lynch__v2._0_
         {
             return framework_Canvas;
             //Returns the Canvas.
+        }
+
+        public Game GetFramework_Game()
+        {
+            return framework_Game;
+            //Returns the Game.
+        }
+
+        public Menu GetFramework_Menu()
+        {
+            return framework_Menu;
+            //Returns the Menu.
         }
     }
 }

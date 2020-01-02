@@ -50,6 +50,7 @@ namespace Metal_Lynch__v2._0_
                         Opacity = 1
                     },
                     FontSize = 20,
+                    MaxLength = 10,
                     HorizontalContentAlignment = HorizontalAlignment.Center,
                     Text = "Player" + playerNumber,
                     RenderTransform = new TranslateTransform(410, YPos + 35)
@@ -94,6 +95,7 @@ namespace Metal_Lynch__v2._0_
                 RenderTransform = new TranslateTransform(520, 50)
                 //Instantiates the play Button.
             };
+            gameMenu_PlayButton.Click += PlayButtonClickEvent;
             menu_Canvas.Children.Add(gameMenu_PlayButton);
             //Adds the play Button to the Menu Canvas.
 
@@ -142,6 +144,23 @@ namespace Metal_Lynch__v2._0_
 
             AddToCanvas();
             //Adds the Menu Canvas to the Framework Canvas.
+        }
+
+        private void PlayButtonClickEvent(object sender, RoutedEventArgs e)
+        {
+            if (gameMenu_ModeSelector.SelectedItem == gameMenu_TrainingComboBoxItem)
+            {
+                menu_Framework.ChangeGameMode(Framework.GameModes.Training, false);
+                menu_Framework.GetFramework_Canvas().Children.Remove(menu_Canvas);
+            }
+            if (gameMenu_ModeSelector.SelectedItem == gameMenu_1v1ComboBoxItem)
+            {
+                menu_Framework.ChangeGameMode(Framework.GameModes._1v1, false);
+                menu_Framework.GetFramework_Game().AssignUsernames(
+                    gameMenu_Player1UsernamePrompt.inputBox.Text,
+                    gameMenu_Player2UsernamePrompt.inputBox.Text);
+                menu_Framework.GetFramework_Canvas().Children.Remove(menu_Canvas);
+            }
         }
 
         private void MainMenuButtonClickEvent(object sender, RoutedEventArgs e)

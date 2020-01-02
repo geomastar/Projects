@@ -47,6 +47,8 @@ namespace Metal_Lynch__v2._0_
         protected int game_NextMaxX;
         protected bool game_AngleDirection;
 
+        public virtual void AssignUsernames(string player1Username, string player2Username) { }
+
         protected void AddToCanvas()
         {
             game_Framework.GetFramework_Canvas().Children.Add(game_Grid);

@@ -24,6 +24,7 @@ namespace Metal_Lynch__v2._0_
 
         private int progressBar_Width;
         private int progressBar_Height;
+        private int progressBar_SizeMod;
         private Point progressBar_Position;
 
         public ProgressBar(Game progressBar_Game, int X, int Y, int sizeMod,
@@ -36,8 +37,10 @@ namespace Metal_Lynch__v2._0_
             progressBar_ProgressMaxValue = value;
             //Assings the maximum value for the ProgressBar.
 
-            progressBar_Width = 5 * sizeMod;
-            progressBar_Height = 2 * sizeMod;
+            progressBar_SizeMod = sizeMod;
+
+            progressBar_Width = 5 * progressBar_SizeMod;
+            progressBar_Height = 2 * progressBar_SizeMod;
             //Assigns the width and height.
             Size size = new Size(progressBar_Width, progressBar_Height);
             //Calculates the size of the bar based off the modifier parameter.
@@ -48,9 +51,10 @@ namespace Metal_Lynch__v2._0_
             progressBar_LabelText = new TextBlock()
             {
                 RenderTransform = new TranslateTransform(
-                    X - (label.Length * sizeMod / 1.8), Y + (sizeMod / 3)),
+                    X - (label.Length * progressBar_SizeMod / 1.8),
+                    Y + (progressBar_SizeMod / 3)),
                 Text = label,
-                FontSize = sizeMod
+                FontSize = progressBar_SizeMod
             };
             GUIMainElement = progressBar_LabelText;
             AddToCanvas();
@@ -116,6 +120,14 @@ namespace Metal_Lynch__v2._0_
             }
             if (progressBar_ProgressValueText != null) { progressBar_ProgressValueText.Text = value.ToString(); }            
             //Updates the ProgressBar.
+        }
+
+        public void SetProgressBar_LabelText(string text)
+        {
+            progressBar_LabelText.Text = text;
+            progressBar_LabelText.RenderTransform = new TranslateTransform(
+                progressBar_Position.X - (text.Length * progressBar_SizeMod / 1.8),
+                progressBar_Position.Y + (progressBar_SizeMod / 3));
         }
     }
 }

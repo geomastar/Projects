@@ -37,9 +37,9 @@ namespace Metal_Lynch__v2._0_
             }
 
             _1v1_Player1HealthBar = new ProgressBar(this, 1000, 50, 20,
-                "Player 1", true, _1v1_Player1.GetTank_Health());
+                "Player1", true, _1v1_Player1.GetTank_Health());
             _1v1_Player2HealthBar = new ProgressBar(this, 1000, 100, 20,
-                "Player 2", true, _1v1_Player2.GetTank_Health());
+                "Player2", true, _1v1_Player2.GetTank_Health());
 
             _1v1_FuelBar = new ProgressBar(this, 730, 175, 15,
                 "Fuel", false, game_TankArray[0].GetTank_Fuel());
@@ -113,6 +113,12 @@ namespace Metal_Lynch__v2._0_
             _1v1_Player1HealthBar.Update(_1v1_Player1.GetTank_Health());
             _1v1_Player2HealthBar.Update(_1v1_Player2.GetTank_Health());
             _1v1_FuelBar.Update(game_CurrentPlayer.GetTank_Fuel());
+        }
+
+        public override void AssignUsernames(string player1Username, string player2Username)
+        {
+            _1v1_Player1HealthBar.SetProgressBar_LabelText(player1Username);
+            _1v1_Player2HealthBar.SetProgressBar_LabelText(player2Username);
         }
     }
 }

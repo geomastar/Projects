@@ -51,6 +51,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{D98B
 	ProjectSection(SolutionItems) = preProject
 		Metal Lynch (v2.0)\GameMenu.cs = Metal Lynch (v2.0)\GameMenu.cs
 		Metal Lynch (v2.0)\MainMenu.cs = Metal Lynch (v2.0)\MainMenu.cs
+		Metal Lynch (v2.0)\ResultsMenu.cs = Metal Lynch (v2.0)\ResultsMenu.cs
 		Metal Lynch (v2.0)\SettingsMenu.cs = Metal Lynch (v2.0)\SettingsMenu.cs
 	EndProjectSection
 EndProject
