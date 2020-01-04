@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Metal_Lynch__v2._0_
@@ -23,7 +24,6 @@ namespace Metal_Lynch__v2._0_
 
             game_CurrentPlayer = training_Player1;
             game_Winner = training_Player1;
-            game_Stats.winner = training_Player1;
 
             CompositionTarget.Rendering += UpdateEvent;
 
@@ -31,7 +31,7 @@ namespace Metal_Lynch__v2._0_
             //Adds the Grid to the Canvas of the Framework.
         }
 
-        private void UpdateEvent(object sender, EventArgs e)
+        protected override void UpdateEvent(object sender, EventArgs e)
         {
             if (game_NewTurn)
             {
@@ -42,10 +42,16 @@ namespace Metal_Lynch__v2._0_
             BaseUpdateEvent(new Tank[1] { training_Target });
         }
 
-        protected override void EndGame()
+        public override void EndGame()
         {
             CompositionTarget.Rendering -= UpdateEvent;
             game_FireButton.Toggle();
+
+            game_Stats.winner = game_Winner;
+            game_Stats.player1DamageDealt = training_Player1.GetTank_DamageDealt();
+            game_Stats.player1DistanceTravelled = training_Player1.GetTank_DistanceTravelled();
+            game_Stats.player1ProjectilesFired = training_Player1.GetTank_ProjectilesFired();
+
             game_Framework.ChangeMenu(Framework.Menus.ResultsMenu);
         }
     }

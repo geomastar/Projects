@@ -26,6 +26,7 @@ namespace Metal_Lynch__v2._0_
             MainMenu,
             GameMenu,
             SettingsMenu,
+            PauseMenu,
             ResultsMenu
         }
 
@@ -82,6 +83,9 @@ namespace Metal_Lynch__v2._0_
                     framework_Menu = new GameMenu(this);
                     break;
 
+                case Menus.PauseMenu:
+                    framework_Menu = new PauseMenu(this);
+                    break;
                 case Menus.ResultsMenu:
                     framework_Menu = new ResultsMenu(this);
                     break;
@@ -89,6 +93,12 @@ namespace Metal_Lynch__v2._0_
 
             Panel.SetZIndex(framework_Game.GetGame_Grid(), 0);
             Panel.SetZIndex(framework_Menu.GetMenu_Canvas(), 1);
+        }
+
+        public Window GetFramework_Window()
+        {
+            return framework_Window;
+            //Returns the Window.
         }
 
         public Canvas GetFramework_Canvas()

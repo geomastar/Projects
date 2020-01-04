@@ -52,7 +52,7 @@ namespace Metal_Lynch__v2._0_
             //Adds the Grid to the Canvas of the Framework.
         }
 
-        private void UpdateEvent(object sender, EventArgs e)
+        protected override void UpdateEvent(object sender, EventArgs e)
         {
             game_CurrentPlayer = game_TankArray[(game_Turn-1) % 2];
             //Determines the player who's turn it is.
@@ -117,13 +117,11 @@ namespace Metal_Lynch__v2._0_
             if (_1v1_Player1.GetTank_Health() <= 0)
             {
                 game_Winner = _1v1_Player2;
-                game_Stats.winner = _1v1_Player2;
                 EndGame();
             }
             if (_1v1_Player2.GetTank_Health() <= 0)
             {
                 game_Winner = _1v1_Player1;
-                game_Stats.winner = _1v1_Player1;
                 EndGame();
             }
         }
@@ -138,10 +136,25 @@ namespace Metal_Lynch__v2._0_
             game_Stats.player2Username = player2Username;
         }
 
-        protected override void EndGame()
+        public override void EndGame()
         {
             CompositionTarget.Rendering -= UpdateEvent;
             game_FireButton.Toggle();
+
+            game_Stats.winner = game_Winner;
+
+            game_Stats.player1DamageDealt = _1v1_Player1.GetTank_DamageDealt();
+            game_Stats.player1DamageTaken = _1v1_Player1.GetTank_DamageTaken();
+            game_Stats.player1DistanceTravelled = _1v1_Player1.GetTank_DistanceTravelled();
+            game_Stats.player1ProjectilesFired = _1v1_Player1.GetTank_ProjectilesFired();
+
+            game_Stats.player2DamageDealt = _1v1_Player2.GetTank_DamageDealt();
+            game_Stats.player2DamageTaken = _1v1_Player2.GetTank_DamageTaken();
+            game_Stats.player2DistanceTravelled = _1v1_Player2.GetTank_DistanceTravelled();
+            game_Stats.player2ProjectilesFired = _1v1_Player2.GetTank_ProjectilesFired();
+
+            game_Stats.CalculateTotals();
+
             game_Framework.ChangeMenu(Framework.Menus.ResultsMenu);
         }
     }

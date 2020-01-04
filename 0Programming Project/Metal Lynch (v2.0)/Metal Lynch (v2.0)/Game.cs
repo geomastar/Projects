@@ -41,6 +41,7 @@ namespace Metal_Lynch__v2._0_
         protected bool game_NewTurn;
         protected int game_Gravity;
         protected int game_Turn;
+        protected bool game_Paused;
 
         protected GameStats game_Stats;
 
@@ -50,8 +51,9 @@ namespace Metal_Lynch__v2._0_
         protected int game_NextMaxX;
         protected bool game_AngleDirection;
 
+        protected abstract void UpdateEvent(object sender, EventArgs e);
+        public abstract void EndGame();
         public virtual void AssignUsernames(string player1Username, string player2Username) { }
-        protected virtual void EndGame() { }
 
         public struct GameStats
         {
@@ -68,7 +70,14 @@ namespace Metal_Lynch__v2._0_
             public int totalDistanceTravelled;
             public int player1ProjectilesFired;
             public int player2ProjectilesFired;
-            public int totalProjectilesFired;            
+            public int totalProjectilesFired;
+
+            public void CalculateTotals()
+            {
+                totalDamage = player1DamageTaken + player2DamageTaken;
+                totalDistanceTravelled = player1DistanceTravelled + player2DistanceTravelled;
+                totalProjectilesFired = player1ProjectilesFired + player2ProjectilesFired;
+            }
         }
 
         protected void AddToCanvas()
@@ -150,6 +159,8 @@ namespace Metal_Lynch__v2._0_
             if (demoMode) { ToggleDemoMode(); }
             //Assigns the demo mode variables to their defaults and
             //activates the demo mode.
+            
+            game_Framework.GetFramework_Window().KeyDown += EscKeyPress;
         }
 
         protected void BaseUpdateEvent(Tank[] enemyTankArray)
@@ -191,15 +202,19 @@ namespace Metal_Lynch__v2._0_
                 {
                     tank.MoveRight();
                     tank.IncrementFuel(); tank.IncrementFuel();
+                    tank.DecrementDistanceTravelled(); tank.DecrementDistanceTravelled();
                     //Moves the tank object right if it crosses the left
-                    //boundary.
+                    //boundary and corrects the fuel and distance travelled
+                    //values.
                 }
                 if (tank.GetPath().ActualWidth + 15 > game_RightBoundary)
                 {
                     tank.MoveLeft();
                     tank.IncrementFuel(); tank.IncrementFuel();
+                    tank.DecrementDistanceTravelled(); tank.DecrementDistanceTravelled();
                     //Moves the tank object left if it crosses the right
-                    //boundary.
+                    //boundary and corrects the fuel and distance travelled
+                    //values.
                 }
 
                 //This code is done for all Tank objects in the array.                
@@ -238,6 +253,7 @@ namespace Metal_Lynch__v2._0_
                             & !intersectionFound)
                         {
                             EndTurn(tank.TakeDamage(game_Projectile));
+                            game_CurrentPlayer.DealDamage(game_Projectile);
                             intersectionFound = true;
                             //If the projectile hits the enemy it will deal damage and
                             //stop the while loop.
@@ -309,6 +325,30 @@ namespace Metal_Lynch__v2._0_
             }
         }
 
+        protected void EscKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape && !game_DemoMode)
+            {
+                TogglePause();
+            }
+        }
+
+        public void TogglePause()
+        {
+            if (!game_Paused)
+            {
+                CompositionTarget.Rendering -= UpdateEvent;
+                game_Framework.ChangeMenu(Framework.Menus.PauseMenu);
+            }
+            else
+            {
+                game_Framework.GetFramework_Canvas().Children.Remove(game_Framework.GetFramework_Menu().GetMenu_Canvas());
+                CompositionTarget.Rendering += UpdateEvent;
+            }
+            game_FireButton.Toggle();
+            game_Paused = !game_Paused;
+        }
+
         public void FireProjectile()
         {
             if (!game_AimingIcon.IconCentred())
@@ -320,6 +360,9 @@ namespace Metal_Lynch__v2._0_
                     game_AimingIcon.GetInitialVelocity(),
                     game_AimingIcon.GetTrajectoryDirection());
                 //Starts the trajectory of the Projectile.
+
+                game_CurrentPlayer.FireProjectile();
+                //Increments the projectiles fired stat of the tank firing a projectile.
 
                 game_CurrentPlayer.SetTank_IconPos(game_AimingIcon.GetIconPos());
                 //Sets the icon position variable of the Tank to the position of the aiming icon.

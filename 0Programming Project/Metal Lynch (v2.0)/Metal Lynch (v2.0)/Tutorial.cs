@@ -24,5 +24,15 @@ namespace Metal_Lynch__v2._0_
 
             BaseConstructor(game_Framework, demoMode);
         }
+
+        protected override void UpdateEvent(object sender, EventArgs e)
+        {
+
+        }
+
+        public override void EndGame()
+        {
+
+        }
     }
 }

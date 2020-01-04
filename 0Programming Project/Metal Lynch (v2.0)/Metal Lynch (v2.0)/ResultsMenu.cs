@@ -14,9 +14,6 @@ namespace Metal_Lynch__v2._0_
     {
         private TextBlock resultsMenu_ResultText;
 
-        private Button resultsMenu_PlayAgainButton;
-        private Button resultsMenu_MainMenuButton;
-
         private Path resultsMenu_StatsBackgroundPath;
         private RectangleGeometry resultsMenu_StatsBackgroundRectangleGeometry;
 
@@ -34,33 +31,12 @@ namespace Metal_Lynch__v2._0_
         private TextBlock resultsMenu_Player2ProjectilesFiredText;
         private TextBlock resultsMenu_TotalProjectilesFiredText;
 
+        private Button resultsMenu_PlayAgainButton;
+        private Button resultsMenu_MainMenuButton;
+
         public ResultsMenu(Framework framework)
         {
-            BaseConstructor(framework);
-
-            menu_BackgroundRectangleGeometry = new RectangleGeometry()
-            {
-                Rect = new Rect(new Size(700, 420)),
-                Transform = new TranslateTransform(290, 30)
-                //Instantiates the RectangleGeometry, giving it a size and
-                //a location.
-            };
-
-            menu_BackgroundPath = new Path()
-            {
-                Data = menu_BackgroundRectangleGeometry,
-                Fill = new SolidColorBrush()
-                {
-                    Color = Colors.Gray,
-                    Opacity = 0.5
-                },
-                Stroke = Brushes.Black,
-                StrokeThickness = 2
-                //Instantiates the Path object, giving it a Geometry, colour,
-                //and stroke.
-            };
-            menu_Canvas.Children.Add(menu_BackgroundPath);
-            //Adds the Path to the Menu Canvas.
+            BaseConstructor(framework, 700, 420);
 
             resultsMenu_GameStats = menu_Framework.GetFramework_Game().getGame_Stats();
 
@@ -68,14 +44,23 @@ namespace Metal_Lynch__v2._0_
             {
                 Width = 700,
                 FontSize = 60,
-                Text = resultsMenu_GameStats.winner.GetTank_Username()
-                    + " Won!",
                 TextAlignment = TextAlignment.Center,
                 RenderTransform = new TranslateTransform(290, 50)
-                //Instantiates the TextBlock for the game title.
+                //Instantiates the TextBlock for the result text.
             };
+            if (resultsMenu_GameStats.winner == null)
+            {
+                resultsMenu_ResultText.Text = "Nobody";
+            }
+            else
+            {
+                resultsMenu_ResultText.Text = resultsMenu_GameStats.winner.GetTank_Username();
+            }
+            resultsMenu_ResultText.Text += " Won!";
             menu_Canvas.Children.Add(resultsMenu_ResultText);
-            //Adds the TextBlock to the Menu Canvas.            
+            //Adds the TextBlock to the Menu Canvas.
+
+            BuildStatsDisplay();
 
             resultsMenu_PlayAgainButton = new Button()
             {
@@ -103,8 +88,6 @@ namespace Metal_Lynch__v2._0_
             menu_Canvas.Children.Add(resultsMenu_MainMenuButton);
             //Adds the Main Menu Button to the Menu Canvas.
 
-            BuildStatsDisplay();
-
             AddToCanvas();
             //Adds the Menu Canvas to the Framework Canvas.
         }
@@ -119,7 +102,6 @@ namespace Metal_Lynch__v2._0_
             if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(Training)))
             {
                 menu_Framework.ChangeGameMode(Framework.GameModes.Training, false);
-                menu_Framework.GetFramework_Canvas().Children.Remove(menu_Canvas);
             }
             if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(_1v1)))
             {
@@ -127,8 +109,8 @@ namespace Metal_Lynch__v2._0_
                 menu_Framework.GetFramework_Game().AssignUsernames(
                     resultsMenu_GameStats.player1Username,
                     resultsMenu_GameStats.player2Username);
-                menu_Framework.GetFramework_Canvas().Children.Remove(menu_Canvas);
             }
+            menu_Framework.GetFramework_Canvas().Children.Remove(menu_Canvas);
         }
 
         private void BuildStatsDisplay()
@@ -291,9 +273,12 @@ namespace Metal_Lynch__v2._0_
                 int YIncrement = YBaseValue;
                 foreach (TextBlock textblock in player1Stats)
                 {
-                    textblock.RenderTransform = new TranslateTransform(XBaseValue, YIncrement);
-                    menu_Canvas.Children.Add(textblock);
-                    YIncrement += 20;
+                    if (textblock != resultsMenu_Player1DamageTakenText)
+                    {
+                        textblock.RenderTransform = new TranslateTransform(XBaseValue, YIncrement);
+                        menu_Canvas.Children.Add(textblock);
+                        YIncrement += 20;
+                    }
                 }
             }
             else if (type.Equals(typeof(_1v1)))

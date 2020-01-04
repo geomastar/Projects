@@ -24,7 +24,12 @@ namespace Metal_Lynch__v2._0_
         private int tank_Health;
         private int tank_MaxFuel;
         private int tank_Fuel;
+
         private string tank_Username;
+        private int tank_DamageDealt;
+        private int tank_DamageTaken;
+        private int tank_DistanceTravelled;
+        private int tank_ProjectilesFired;
 
         public Tank(Game tank_Game, string username, int health, int fuel, int X, int Y)
         {
@@ -115,6 +120,8 @@ namespace Metal_Lynch__v2._0_
             //Moves the Tank left on the canvas.
             tank_Fuel -= 1;
             //Decrements the fuel value.
+            tank_DistanceTravelled += 1;
+            //Increments the distance travelled stat.
         }
         public void MoveRight()
         {
@@ -122,15 +129,29 @@ namespace Metal_Lynch__v2._0_
             //Moves the Tank right on the canvas.
             tank_Fuel -= 1;
             //Decrements the fuel value.
+            tank_DistanceTravelled += 1;
+            //Increments the distance travelled stat.
         }
 
+        public void FireProjectile()
+        {
+            tank_ProjectilesFired++;
+            //Increments the projectiles fired stat.
+        }
+        public void DealDamage(Projectile projectile)
+        {
+            tank_DamageDealt += projectile.GetProjectile_Damage();
+            //Adds the damage of the projectile to the Tank's damage dealt stat.
+        }
         public int TakeDamage(Projectile projectile)
         {
             tank_Health -= projectile.GetProjectile_Damage();
             //Subtracts the damage of the projectile from the Tank's health.
+            tank_DamageTaken += projectile.GetProjectile_Damage();
+            //Adds the damage of the projectile to the Tank's damage taken stat.
             return projectile.GetProjectile_Damage();
             //Returns the damage of the projectile.
-        }
+        }        
 
         public int GetTank_Health()
         {
@@ -152,6 +173,11 @@ namespace Metal_Lynch__v2._0_
         {
             tank_Fuel++;
             //Increments the fuel value.
+        }
+        public void DecrementDistanceTravelled()
+        {
+            tank_DistanceTravelled -= 1;
+            //Decrements the distance travelled stat.
         }
 
         public void SetTank_IconPos(Point point)
@@ -180,6 +206,30 @@ namespace Metal_Lynch__v2._0_
         {
             return tank_Username;
             //Returns the username.
+        }
+
+        public int GetTank_DamageDealt()
+        {
+            return tank_DamageDealt;
+            //Returns the damage dealt stat.
+        }
+
+        public int GetTank_DamageTaken()
+        {
+            return tank_DamageTaken;
+            //Returns the damage taken stat.
+        }
+
+        public int GetTank_DistanceTravelled()
+        {
+            return tank_DistanceTravelled;
+            //Returns the distance travelled stat.
+        }
+
+        public int GetTank_ProjectilesFired()
+        {
+            return tank_ProjectilesFired;
+            //Returns the projectiles fired stat.
         }
     }
 }

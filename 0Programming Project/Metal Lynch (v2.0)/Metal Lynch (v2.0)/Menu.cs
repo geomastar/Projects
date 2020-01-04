@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -24,7 +25,7 @@ namespace Metal_Lynch__v2._0_
             //Adds the Menu Canvas to the Canvas of the Framework.
         }
 
-        protected void BaseConstructor(Framework framework)
+        protected void BaseConstructor(Framework framework, int width, int height)
         {
             menu_Framework = framework;
             //Assigns the framework parameter to the variable.
@@ -35,7 +36,31 @@ namespace Metal_Lynch__v2._0_
                 Width = menu_Framework.GetFramework_Canvas().Width
                 //Creates the instance of Canvas. Gives it the same height
                 //and width as the Framework Canvas.
-            };            
+            };
+
+            menu_BackgroundRectangleGeometry = new RectangleGeometry()
+            {
+                Rect = new Rect(new Size(width, height)),
+                Transform = new TranslateTransform(640 - (width / 2), 30)
+                //Instantiates the RectangleGeometry, giving it a size and
+                //a location.
+            };
+
+            menu_BackgroundPath = new Path()
+            {
+                Data = menu_BackgroundRectangleGeometry,
+                Fill = new SolidColorBrush()
+                {
+                    Color = Colors.Gray,
+                    Opacity = 0.5
+                },
+                Stroke = Brushes.Black,
+                StrokeThickness = 2
+                //Instantiates the Path object, giving it a Geometry, colour,
+                //and stroke.
+            };
+            menu_Canvas.Children.Add(menu_BackgroundPath);
+            //Adds the Path to the Menu Canvas.
         }
 
         public Canvas GetMenu_Canvas()

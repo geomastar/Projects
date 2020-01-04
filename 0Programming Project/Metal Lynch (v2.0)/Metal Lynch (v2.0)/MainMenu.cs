@@ -21,31 +21,7 @@ namespace Metal_Lynch__v2._0_
         
         public MainMenu(Framework framework)
         {
-            BaseConstructor(framework);
-
-            menu_BackgroundRectangleGeometry = new RectangleGeometry()
-            {
-                Rect = new Rect(new Size(360, 420)),
-                Transform = new TranslateTransform(460, 30)
-                //Instantiates the RectangleGeometry, giving it a size and
-                //a location.
-            };
-
-            menu_BackgroundPath = new Path()
-            {
-                Data = menu_BackgroundRectangleGeometry,
-                Fill = new SolidColorBrush()
-                {
-                    Color = Colors.Gray,
-                    Opacity = 0.5
-                },
-                Stroke = Brushes.Black,
-                StrokeThickness = 2
-                //Instantiates the Path object, giving it a Geometry, colour,
-                //and stroke.
-            };
-            menu_Canvas.Children.Add(menu_BackgroundPath);
-            //Adds the Path to the Menu Canvas.
+            BaseConstructor(framework, 360, 420);
 
             mainMenu_TitleText = new TextBlock()
             {
@@ -103,6 +79,7 @@ namespace Metal_Lynch__v2._0_
                 RenderTransform = new TranslateTransform(540, 360)
                 //Instantiates the quit Button.
             };
+            mainMenu_QuitButton.Click += QuitButtonClickEvent;
             menu_Canvas.Children.Add(mainMenu_QuitButton);
             //Adds the quit Button to the Menu Canvas.
 
@@ -113,6 +90,11 @@ namespace Metal_Lynch__v2._0_
         private void PlayButtonClickEvent(object sender, RoutedEventArgs e)
         {
             menu_Framework.ChangeMenu(Framework.Menus.GameMenu);
+        }
+
+        private void QuitButtonClickEvent(object sender, RoutedEventArgs e)
+        {
+            menu_Framework.GetFramework_Window().Close();
         }
     }
 }
