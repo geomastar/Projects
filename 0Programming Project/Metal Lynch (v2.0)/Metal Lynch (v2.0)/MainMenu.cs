@@ -48,6 +48,8 @@ namespace Metal_Lynch__v2._0_
 
             mainMenu_TutorialButton = new Button()
             {
+                IsEnabled = false,
+
                 Width = 200,
                 Height = 60,
                 FontSize = 40,
@@ -60,6 +62,8 @@ namespace Metal_Lynch__v2._0_
 
             mainMenu_SettingsButton = new Button()
             {
+                IsEnabled = false,
+
                 Width = 200,
                 Height = 60,
                 FontSize = 40,

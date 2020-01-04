@@ -44,7 +44,7 @@ namespace Metal_Lynch__v2._0_
                 //the window.
             };
 
-            framework_Game = new Training(this, true);
+            framework_Game = new _1v1(this, true);
 
             framework_Menu = new MainMenu(this);
 
