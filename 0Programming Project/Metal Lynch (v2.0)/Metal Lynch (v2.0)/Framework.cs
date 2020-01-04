@@ -25,7 +25,8 @@ namespace Metal_Lynch__v2._0_
         {
             MainMenu,
             GameMenu,
-            SettingsMenu
+            SettingsMenu,
+            ResultsMenu
         }
 
         public Framework(Window window)
@@ -44,7 +45,7 @@ namespace Metal_Lynch__v2._0_
 
             framework_Game = new Training(this, true);
 
-            framework_Menu = new ResultsMenu(this);
+            framework_Menu = new MainMenu(this);
 
             framework_Window.Content = framework_Canvas;
             //Adds the Canvas to the Window.
@@ -69,7 +70,7 @@ namespace Metal_Lynch__v2._0_
         }
 
         public void ChangeMenu(Menus menu)
-        {
+        {            
             framework_Canvas.Children.Remove(framework_Menu.GetMenu_Canvas());
 
             switch (menu)
@@ -79,6 +80,10 @@ namespace Metal_Lynch__v2._0_
                     break;
                 case Menus.GameMenu:
                     framework_Menu = new GameMenu(this);
+                    break;
+
+                case Menus.ResultsMenu:
+                    framework_Menu = new ResultsMenu(this);
                     break;
             }
 

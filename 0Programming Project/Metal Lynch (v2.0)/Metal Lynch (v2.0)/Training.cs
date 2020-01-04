@@ -16,12 +16,14 @@ namespace Metal_Lynch__v2._0_
         {
             BaseConstructor(framework, demoMode);
 
-            training_Player1 = new Tank(this, 0, -1, 320, 100);
-            training_Target = new Tank(this, 0, -1, 900, 100);
+            training_Player1 = new Tank(this, "Player1", 0, -1, 320, 100);
+            training_Target = new Tank(this, "Target", 0, -1, 900, 100);
 
             game_TankArray = new Tank[2] { training_Player1, training_Target };
 
-            game_CurrentPlayer = game_TankArray[0];
+            game_CurrentPlayer = training_Player1;
+            game_Winner = training_Player1;
+            game_Stats.winner = training_Player1;
 
             CompositionTarget.Rendering += UpdateEvent;
 
@@ -38,6 +40,13 @@ namespace Metal_Lynch__v2._0_
             }
 
             BaseUpdateEvent(new Tank[1] { training_Target });
+        }
+
+        protected override void EndGame()
+        {
+            CompositionTarget.Rendering -= UpdateEvent;
+            game_FireButton.Toggle();
+            game_Framework.ChangeMenu(Framework.Menus.ResultsMenu);
         }
     }
 }

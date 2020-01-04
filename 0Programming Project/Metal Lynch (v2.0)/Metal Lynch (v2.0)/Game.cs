@@ -25,6 +25,7 @@ namespace Metal_Lynch__v2._0_
         protected Map game_Map;
         protected Projectile game_Projectile;
         protected Tank game_CurrentPlayer;
+        protected Tank game_Winner;
         protected Tank[] game_TankArray;
 
         protected MessageBox game_MessageBox;
@@ -41,6 +42,8 @@ namespace Metal_Lynch__v2._0_
         protected int game_Gravity;
         protected int game_Turn;
 
+        protected GameStats game_Stats;
+
         protected bool game_DemoMode;
         protected int game_NextXLoc;
         protected int game_NextMinX;
@@ -48,6 +51,25 @@ namespace Metal_Lynch__v2._0_
         protected bool game_AngleDirection;
 
         public virtual void AssignUsernames(string player1Username, string player2Username) { }
+        protected virtual void EndGame() { }
+
+        public struct GameStats
+        {
+            public Tank winner;
+            public string player1Username;
+            public string player2Username;
+            public int player1DamageDealt;
+            public int player2DamageDealt;
+            public int player1DamageTaken;
+            public int player2DamageTaken;
+            public int totalDamage;
+            public int player1DistanceTravelled;
+            public int player2DistanceTravelled;
+            public int totalDistanceTravelled;
+            public int player1ProjectilesFired;
+            public int player2ProjectilesFired;
+            public int totalProjectilesFired;            
+        }
 
         protected void AddToCanvas()
         {
@@ -116,6 +138,10 @@ namespace Metal_Lynch__v2._0_
             game_Gravity = 10;
             game_Turn = 1;
             //Sets the gravity, turn counter and NewTurn bool.
+
+            game_Stats = new GameStats();
+            game_Stats.player1Username = "Player1";
+            game_Stats.player2Username = "Player2";
 
             game_NextMinX = 100;
             game_NextMaxX = 500;
@@ -369,6 +395,12 @@ namespace Metal_Lynch__v2._0_
         {
             return game_Grid;
             //Returns the Grid.
+        }
+
+        public GameStats getGame_Stats()
+        {
+            return game_Stats;
+            //Returns the game stats.
         }
     }
 }

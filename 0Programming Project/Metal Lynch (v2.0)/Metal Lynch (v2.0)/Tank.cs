@@ -24,12 +24,16 @@ namespace Metal_Lynch__v2._0_
         private int tank_Health;
         private int tank_MaxFuel;
         private int tank_Fuel;
+        private string tank_Username;
 
-        public Tank(Game tank_Game, int health, int fuel, int X, int Y)
+        public Tank(Game tank_Game, string username, int health, int fuel, int X, int Y)
         {
             game = tank_Game;
             //Sets the game variable of the base class to the parameter
-            //tank_Game.            
+            //tank_Game.
+
+            tank_Username = username;
+            //Sets the username variable to the corresponding parameter.
 
             tank_Health = health;
             //Sets the health variable to the corresponding parameter.
@@ -165,6 +169,17 @@ namespace Metal_Lynch__v2._0_
         {
             return tank_TranslateTransform;
             //Returns the Tank's TranslateTransform object.
+        }
+
+        public void SetTank_Username(string username)
+        {
+            tank_Username = username;
+            //Sets the username.
+        }
+        public string GetTank_Username()
+        {
+            return tank_Username;
+            //Returns the username.
         }
     }
 }

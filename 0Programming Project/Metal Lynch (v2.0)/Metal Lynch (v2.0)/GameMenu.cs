@@ -110,7 +110,7 @@ namespace Metal_Lynch__v2._0_
             };
             gameMenu_MainMenuButton.Click += MainMenuButtonClickEvent;
             menu_Canvas.Children.Add(gameMenu_MainMenuButton);
-            //Adds the play Button to the Menu Canvas.
+            //Adds the Main Menu Button to the Menu Canvas.
 
             gameMenu_1v1ComboBoxItem = new ComboBoxItem() { Content = "1v1" };
             gameMenu_TrainingComboBoxItem = new ComboBoxItem() { Content = "Training" };

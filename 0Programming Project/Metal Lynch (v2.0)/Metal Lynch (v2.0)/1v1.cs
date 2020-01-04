@@ -26,8 +26,8 @@ namespace Metal_Lynch__v2._0_
 
             BaseConstructor(game_Framework, demoMode);
 
-            _1v1_Player1 = new Tank(this, 100, 100, 320, 100);
-            _1v1_Player2 = new Tank(this, 100, 100, 900, 100);
+            _1v1_Player1 = new Tank(this, "Player1", 100, 100, 320, 100);
+            _1v1_Player2 = new Tank(this, "Player2", 100, 100, 900, 100);
 
             game_TankArray = new Tank[2] { _1v1_Player1, _1v1_Player2 };
 
@@ -113,12 +113,36 @@ namespace Metal_Lynch__v2._0_
             _1v1_Player1HealthBar.Update(_1v1_Player1.GetTank_Health());
             _1v1_Player2HealthBar.Update(_1v1_Player2.GetTank_Health());
             _1v1_FuelBar.Update(game_CurrentPlayer.GetTank_Fuel());
+
+            if (_1v1_Player1.GetTank_Health() <= 0)
+            {
+                game_Winner = _1v1_Player2;
+                game_Stats.winner = _1v1_Player2;
+                EndGame();
+            }
+            if (_1v1_Player2.GetTank_Health() <= 0)
+            {
+                game_Winner = _1v1_Player1;
+                game_Stats.winner = _1v1_Player1;
+                EndGame();
+            }
         }
 
         public override void AssignUsernames(string player1Username, string player2Username)
         {
             _1v1_Player1HealthBar.SetProgressBar_LabelText(player1Username);
+            _1v1_Player1.SetTank_Username(player1Username);
+            game_Stats.player1Username = player1Username;            
             _1v1_Player2HealthBar.SetProgressBar_LabelText(player2Username);
+            _1v1_Player1.SetTank_Username(player2Username);
+            game_Stats.player2Username = player2Username;
+        }
+
+        protected override void EndGame()
+        {
+            CompositionTarget.Rendering -= UpdateEvent;
+            game_FireButton.Toggle();
+            game_Framework.ChangeMenu(Framework.Menus.ResultsMenu);
         }
     }
 }
