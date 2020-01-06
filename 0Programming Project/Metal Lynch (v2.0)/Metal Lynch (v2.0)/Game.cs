@@ -93,7 +93,7 @@ namespace Metal_Lynch__v2._0_
 
             game_SkyTexture = new BitmapImage(new Uri(@"Resources/Sky texture.png", UriKind.Relative));
             game_SteelTexture = new BitmapImage(new Uri(@"Resources/GUI texture.png", UriKind.Relative));
-            //Selects the images for the two textures.
+            //Selects the images for the two textures.            
 
             game_MainCanvas = new Canvas()
             {
@@ -105,7 +105,7 @@ namespace Metal_Lynch__v2._0_
             {
                 Height = 240,
                 Width = 1280,
-                Background = new ImageBrush(game_SteelTexture)                
+                Background = new ImageBrush(game_SteelTexture)
             };
             //Instantiates the two Canvas objects, giving them heights
             //and widths, as well as applying their textures.
