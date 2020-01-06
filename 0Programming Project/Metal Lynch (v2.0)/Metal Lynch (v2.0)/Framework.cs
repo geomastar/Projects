@@ -44,7 +44,16 @@ namespace Metal_Lynch__v2._0_
                 //the window.
             };
 
-            framework_Game = new _1v1(this, true);
+            Random RNG = new Random();
+            switch (RNG.Next(2))
+            {
+                case (0):
+                    framework_Game = new Training(this, true);
+                    break;
+                case (1):
+                    framework_Game = new _1v1(this, true);
+                    break;
+            }
 
             framework_Menu = new MainMenu(this);
 
