@@ -100,6 +100,10 @@ namespace Metal_Lynch__v2._0_
                 Height = 450,
                 Width = 1280,
                 Background = new ImageBrush(game_SkyTexture)
+                {
+                    Viewport = new Rect(0, 0, 0.5, 0.5),
+                    //TileMode = TileMode.Tile
+                }
             };
             game_GUICanvas = new Canvas()
             {
