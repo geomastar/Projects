@@ -93,23 +93,23 @@ namespace Metal_Lynch__v2._0_
 
             game_SkyTexture = new BitmapImage(new Uri(@"Resources/Sky texture.png", UriKind.Relative));
             game_SteelTexture = new BitmapImage(new Uri(@"Resources/GUI texture.png", UriKind.Relative));
-            //Selects the images for the two textures.            
+            //Selects the images for the two textures.
 
             game_MainCanvas = new Canvas()
             {
                 Height = 450,
                 Width = 1280,
                 Background = new ImageBrush(game_SkyTexture)
-                {
-                    Viewport = new Rect(0, 0, 1, 1),
-                    //TileMode = TileMode.Tile
-                }
             };
             game_GUICanvas = new Canvas()
             {
                 Height = 240,
                 Width = 1280,
                 Background = new ImageBrush(game_SteelTexture)
+                {
+                    Viewport = new Rect(0, 0, 1d/9.6, 1d/1.8),
+                    TileMode = TileMode.Tile
+                }
             };
             //Instantiates the two Canvas objects, giving them heights
             //and widths, as well as applying their textures.

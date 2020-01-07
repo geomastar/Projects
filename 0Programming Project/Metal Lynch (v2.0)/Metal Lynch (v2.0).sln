@@ -69,6 +69,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 		Metal Lynch (v2.0)\Resources\GUI texture.png = Metal Lynch (v2.0)\Resources\GUI texture.png
 		Metal Lynch (v2.0)\Resources\Sky texture.png = Metal Lynch (v2.0)\Resources\Sky texture.png
 		Metal Lynch (v2.0)\Resources\Tank sprite.png = Metal Lynch (v2.0)\Resources\Tank sprite.png
+		Metal Lynch (v2.0)\Resources\Target sprite.png = Metal Lynch (v2.0)\Resources\Target sprite.png
 	EndProjectSection
 EndProject
 Global
