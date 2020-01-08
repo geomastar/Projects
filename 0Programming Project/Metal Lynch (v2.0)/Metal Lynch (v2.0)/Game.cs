@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,6 +32,11 @@ namespace Metal_Lynch__v2._0_
         protected MessageBox game_MessageBox;
         protected AimingIcon game_AimingIcon;
         protected FireButton game_FireButton;
+
+        protected MediaPlayer game_MediaPlayer;
+        protected Uri game_TankMoveSoundUri;
+        protected Uri game_TankFireSoundUri;
+        protected Uri game_ExplosionSoundUri;
 
         protected BitmapImage game_SkyTexture;
         protected BitmapImage game_SteelTexture;
@@ -90,6 +96,11 @@ namespace Metal_Lynch__v2._0_
         {
             game_Framework = framework;
             //Assigns the framework parameter to the variable.
+
+            game_MediaPlayer = new MediaPlayer();
+            game_TankMoveSoundUri = new Uri(@"Resources/Tank Move sound effect.mp3", UriKind.Relative);
+            game_TankFireSoundUri = new Uri(@"Resources/Tank Fire sound effect.mp3", UriKind.Relative);
+            game_ExplosionSoundUri = new Uri(@"Resources/Explosion sound effect.mp3", UriKind.Relative);
 
             game_SkyTexture = new BitmapImage(new Uri(@"Resources/Sky texture.png", UriKind.Relative));
             game_SteelTexture = new BitmapImage(new Uri(@"Resources/GUI texture.png", UriKind.Relative));
@@ -364,6 +375,10 @@ namespace Metal_Lynch__v2._0_
                     game_AimingIcon.GetInitialVelocity(),
                     game_AimingIcon.GetTrajectoryDirection());
                 //Starts the trajectory of the Projectile.
+
+                game_MediaPlayer.Open(game_TankFireSoundUri);
+                game_MediaPlayer.Volume = 1;
+                game_MediaPlayer.Play();
 
                 game_CurrentPlayer.FireProjectile();
                 //Increments the projectiles fired stat of the tank firing a projectile.

@@ -86,7 +86,7 @@ namespace Metal_Lynch__v2._0_
 
             path = new Path()
             {
-                //Stroke = Brushes.Blue,
+                Stroke = Brushes.Blue,
                 Fill = new ImageBrush(new TransformedBitmap(
                     tank_Sprite, tankSprite_ScaleTransform)),
                 StrokeThickness = 2,
