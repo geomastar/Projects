@@ -96,7 +96,11 @@ namespace Metal_Lynch__v2._0_
             path = new Path()
             {
                 Stroke = Brushes.Brown,
-                Fill = new ImageBrush(map_DirtTexture),
+                Fill = new ImageBrush(map_DirtTexture)
+                {
+                    Viewport = new Rect(0, 0, 1d / 12.8, 1d / 1.5),
+                    TileMode = TileMode.Tile
+                },
                 StrokeThickness = 2,
                 Data = geometry
                 //Instantiates the Path object that will define the Map's
