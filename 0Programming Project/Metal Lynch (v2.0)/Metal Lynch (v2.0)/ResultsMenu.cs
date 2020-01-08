@@ -94,6 +94,8 @@ namespace Metal_Lynch__v2._0_
 
         private void MainMenuButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            PlayClickBackwardSound();
+
             Random RNG = new Random();
             switch (RNG.Next(2))
             {
@@ -109,6 +111,8 @@ namespace Metal_Lynch__v2._0_
 
         private void PlayAgainButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            PlayClickForwardSound();
+
             if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(Training)))
             {
                 menu_Framework.ChangeGameMode(Framework.GameModes.Training, false);

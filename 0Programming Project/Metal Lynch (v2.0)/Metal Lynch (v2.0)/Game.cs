@@ -97,7 +97,7 @@ namespace Metal_Lynch__v2._0_
             game_Framework = framework;
             //Assigns the framework parameter to the variable.
 
-            game_MediaPlayer = new MediaPlayer();
+            game_MediaPlayer = new MediaPlayer() { Volume = 0.1 };
             game_TankMoveSoundUri = new Uri(@"Resources/Tank Move sound effect.mp3", UriKind.Relative);
             game_TankFireSoundUri = new Uri(@"Resources/Tank Fire sound effect.mp3", UriKind.Relative);
             game_ExplosionSoundUri = new Uri(@"Resources/Explosion sound effect.mp3", UriKind.Relative);
@@ -268,7 +268,6 @@ namespace Metal_Lynch__v2._0_
                             & !intersectionFound)
                         {
                             game_MediaPlayer.Open(game_ExplosionSoundUri);
-                            game_MediaPlayer.Volume = 0.1;
                             game_MediaPlayer.Play();
 
                             EndTurn(tank.TakeDamage(game_Projectile));
@@ -283,7 +282,6 @@ namespace Metal_Lynch__v2._0_
                         & !intersectionFound)
                     {
                         game_MediaPlayer.Open(game_ExplosionSoundUri);
-                        game_MediaPlayer.Volume = 0.1;
                         game_MediaPlayer.Play();
 
                         EndTurn(0);
@@ -377,7 +375,6 @@ namespace Metal_Lynch__v2._0_
             if (!game_AimingIcon.IconCentred())
             {
                 game_MediaPlayer.Open(game_TankFireSoundUri);
-                game_MediaPlayer.Volume = 0.1;
                 game_MediaPlayer.Play();
 
                 game_Projectile.SetAndStartTrajectory
@@ -401,6 +398,8 @@ namespace Metal_Lynch__v2._0_
 
         public void ToggleDemoMode()
         {
+            if (game_DemoMode) { game_MediaPlayer.Volume *= 5; }
+            else { game_MediaPlayer.Volume /= 5; }
             game_DemoMode = !game_DemoMode;
             game_FireButton.Toggle();
             //Toggles the game_DemoMode variable as well as the FireButton
@@ -441,7 +440,6 @@ namespace Metal_Lynch__v2._0_
             }
 
             game_MediaPlayer.Open(game_TankFireSoundUri);
-            game_MediaPlayer.Volume = 0.1;
             game_MediaPlayer.Play();
 
             game_Projectile.SetAndStartTrajectory

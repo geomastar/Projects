@@ -64,11 +64,15 @@ namespace Metal_Lynch__v2._0_
 
         private void ResumeButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            PlayClickForwardSound();
+
             menu_Framework.GetFramework_Game().TogglePause();
         }
 
         private void EndButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            PlayClickBackwardSound();
+
             menu_Framework.GetFramework_Game().EndGame();
         }
     }

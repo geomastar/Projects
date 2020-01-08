@@ -93,11 +93,15 @@ namespace Metal_Lynch__v2._0_
 
         private void PlayButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            PlayClickForwardSound();
+
             menu_Framework.ChangeMenu(Framework.Menus.GameMenu);
         }
 
         private void QuitButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            PlayClickBackwardSound();
+
             menu_Framework.GetFramework_Window().Close();
         }
     }

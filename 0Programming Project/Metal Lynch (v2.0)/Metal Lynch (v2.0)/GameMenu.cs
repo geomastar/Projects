@@ -124,6 +124,8 @@ namespace Metal_Lynch__v2._0_
 
         private void PlayButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            PlayClickForwardSound();
+
             if (gameMenu_ModeSelector.SelectedItem == gameMenu_TrainingComboBoxItem)
             {
                 menu_Framework.ChangeGameMode(Framework.GameModes.Training, false);
@@ -141,6 +143,8 @@ namespace Metal_Lynch__v2._0_
 
         private void MainMenuButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            PlayClickBackwardSound();
+
             menu_Framework.ChangeMenu(Framework.Menus.MainMenu);
         }
 

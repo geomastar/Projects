@@ -19,6 +19,10 @@ namespace Metal_Lynch__v2._0_
         protected Path menu_BackgroundPath;
         protected RectangleGeometry menu_BackgroundRectangleGeometry;
 
+        protected MediaPlayer menu_MediaPlayer;
+        protected Uri menu_ClickForwardSoundUri;
+        protected Uri menu_ClickBackwardSoundUri;
+
         protected void AddToCanvas()
         {
             menu_Framework.GetFramework_Canvas().Children.Add(menu_Canvas);
@@ -29,6 +33,10 @@ namespace Metal_Lynch__v2._0_
         {
             menu_Framework = framework;
             //Assigns the framework parameter to the variable.
+
+            menu_MediaPlayer = new MediaPlayer();
+            menu_ClickForwardSoundUri = new Uri(@"Resources/Click Forward sound effect.mp3", UriKind.Relative);
+            menu_ClickBackwardSoundUri = new Uri(@"Resources/Click Backward sound effect.mp3", UriKind.Relative);
 
             menu_Canvas = new Canvas()
             {
@@ -61,6 +69,20 @@ namespace Metal_Lynch__v2._0_
             };
             menu_Canvas.Children.Add(menu_BackgroundPath);
             //Adds the Path to the Menu Canvas.
+        }
+
+        protected void PlayClickForwardSound()
+        {
+            menu_MediaPlayer.Open(menu_ClickForwardSoundUri);
+            menu_MediaPlayer.Volume = 0.1;
+            menu_MediaPlayer.Play();
+
+        }
+        protected void PlayClickBackwardSound()
+        {
+            menu_MediaPlayer.Open(menu_ClickBackwardSoundUri);
+            menu_MediaPlayer.Volume = 0.1;
+            menu_MediaPlayer.Play();
         }
 
         public Canvas GetMenu_Canvas()
