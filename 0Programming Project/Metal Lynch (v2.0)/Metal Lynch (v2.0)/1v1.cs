@@ -142,7 +142,9 @@ namespace Metal_Lynch__v2._0_
 
             if (!game_DemoMode)
             {
-                game_FireButton.Toggle();
+                game_Framework.GetFramework_Window().KeyDown -= EscKeyPress;
+
+                if (!game_Projectile.GetProjectile_InMotion()) { game_FireButton.Toggle(); }
 
                 game_Stats.winner = game_Winner;
 

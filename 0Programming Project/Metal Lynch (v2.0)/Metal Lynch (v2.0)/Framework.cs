@@ -64,6 +64,7 @@ namespace Metal_Lynch__v2._0_
         public void ChangeGameMode(GameModes gameMode, bool demoMode)
         {
             framework_Canvas.Children.Remove(framework_Game.GetGame_Grid());
+            framework_Game.DeactivateGame();
 
             switch (gameMode)
             {

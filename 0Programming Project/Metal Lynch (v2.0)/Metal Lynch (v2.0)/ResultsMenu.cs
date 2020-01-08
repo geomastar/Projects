@@ -94,6 +94,16 @@ namespace Metal_Lynch__v2._0_
 
         private void MainMenuButtonClickEvent(object sender, RoutedEventArgs e)
         {
+            Random RNG = new Random();
+            switch (RNG.Next(2))
+            {
+                case (0):
+                    menu_Framework.ChangeGameMode(Framework.GameModes.Training, true);
+                    break;
+                case (1):
+                    menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true);
+                    break;
+            }
             menu_Framework.ChangeMenu(Framework.Menus.MainMenu);
         }
 

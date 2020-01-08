@@ -45,7 +45,9 @@ namespace Metal_Lynch__v2._0_
         public override void EndGame()
         {
             CompositionTarget.Rendering -= UpdateEvent;
-            game_FireButton.Toggle();
+            game_Framework.GetFramework_Window().KeyDown -= EscKeyPress;
+
+            if (!game_Projectile.GetProjectile_InMotion()) { game_FireButton.Toggle(); }
 
             game_Stats.winner = game_Winner;
             game_Stats.player1DamageDealt = training_Player1.GetTank_DamageDealt();

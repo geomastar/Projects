@@ -267,6 +267,10 @@ namespace Metal_Lynch__v2._0_
                         if (projectileEnemyIntersection == IntersectionDetail.Intersects
                             & !intersectionFound)
                         {
+                            game_MediaPlayer.Open(game_ExplosionSoundUri);
+                            game_MediaPlayer.Volume = 0.1;
+                            game_MediaPlayer.Play();
+
                             EndTurn(tank.TakeDamage(game_Projectile));
                             game_CurrentPlayer.DealDamage(game_Projectile);
                             intersectionFound = true;
@@ -278,6 +282,10 @@ namespace Metal_Lynch__v2._0_
                     if ((projectileMapIntersection == IntersectionDetail.Intersects | projectileMapIntersection == IntersectionDetail.FullyInside)
                         & !intersectionFound)
                     {
+                        game_MediaPlayer.Open(game_ExplosionSoundUri);
+                        game_MediaPlayer.Volume = 0.1;
+                        game_MediaPlayer.Play();
+
                         EndTurn(0);
                         intersectionFound = true;
                         //If the projectile hits the map it stops the while loop.
@@ -360,7 +368,7 @@ namespace Metal_Lynch__v2._0_
                 game_Framework.GetFramework_Canvas().Children.Remove(game_Framework.GetFramework_Menu().GetMenu_Canvas());
                 CompositionTarget.Rendering += UpdateEvent;
             }
-            game_FireButton.Toggle();
+            if (!game_Projectile.GetProjectile_InMotion()) { game_FireButton.Toggle(); }
             game_Paused = !game_Paused;
         }
 
@@ -368,6 +376,10 @@ namespace Metal_Lynch__v2._0_
         {
             if (!game_AimingIcon.IconCentred())
             {
+                game_MediaPlayer.Open(game_TankFireSoundUri);
+                game_MediaPlayer.Volume = 0.1;
+                game_MediaPlayer.Play();
+
                 game_Projectile.SetAndStartTrajectory
                     (new Point(game_CurrentPlayer.GetTank_TranslateTransform().X,
                         game_CurrentPlayer.GetTank_TranslateTransform().Y),
@@ -375,10 +387,6 @@ namespace Metal_Lynch__v2._0_
                     game_AimingIcon.GetInitialVelocity(),
                     game_AimingIcon.GetTrajectoryDirection());
                 //Starts the trajectory of the Projectile.
-
-                game_MediaPlayer.Open(game_TankFireSoundUri);
-                game_MediaPlayer.Volume = 1;
-                game_MediaPlayer.Play();
 
                 game_CurrentPlayer.FireProjectile();
                 //Increments the projectiles fired stat of the tank firing a projectile.
@@ -432,6 +440,10 @@ namespace Metal_Lynch__v2._0_
                 calcAngle = calcAngle * -1;
             }
 
+            game_MediaPlayer.Open(game_TankFireSoundUri);
+            game_MediaPlayer.Volume = 0.1;
+            game_MediaPlayer.Play();
+
             game_Projectile.SetAndStartTrajectory
                 (new Point(game_CurrentPlayer.GetTank_TranslateTransform().X,
                     game_CurrentPlayer.GetTank_TranslateTransform().Y),
@@ -439,6 +451,12 @@ namespace Metal_Lynch__v2._0_
                 RNG.Next(60, 100),
                 game_AngleDirection);
                 //Starts a random trajectory for the Projectile.
+        }
+
+        public void DeactivateGame()
+        {
+            CompositionTarget.Rendering -= UpdateEvent;
+            //Removes the UpdateEvent from the Rendering EventHandler.
         }
 
         public Canvas GetGame_MainCanvas()
