@@ -2,3 +2,4 @@
 -Made game mode selection at start of game random.
 -Added new sky texture.
 -Added new tileable steel texture.
+-Sound effects.
