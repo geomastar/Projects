@@ -140,11 +140,13 @@ namespace Metal_Lynch__v2._0_
         {
             CompositionTarget.Rendering -= UpdateEvent;
 
+            game_MessageBox.EndGameMessage();
+
             if (!game_DemoMode)
             {
                 game_Framework.GetFramework_Window().KeyDown -= EscKeyPress;
 
-                if (!game_Projectile.GetProjectile_InMotion()) { game_FireButton.Toggle(); }
+                if (game_FireButton.GetFireButton_IsEnabled()) { game_FireButton.Toggle(); }
 
                 game_Stats.winner = game_Winner;
 

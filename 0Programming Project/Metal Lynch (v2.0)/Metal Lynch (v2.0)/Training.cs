@@ -47,9 +47,12 @@ namespace Metal_Lynch__v2._0_
             CompositionTarget.Rendering -= UpdateEvent;
             game_Framework.GetFramework_Window().KeyDown -= EscKeyPress;
 
-            if (!game_Projectile.GetProjectile_InMotion()) { game_FireButton.Toggle(); }
-
             game_Stats.winner = game_Winner;
+
+            game_MessageBox.EndGameMessage();
+
+            if (game_FireButton.GetFireButton_IsEnabled()) { game_FireButton.Toggle(); }
+
             game_Stats.player1DamageDealt = training_Player1.GetTank_DamageDealt();
             game_Stats.player1DistanceTravelled = training_Player1.GetTank_DistanceTravelled();
             game_Stats.player1ProjectilesFired = training_Player1.GetTank_ProjectilesFired();

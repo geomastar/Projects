@@ -50,6 +50,34 @@ namespace Metal_Lynch__v2._0_
             //belongs to.
         }
 
+
+        public void StartGameMessage(bool demoMode)
+        {
+            messageBox_TextBlock.Text += "Starting ";
+
+            if (game.GetType().Equals(typeof(Training)))
+            {
+                messageBox_TextBlock.Text += "Training";
+            }
+            else if (game.GetType().Equals(typeof(_1v1)))
+            {
+                messageBox_TextBlock.Text += "1v1";
+
+                if (!demoMode)
+                {
+                    messageBox_TextBlock.Text += " between "
+                        + game.getGame_Stats().player1Username + " and "
+                        + game.getGame_Stats().player2Username;
+                }
+            }
+
+            if (demoMode) { messageBox_TextBlock.Text += " in demo mode"; }
+
+            messageBox_TextBlock.Text += ".\n\n";
+
+            messageBox_ScrollViewer.ScrollToEnd();
+        }
+
         public void EndTurnMessage(int damageDealt, int turn)
         {
             messageBox_TextBlock.Text += ">End of turn " + turn + ".\n   " +
@@ -60,6 +88,24 @@ namespace Metal_Lynch__v2._0_
 
             messageBox_ScrollViewer.ScrollToEnd();
             //Scrolls to the end of the MessageBox.
+        }
+
+        public void EndGameMessage()
+        {
+            messageBox_TextBlock.Text += "\nEnd of game. ";
+            
+            if (game.getGame_Stats().winner == null)
+            {
+                messageBox_TextBlock.Text += "Nobody";
+            }
+            else
+            {
+                messageBox_TextBlock.Text += game.getGame_Stats().winner.GetTank_Username();
+            }
+
+            messageBox_TextBlock.Text += " Won!\n";
+
+            messageBox_ScrollViewer.ScrollToEnd();
         }
     }
 }

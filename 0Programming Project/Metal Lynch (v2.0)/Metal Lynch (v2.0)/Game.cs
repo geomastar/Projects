@@ -176,6 +176,8 @@ namespace Metal_Lynch__v2._0_
             //activates the demo mode.
             
             game_Framework.GetFramework_Window().KeyDown += EscKeyPress;
+
+            game_MessageBox.StartGameMessage(demoMode);
         }
 
         protected void BaseUpdateEvent(Tank[] enemyTankArray)

@@ -122,16 +122,15 @@ namespace Metal_Lynch__v2._0_
 
         public double GetXVelocity()
         {
-            double XVelocity = Convert.ToInt32(
-                Math.Cos(projectile_AngleRadians) *
-                projectile_InitialVelocity);
+            double XVelocity = Math.Cos(projectile_AngleRadians) *
+                projectile_InitialVelocity;
             if (XVelocity < 0)
             {
-                XVelocity = XVelocity * -1;
+                XVelocity *= -1;
             }
             if (XVelocity == 0)
             {
-                XVelocity++;
+                //XVelocity++;
             }
 
             return XVelocity;
