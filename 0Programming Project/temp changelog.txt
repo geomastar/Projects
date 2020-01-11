@@ -1,6 +1,0 @@
-	--changelog--
--Made game mode selection at start of game random.
--Added new sky texture.
--Added new tileable steel texture.
--Added Sound effects.
--Added new messages for starting and ending a game.

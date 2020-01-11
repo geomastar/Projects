@@ -400,8 +400,8 @@ namespace Metal_Lynch__v2._0_
 
         public void ToggleDemoMode()
         {
-            if (game_DemoMode) { game_MediaPlayer.Volume *= 5; }
-            else { game_MediaPlayer.Volume /= 5; }
+            if (game_DemoMode) { game_MediaPlayer.Volume *= 2; }
+            else { game_MediaPlayer.Volume /= 2; }
             game_DemoMode = !game_DemoMode;
             game_FireButton.Toggle();
             //Toggles the game_DemoMode variable as well as the FireButton

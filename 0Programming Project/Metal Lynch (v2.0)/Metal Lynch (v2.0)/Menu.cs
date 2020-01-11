@@ -34,7 +34,7 @@ namespace Metal_Lynch__v2._0_
             menu_Framework = framework;
             //Assigns the framework parameter to the variable.
 
-            menu_MediaPlayer = new MediaPlayer();
+            menu_MediaPlayer = new MediaPlayer() { Volume = 0.1 };
             menu_ClickForwardSoundUri = new Uri(@"Resources/Click Forward sound effect.mp3", UriKind.Relative);
             menu_ClickBackwardSoundUri = new Uri(@"Resources/Click Backward sound effect.mp3", UriKind.Relative);
 
@@ -74,14 +74,12 @@ namespace Metal_Lynch__v2._0_
         protected void PlayClickForwardSound()
         {
             menu_MediaPlayer.Open(menu_ClickForwardSoundUri);
-            menu_MediaPlayer.Volume = 0.1;
             menu_MediaPlayer.Play();
 
         }
         protected void PlayClickBackwardSound()
         {
             menu_MediaPlayer.Open(menu_ClickBackwardSoundUri);
-            menu_MediaPlayer.Volume = 0.1;
             menu_MediaPlayer.Play();
         }
 
