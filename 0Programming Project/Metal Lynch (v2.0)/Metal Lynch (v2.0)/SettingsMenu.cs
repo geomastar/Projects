@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Metal_Lynch__v2._0_
+﻿namespace Metal_Lynch__v2._0_
 {
     public class SettingsMenu : Menu
     {
