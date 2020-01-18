@@ -34,7 +34,7 @@ namespace Metal_Lynch__v2._0_
         {
             BaseConstructor(framework, 700, 420);
 
-            resultsMenu_GameStats = menu_Framework.GetFramework_Game().getGame_Stats();
+            resultsMenu_GameStats = menu_Framework.GetFramework_Game().GetGame_Stats();
 
             resultsMenu_ResultText = new TextBlock()
             {

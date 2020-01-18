@@ -61,8 +61,8 @@ namespace Metal_Lynch__v2._0_
                 if (!demoMode)
                 {
                     messageBox_TextBlock.Text += " between "
-                        + game.getGame_Stats().player1Username + " and "
-                        + game.getGame_Stats().player2Username;
+                        + game.GetGame_Stats().player1Username + " and "
+                        + game.GetGame_Stats().player2Username;
                 }
             }
 
@@ -89,13 +89,13 @@ namespace Metal_Lynch__v2._0_
         {
             messageBox_TextBlock.Text += "\nEnd of game. ";
             
-            if (game.getGame_Stats().winner == null)
+            if (game.GetGame_Stats().winner == null)
             {
                 messageBox_TextBlock.Text += "Nobody";
             }
             else
             {
-                messageBox_TextBlock.Text += game.getGame_Stats().winner.GetTank_Username();
+                messageBox_TextBlock.Text += game.GetGame_Stats().winner.GetTank_Username();
             }
 
             messageBox_TextBlock.Text += " Won!\n";

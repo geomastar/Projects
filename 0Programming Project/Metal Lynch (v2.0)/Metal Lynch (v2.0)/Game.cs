@@ -472,7 +472,7 @@ namespace Metal_Lynch__v2._0_
             //Returns the Grid.
         }
 
-        public GameStats getGame_Stats()
+        public GameStats GetGame_Stats()
         {
             return game_Stats;
             //Returns the game stats.
