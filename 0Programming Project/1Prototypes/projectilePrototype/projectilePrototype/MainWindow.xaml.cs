@@ -32,7 +32,7 @@ namespace projectilePrototype
 
             theProjectile = new Projectile(20, 20, 300, 300,
                 95, 50,
-                10);
+                4);
 
             theCanvas.Children.Add(theProjectile.GetProjectile_Path());
         }
