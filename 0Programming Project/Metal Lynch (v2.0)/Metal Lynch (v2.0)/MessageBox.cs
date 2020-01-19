@@ -45,7 +45,6 @@ namespace Metal_Lynch__v2._0_
             //belongs to.
         }
 
-
         public void StartGameMessage(bool demoMode)
         {
             messageBox_TextBlock.Text += "Starting ";
