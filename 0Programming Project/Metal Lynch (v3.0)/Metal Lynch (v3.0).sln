@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metal Lynch (v3.0)", "Metal Lynch (v3.0)\Metal Lynch (v3.0).csproj", "{A620B5D5-4522-408D-9F5A-53AE700D0F5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A620B5D5-4522-408D-9F5A-53AE700D0F5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A620B5D5-4522-408D-9F5A-53AE700D0F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A620B5D5-4522-408D-9F5A-53AE700D0F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A620B5D5-4522-408D-9F5A-53AE700D0F5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {144CF6F1-BD63-4C65-A6CE-319766C9BE8B}
+	EndGlobalSection
+EndGlobal
