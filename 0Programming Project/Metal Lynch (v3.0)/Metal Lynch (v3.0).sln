@@ -5,6 +5,76 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metal Lynch (v3.0)", "Metal Lynch (v3.0)\Metal Lynch (v3.0).csproj", "{A620B5D5-4522-408D-9F5A-53AE700D0F5E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{27C88507-70A9-4D79-885C-764BA4982232}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\Framework.cs = Metal Lynch (v3.0)\Framework.cs
+		Metal Lynch (v3.0)\MainWindow.xaml = Metal Lynch (v3.0)\MainWindow.xaml
+		Metal Lynch (v3.0)\MainWindow.xaml.cs = Metal Lynch (v3.0)\MainWindow.xaml.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{CB94B83D-02B4-4F7E-A1C7-C12E8A666A9D}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\Game.cs = Metal Lynch (v3.0)\Game.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{2F9A8A38-C6BA-4B00-BDA8-B07539E1658F}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\1v1.cs = Metal Lynch (v3.0)\1v1.cs
+		Metal Lynch (v3.0)\Training.cs = Metal Lynch (v3.0)\Training.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GUIObject", "GUIObject", "{660D8638-3599-4997-9FDE-F9E2A2838D02}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\GUIObject.cs = Metal Lynch (v3.0)\GUIObject.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{0580AAF2-096A-4029-A108-06017B165C7B}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\AimingIcon.cs = Metal Lynch (v3.0)\AimingIcon.cs
+		Metal Lynch (v3.0)\FireButton.cs = Metal Lynch (v3.0)\FireButton.cs
+		Metal Lynch (v3.0)\MessageBox.cs = Metal Lynch (v3.0)\MessageBox.cs
+		Metal Lynch (v3.0)\ProgressBar.cs = Metal Lynch (v3.0)\ProgressBar.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameObject", "GameObject", "{E7915126-48B7-450F-BDE1-729A4B1D79F9}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\GameObject.cs = Metal Lynch (v3.0)\GameObject.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{08B8664A-99DA-4BE8-BC9D-30B6105F2C4B}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\Map.cs = Metal Lynch (v3.0)\Map.cs
+		Metal Lynch (v3.0)\Projectile.cs = Metal Lynch (v3.0)\Projectile.cs
+		Metal Lynch (v3.0)\Tank.cs = Metal Lynch (v3.0)\Tank.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Menu", "Menu", "{68936B7D-2EDE-42C9-B35B-98645E258283}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\Menu.cs = Metal Lynch (v3.0)\Menu.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{329804C2-409A-48B0-A7A3-585245F228C5}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\GameMenu.cs = Metal Lynch (v3.0)\GameMenu.cs
+		Metal Lynch (v3.0)\MainMenu.cs = Metal Lynch (v3.0)\MainMenu.cs
+		Metal Lynch (v3.0)\PauseMenu.cs = Metal Lynch (v3.0)\PauseMenu.cs
+		Metal Lynch (v3.0)\ResultsMenu.cs = Metal Lynch (v3.0)\ResultsMenu.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{52A3A9C4-32A1-4E80-BA88-DD51512E633C}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\Resources\Click Backward sound effect.mp3 = Metal Lynch (v3.0)\Resources\Click Backward sound effect.mp3
+		Metal Lynch (v3.0)\Resources\Click Forward sound effect.mp3 = Metal Lynch (v3.0)\Resources\Click Forward sound effect.mp3
+		Metal Lynch (v3.0)\Resources\Dirt texture.png = Metal Lynch (v3.0)\Resources\Dirt texture.png
+		Metal Lynch (v3.0)\Resources\Explosion sound effect.mp3 = Metal Lynch (v3.0)\Resources\Explosion sound effect.mp3
+		Metal Lynch (v3.0)\Resources\GUI texture.png = Metal Lynch (v3.0)\Resources\GUI texture.png
+		Metal Lynch (v3.0)\Resources\Sky texture.png = Metal Lynch (v3.0)\Resources\Sky texture.png
+		Metal Lynch (v3.0)\Resources\Tank Fire sound effect.mp3 = Metal Lynch (v3.0)\Resources\Tank Fire sound effect.mp3
+		Metal Lynch (v3.0)\Resources\Tank Move sound effect.mp3 = Metal Lynch (v3.0)\Resources\Tank Move sound effect.mp3
+		Metal Lynch (v3.0)\Resources\Tank sprite.png = Metal Lynch (v3.0)\Resources\Tank sprite.png
+		Metal Lynch (v3.0)\Resources\Target sprite.png = Metal Lynch (v3.0)\Resources\Target sprite.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +88,17 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CB94B83D-02B4-4F7E-A1C7-C12E8A666A9D} = {27C88507-70A9-4D79-885C-764BA4982232}
+		{2F9A8A38-C6BA-4B00-BDA8-B07539E1658F} = {CB94B83D-02B4-4F7E-A1C7-C12E8A666A9D}
+		{660D8638-3599-4997-9FDE-F9E2A2838D02} = {27C88507-70A9-4D79-885C-764BA4982232}
+		{0580AAF2-096A-4029-A108-06017B165C7B} = {660D8638-3599-4997-9FDE-F9E2A2838D02}
+		{E7915126-48B7-450F-BDE1-729A4B1D79F9} = {27C88507-70A9-4D79-885C-764BA4982232}
+		{08B8664A-99DA-4BE8-BC9D-30B6105F2C4B} = {E7915126-48B7-450F-BDE1-729A4B1D79F9}
+		{68936B7D-2EDE-42C9-B35B-98645E258283} = {27C88507-70A9-4D79-885C-764BA4982232}
+		{329804C2-409A-48B0-A7A3-585245F228C5} = {68936B7D-2EDE-42C9-B35B-98645E258283}
+		{52A3A9C4-32A1-4E80-BA88-DD51512E633C} = {27C88507-70A9-4D79-885C-764BA4982232}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {144CF6F1-BD63-4C65-A6CE-319766C9BE8B}
