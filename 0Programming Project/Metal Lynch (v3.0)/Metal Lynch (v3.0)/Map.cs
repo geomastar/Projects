@@ -26,8 +26,8 @@ namespace Metal_Lynch__v3._0_
 
             map_BezierPointCollection = new PointCollection()
             {
-                new Point(0, 300), //P1
-                new Point(1280, 300), //P2
+                new Point(0, 200), //P1
+                new Point(1280, 200), //P2
                 new Point(1280, 300) //P3
                 //Instantiates the PointCollection object of the Bezier curve.
                 //Defines the three latter control points of the Bezier curve
