@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,6 +15,20 @@ namespace Metal_Lynch__v3._0_
 
         private Game framework_Game;
         private Menu framework_Menu;
+
+        private List<MapData> framework_MapDataList;
+
+        public struct MapData
+        {
+            public string mapName;
+            private Point[] pointArray;
+
+            public MapData(string name, Point[] points)
+            {
+                mapName = name;
+                pointArray = points;
+            }
+        }
 
         public enum GameModes
         {
@@ -52,6 +70,9 @@ namespace Metal_Lynch__v3._0_
             }
 
             framework_Menu = new MainMenu(this);
+
+            framework_MapDataList = new List<MapData>();
+            ReadMapDataFromFile();
 
             framework_Window.Content = framework_Canvas;
             //Adds the Canvas to the Window.
@@ -101,6 +122,39 @@ namespace Metal_Lynch__v3._0_
             Panel.SetZIndex(framework_Menu.GetMenu_Canvas(), 1);
         }
 
+        private void ReadMapDataFromFile()
+        {
+            string[] mapDataLines = File.ReadAllLines(Directory.GetCurrentDirectory() + @"\Resources/Maps.txt");
+
+            string linePattern = @"'\w*'{(\(\d+,\d+\))+}";
+            string namePattern = @"'\w*'";
+            string coordinatePattern = @"\d+,\d+";
+
+            foreach (string mapDataLine in mapDataLines)
+            {
+                if (Regex.IsMatch(mapDataLine, linePattern))
+                {
+                    string name = Regex.Match(mapDataLine, namePattern).Value.Substring(1, Regex.Match(mapDataLine, namePattern).Value.Length - 2);
+
+                    MatchCollection coordinates = Regex.Matches(mapDataLine, coordinatePattern);
+
+                    Point[] points = new Point[coordinates.Count];
+
+                    int i = 0;
+                    foreach (Match coordinate in coordinates)
+                    {
+                        string[] coordinateValues = coordinate.Value.Split(',');
+
+                        points[i] = new Point(Convert.ToDouble(coordinateValues[0]), Convert.ToDouble(coordinateValues[1]));
+
+                        i++;
+                    }
+
+                    framework_MapDataList.Add(new MapData(name, points));
+                }
+            }
+        }
+
         public Window GetFramework_Window()
         {
             return framework_Window;
@@ -123,6 +177,12 @@ namespace Metal_Lynch__v3._0_
         {
             return framework_Menu;
             //Returns the Menu.
+        }
+
+        public List<MapData> GetFramework_MapDataList()
+        {
+            return framework_MapDataList;
+            //Returns the mapDataList.
         }
     }
 }

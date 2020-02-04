@@ -59,8 +59,6 @@ namespace Metal_Lynch__v3._0_
 
         private void ResumeButtonClickEvent(object sender, RoutedEventArgs e)
         {
-            PlayClickForwardSound();
-
             menu_Framework.GetFramework_Game().TogglePause();
         }
 

@@ -68,6 +68,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 		Metal Lynch (v3.0)\Resources\Dirt texture.png = Metal Lynch (v3.0)\Resources\Dirt texture.png
 		Metal Lynch (v3.0)\Resources\Explosion sound effect.mp3 = Metal Lynch (v3.0)\Resources\Explosion sound effect.mp3
 		Metal Lynch (v3.0)\Resources\GUI texture.png = Metal Lynch (v3.0)\Resources\GUI texture.png
+		Metal Lynch (v3.0)\Resources\Maps.txt = Metal Lynch (v3.0)\Resources\Maps.txt
 		Metal Lynch (v3.0)\Resources\Sky texture.png = Metal Lynch (v3.0)\Resources\Sky texture.png
 		Metal Lynch (v3.0)\Resources\Tank Fire sound effect.mp3 = Metal Lynch (v3.0)\Resources\Tank Fire sound effect.mp3
 		Metal Lynch (v3.0)\Resources\Tank Move sound effect.mp3 = Metal Lynch (v3.0)\Resources\Tank Move sound effect.mp3

@@ -10,6 +10,8 @@ namespace Metal_Lynch__v3._0_
         private Button gameMenu_PlayButton;
         private Button gameMenu_MainMenuButton;
 
+        private ComboBox gameMenu_MapSelector;
+
         private ComboBox gameMenu_ModeSelector;
         private ComboBoxItem gameMenu_TrainingComboBoxItem;
         private ComboBoxItem gameMenu_1v1ComboBoxItem;
@@ -55,7 +57,7 @@ namespace Metal_Lynch__v3._0_
 
         public GameMenu(Framework framework)
         {
-            BaseConstructor(framework, 640, 360);
+            BaseConstructor(framework, 640, 420);
 
             gameMenu_PlayButton = new Button()
             {
@@ -83,6 +85,24 @@ namespace Metal_Lynch__v3._0_
             menu_Canvas.Children.Add(gameMenu_MainMenuButton);
             //Adds the Main Menu Button to the Menu Canvas.
 
+            gameMenu_MapSelector = new ComboBox()
+            {
+                Width = 240,
+                Height = 50,
+                FontSize = 30,
+                FontStyle = FontStyles.Italic,
+                IsEditable = true,
+                IsReadOnly = true,
+                Text = "--Select Map--",
+                RenderTransform = new TranslateTransform(360, 170)
+            };
+            foreach (Framework.MapData mapData in menu_Framework.GetFramework_MapDataList())
+            {
+                gameMenu_MapSelector.Items.Add(new ComboBoxItem() { Content = mapData.mapName });
+            }
+            gameMenu_MapSelector.DropDownOpened += DropDownOpenedEvent;
+            menu_Canvas.Children.Add(gameMenu_MapSelector);
+
             gameMenu_1v1ComboBoxItem = new ComboBoxItem() { Content = "1v1" };
             gameMenu_TrainingComboBoxItem = new ComboBoxItem() { Content = "Training" };
 
@@ -95,23 +115,24 @@ namespace Metal_Lynch__v3._0_
                 IsEditable = true,
                 IsReadOnly = true,
                 Text = "--Select Mode--",
-                RenderTransform = new TranslateTransform(360, 170)
+                RenderTransform = new TranslateTransform(360, 230)
             };
             gameMenu_ModeSelector.Items.Add(gameMenu_TrainingComboBoxItem);
             gameMenu_ModeSelector.Items.Add(gameMenu_1v1ComboBoxItem);
-            gameMenu_ModeSelector.DropDownClosed += DropDownClosedEvent;
+            gameMenu_ModeSelector.DropDownClosed += ModeDropDownClosedEvent;
+            gameMenu_ModeSelector.DropDownOpened += DropDownOpenedEvent;
             menu_Canvas.Children.Add(gameMenu_ModeSelector);
 
             gameMenu_ModeDescriptor = new TextBlock()
             {
                 FontSize = 18,
                 FontStyle = FontStyles.Oblique,
-                RenderTransform = new TranslateTransform(640, 170)
+                RenderTransform = new TranslateTransform(640, 230)
             };
             menu_Canvas.Children.Add(gameMenu_ModeDescriptor);
 
-            gameMenu_Player1UsernamePrompt = new UsernamePrompt(1, 230);
-            gameMenu_Player2UsernamePrompt = new UsernamePrompt(2, 305);
+            gameMenu_Player1UsernamePrompt = new UsernamePrompt(1, 290);
+            gameMenu_Player2UsernamePrompt = new UsernamePrompt(2, 365);
 
             AddToCanvas();
             //Adds the Menu Canvas to the Framework Canvas.
@@ -143,8 +164,15 @@ namespace Metal_Lynch__v3._0_
             menu_Framework.ChangeMenu(Framework.Menus.MainMenu);
         }
 
-        private void DropDownClosedEvent(object sender, EventArgs e)
+        private void DropDownOpenedEvent(object sender, EventArgs e)
         {
+            PlayClickForwardSound();
+        }
+
+        private void ModeDropDownClosedEvent(object sender, EventArgs e)
+        {
+            PlayClickForwardSound();
+
             if (gameMenu_ModeSelector.SelectedItem == gameMenu_TrainingComboBoxItem)
             {
                 menu_Framework.ChangeGameMode(Framework.GameModes.Training, true);

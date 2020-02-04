@@ -32,6 +32,8 @@ namespace Metal_Lynch__v3._0_
         protected Uri game_TankMoveSoundUri;
         protected Uri game_TankFireSoundUri;
         protected Uri game_ExplosionSoundUri;
+        protected Uri game_ClickForwardSoundUri;
+        protected Uri game_ClickBackwardSoundUri;
 
         protected BitmapImage game_SkyTexture;
         protected BitmapImage game_SteelTexture;
@@ -96,6 +98,8 @@ namespace Metal_Lynch__v3._0_
             game_TankMoveSoundUri = new Uri(@"Resources/Tank Move sound effect.mp3", UriKind.Relative);
             game_TankFireSoundUri = new Uri(@"Resources/Tank Fire sound effect.mp3", UriKind.Relative);
             game_ExplosionSoundUri = new Uri(@"Resources/Explosion sound effect.mp3", UriKind.Relative);
+            game_ClickForwardSoundUri = new Uri(@"Resources/Click Forward sound effect.mp3", UriKind.Relative);
+            game_ClickBackwardSoundUri = new Uri(@"Resources/Click Backward sound effect.mp3", UriKind.Relative);
 
             game_SkyTexture = new BitmapImage(new Uri(@"Resources/Sky texture.png", UriKind.Relative));
             game_SteelTexture = new BitmapImage(new Uri(@"Resources/GUI texture.png", UriKind.Relative));
@@ -198,7 +202,7 @@ namespace Metal_Lynch__v3._0_
 
                     if (tankMapIntersection == IntersectionDetail.Intersects)
                     {
-                        tank.MoveUp();
+                        tank.MoveUp(); tank.MoveUp();
                         intersectionFound = true;
                         //Will stop the while loop if the tank intersects
                         //with the map, stopping gravity from pulling the
@@ -357,11 +361,17 @@ namespace Metal_Lynch__v3._0_
             {
                 CompositionTarget.Rendering -= UpdateEvent;
                 game_Framework.ChangeMenu(Framework.Menus.PauseMenu);
+
+                game_MediaPlayer.Open(game_ClickForwardSoundUri);
+                game_MediaPlayer.Play();
             }
             else
             {
                 game_Framework.GetFramework_Canvas().Children.Remove(game_Framework.GetFramework_Menu().GetMenu_Canvas());
                 CompositionTarget.Rendering += UpdateEvent;
+
+                game_MediaPlayer.Open(game_ClickBackwardSoundUri);
+                game_MediaPlayer.Play();
             }
             if (!game_Projectile.GetProjectile_InMotion()) { game_FireButton.Toggle(); }
             game_Paused = !game_Paused;
