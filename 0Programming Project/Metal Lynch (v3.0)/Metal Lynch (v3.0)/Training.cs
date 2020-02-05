@@ -8,9 +8,9 @@ namespace Metal_Lynch__v3._0_
         private Tank training_Player1;
         private Tank training_Target;
 
-        public Training(Framework framework, bool demoMode)
+        public Training(Framework framework, bool demoMode, Framework.MapData mapData)
         {
-            BaseConstructor(framework, demoMode);
+            BaseConstructor(framework, demoMode, mapData);
 
             training_Player1 = new Tank(this, "Player1", 0, -1, 320, 100);
             training_Target = new Tank(this, "Target", 0, -1, 900, 100);

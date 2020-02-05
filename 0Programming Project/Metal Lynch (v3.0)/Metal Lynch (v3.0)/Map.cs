@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -18,21 +19,20 @@ namespace Metal_Lynch__v3._0_
 
         private BitmapImage map_DirtTexture;
 
-        public Map(Game map_Game)
+        public Map(Game map_Game, Framework.MapData mapData)
         {
             game = map_Game;
             //Sets the game variable of the base class to the parameter
             //map_Game.
 
-            map_BezierPointCollection = new PointCollection()
+            map_BezierPointCollection = new PointCollection();
+            bool temp = false;
+            foreach (Point point in mapData.pointArray)
             {
-                new Point(0, 300), //P1
-                new Point(1280-15, 300), //P2
-                new Point(1280-15, 300) //P3
-                //Instantiates the PointCollection object of the Bezier curve.
-                //Defines the three latter control points of the Bezier curve
-                //of the Path object.
-            };
+                if (temp) { map_BezierPointCollection.Add(point); }
+                temp = true;
+            }
+
             map_PolyBezierSegment = new PolyBezierSegment()
             {
                 Points = map_BezierPointCollection
@@ -43,10 +43,10 @@ namespace Metal_Lynch__v3._0_
 
             map_LinePointCollection = new PointCollection()
             {
-                new Point(1280-15, 300),
-                new Point(1280-15, 450),
+                mapData.pointArray[mapData.pointArray.Length - 1],
+                new Point(1265, 450),
                 new Point(0, 450),
-                new Point(0, 300)
+                mapData.pointArray[0]
                 //Instantiates the PointCollection object of the line segment.
                 //Defines the points for the geometry for the bottom section of
                 //the map.
@@ -67,7 +67,7 @@ namespace Metal_Lynch__v3._0_
 
             map_PathFigure = new PathFigure()
             {
-                StartPoint = new Point(0, 300), //P0
+                StartPoint = mapData.pointArray[0], //P0
                 Segments = map_PathSegmentCollection
                 //Instantiates the PathFigure.
                 //Defines the first control point of the Bezier curve and adds

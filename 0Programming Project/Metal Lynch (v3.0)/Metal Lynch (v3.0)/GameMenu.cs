@@ -94,13 +94,14 @@ namespace Metal_Lynch__v3._0_
                 IsEditable = true,
                 IsReadOnly = true,
                 Text = "--Select Map--",
-                RenderTransform = new TranslateTransform(360, 170)
+                RenderTransform = new TranslateTransform(360, 230)
             };
             foreach (Framework.MapData mapData in menu_Framework.GetFramework_MapDataList())
             {
                 gameMenu_MapSelector.Items.Add(new ComboBoxItem() { Content = mapData.mapName });
             }
             gameMenu_MapSelector.DropDownOpened += DropDownOpenedEvent;
+            gameMenu_MapSelector.DropDownClosed += DropDownClosedEvent;
             menu_Canvas.Children.Add(gameMenu_MapSelector);
 
             gameMenu_1v1ComboBoxItem = new ComboBoxItem() { Content = "1v1" };
@@ -115,19 +116,19 @@ namespace Metal_Lynch__v3._0_
                 IsEditable = true,
                 IsReadOnly = true,
                 Text = "--Select Mode--",
-                RenderTransform = new TranslateTransform(360, 230)
+                RenderTransform = new TranslateTransform(360, 170)
             };
             gameMenu_ModeSelector.Items.Add(gameMenu_TrainingComboBoxItem);
             gameMenu_ModeSelector.Items.Add(gameMenu_1v1ComboBoxItem);
-            gameMenu_ModeSelector.DropDownClosed += ModeDropDownClosedEvent;
             gameMenu_ModeSelector.DropDownOpened += DropDownOpenedEvent;
+            gameMenu_ModeSelector.DropDownClosed += DropDownClosedEvent;
             menu_Canvas.Children.Add(gameMenu_ModeSelector);
 
             gameMenu_ModeDescriptor = new TextBlock()
             {
                 FontSize = 18,
                 FontStyle = FontStyles.Oblique,
-                RenderTransform = new TranslateTransform(640, 230)
+                RenderTransform = new TranslateTransform(640, 170)
             };
             menu_Canvas.Children.Add(gameMenu_ModeDescriptor);
 
@@ -140,20 +141,29 @@ namespace Metal_Lynch__v3._0_
 
         private void PlayButtonClickEvent(object sender, RoutedEventArgs e)
         {
-            PlayClickForwardSound();
-
-            if (gameMenu_ModeSelector.SelectedItem == gameMenu_TrainingComboBoxItem)
+            if (gameMenu_MapSelector.SelectedItem != null && gameMenu_ModeSelector.SelectedItem != null)
             {
-                menu_Framework.ChangeGameMode(Framework.GameModes.Training, false);
+                PlayClickForwardSound();
+
+                Framework.MapData selectedMapData = menu_Framework.GetFramework_MapDataList()[gameMenu_MapSelector.SelectedIndex];
+
+                if (gameMenu_ModeSelector.SelectedItem == gameMenu_TrainingComboBoxItem)
+                {
+                    menu_Framework.ChangeGameMode(Framework.GameModes.Training, false, selectedMapData);
+                }
+                else if (gameMenu_ModeSelector.SelectedItem == gameMenu_1v1ComboBoxItem)
+                {
+                    menu_Framework.ChangeGameMode(Framework.GameModes._1v1, false, selectedMapData);
+                    menu_Framework.GetFramework_Game().AssignUsernames(
+                        gameMenu_Player1UsernamePrompt.inputBox.Text,
+                        gameMenu_Player2UsernamePrompt.inputBox.Text);
+                }
+
                 menu_Framework.GetFramework_Canvas().Children.Remove(menu_Canvas);
             }
-            if (gameMenu_ModeSelector.SelectedItem == gameMenu_1v1ComboBoxItem)
+            else
             {
-                menu_Framework.ChangeGameMode(Framework.GameModes._1v1, false);
-                menu_Framework.GetFramework_Game().AssignUsernames(
-                    gameMenu_Player1UsernamePrompt.inputBox.Text,
-                    gameMenu_Player2UsernamePrompt.inputBox.Text);
-                menu_Framework.GetFramework_Canvas().Children.Remove(menu_Canvas);
+                PlayClickBackwardSound();
             }
         }
 
@@ -169,20 +179,41 @@ namespace Metal_Lynch__v3._0_
             PlayClickForwardSound();
         }
 
-        private void ModeDropDownClosedEvent(object sender, EventArgs e)
+        private void DropDownClosedEvent(object sender, EventArgs e)
         {
             PlayClickForwardSound();
 
+            Framework.MapData selectedMapData;
+            if (gameMenu_MapSelector.SelectedItem == null)
+            {
+                selectedMapData = menu_Framework.GetFramework_Game().GetGame_MapData();
+            }
+            else
+            {
+                selectedMapData = menu_Framework.GetFramework_MapDataList()[gameMenu_MapSelector.SelectedIndex];
+            }
+
+            if (gameMenu_ModeSelector.SelectedItem == null)
+            {
+                if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(Training)))
+                {
+                    menu_Framework.ChangeGameMode(Framework.GameModes.Training, true, selectedMapData);
+                }
+                if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(_1v1)))
+                {
+                    menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true, selectedMapData);
+                }
+            }
             if (gameMenu_ModeSelector.SelectedItem == gameMenu_TrainingComboBoxItem)
             {
-                menu_Framework.ChangeGameMode(Framework.GameModes.Training, true);
+                menu_Framework.ChangeGameMode(Framework.GameModes.Training, true, selectedMapData);
                 gameMenu_ModeDescriptor.Text = "Practice your aim by endlessly\n firing at an unmoving enemy tank.";
                 HideUsernamePrompt(gameMenu_Player1UsernamePrompt);
                 HideUsernamePrompt(gameMenu_Player2UsernamePrompt);
             }
             if (gameMenu_ModeSelector.SelectedItem == gameMenu_1v1ComboBoxItem)
             {
-                menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true);
+                menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true, selectedMapData);
                 gameMenu_ModeDescriptor.Text = "Take turns with a friend in this\n two player one vs one battle. ";
                 ShowUsernamePrompt(gameMenu_Player1UsernamePrompt);
                 ShowUsernamePrompt(gameMenu_Player2UsernamePrompt);

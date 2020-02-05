@@ -21,7 +21,7 @@ namespace Metal_Lynch__v3._0_
         public struct MapData
         {
             public string mapName;
-            private Point[] pointArray;
+            public Point[] pointArray;
 
             public MapData(string name, Point[] points)
             {
@@ -58,27 +58,27 @@ namespace Metal_Lynch__v3._0_
                 //the window.
             };
 
+            framework_MapDataList = new List<MapData>();
+            ReadMapDataFromFile();
+
             Random RNG = new Random();
             switch (RNG.Next(2))
             {
                 case (0):
-                    framework_Game = new Training(this, true);
+                    framework_Game = new Training(this, true, framework_MapDataList[RNG.Next(framework_MapDataList.Count)]);
                     break;
                 case (1):
-                    framework_Game = new _1v1(this, true);
+                    framework_Game = new _1v1(this, true, framework_MapDataList[RNG.Next(framework_MapDataList.Count)]);
                     break;
             }
 
             framework_Menu = new MainMenu(this);
 
-            framework_MapDataList = new List<MapData>();
-            ReadMapDataFromFile();
-
             framework_Window.Content = framework_Canvas;
             //Adds the Canvas to the Window.
         }
 
-        public void ChangeGameMode(GameModes gameMode, bool demoMode)
+        public void ChangeGameMode(GameModes gameMode, bool demoMode, MapData mapData)
         {
             framework_Canvas.Children.Remove(framework_Game.GetGame_Grid());
             framework_Game.DeactivateGame();
@@ -86,10 +86,10 @@ namespace Metal_Lynch__v3._0_
             switch (gameMode)
             {
                 case GameModes.Training:
-                    framework_Game = new Training(this, demoMode);
+                    framework_Game = new Training(this, demoMode, mapData);
                     break;
                 case GameModes._1v1:
-                    framework_Game = new _1v1(this, demoMode);
+                    framework_Game = new _1v1(this, demoMode, mapData);
                     break;
             }
 
@@ -126,7 +126,7 @@ namespace Metal_Lynch__v3._0_
         {
             string[] mapDataLines = File.ReadAllLines(Directory.GetCurrentDirectory() + @"\Resources/Maps.txt");
 
-            string linePattern = @"'\w*'{(\(\d+,\d+\))+}";
+            string linePattern = @"^'\w*'{(\(\d+,\d+\))+}$";
             string namePattern = @"'\w*'";
             string coordinatePattern = @"\d+,\d+";
 
@@ -152,6 +152,11 @@ namespace Metal_Lynch__v3._0_
 
                     framework_MapDataList.Add(new MapData(name, points));
                 }
+            }
+
+            if (framework_MapDataList.Count == 0)
+            {
+                framework_MapDataList.Add(new MapData("Flat", new Point[] { new Point(0, 300), new Point(0, 300), new Point(1265, 300), new Point(1265, 300) }));
             }
         }
 

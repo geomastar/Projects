@@ -47,6 +47,7 @@ namespace Metal_Lynch__v3._0_
         protected bool game_Paused;
 
         protected GameStats game_Stats;
+        protected Framework.MapData game_MapData;
 
         protected bool game_DemoMode;
         protected int game_NextXLoc;
@@ -89,7 +90,7 @@ namespace Metal_Lynch__v3._0_
             //Adds the Grid object to the Canvas of the Framework.
         }
 
-        protected void BaseConstructor(Framework framework, bool demoMode)
+        protected void BaseConstructor(Framework framework, bool demoMode, Framework.MapData mapData)
         {
             game_Framework = framework;
             //Assigns the framework parameter to the variable.
@@ -144,7 +145,7 @@ namespace Metal_Lynch__v3._0_
             game_Grid.Children.Add(game_GUICanvas);
             //Adds the game_GUICanvas to the Grid.
 
-            game_Map = new Map(this);
+            game_Map = new Map(this, mapData);
             game_Projectile = new Projectile(this);
             //Instantiates the game objects.
 
@@ -165,6 +166,8 @@ namespace Metal_Lynch__v3._0_
             game_Stats = new GameStats();
             game_Stats.player1Username = "Player1";
             game_Stats.player2Username = "Player2";
+
+            game_MapData = mapData;
 
             game_NextMinX = 100;
             game_NextMaxX = 500;
@@ -486,6 +489,12 @@ namespace Metal_Lynch__v3._0_
         {
             return game_Stats;
             //Returns the game stats.
+        }
+
+        public Framework.MapData GetGame_MapData()
+        {
+            return game_MapData;
+            //Returns the map data.
         }
     }
 }
