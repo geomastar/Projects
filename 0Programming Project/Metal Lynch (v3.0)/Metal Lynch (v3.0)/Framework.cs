@@ -124,7 +124,7 @@ namespace Metal_Lynch__v3._0_
 
         private void ReadMapDataFromFile()
         {
-            string[] mapDataLines = File.ReadAllLines(Directory.GetCurrentDirectory() + @"\Resources/Maps.txt");
+            string[] mapDataLines = File.ReadAllLines(Directory.GetCurrentDirectory() + @"\Resources\Maps.txt");
 
             string linePattern = @"^'\w*'{(\(\d+,\d+\))+}$";
             string namePattern = @"'\w*'";

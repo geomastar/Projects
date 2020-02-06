@@ -96,10 +96,10 @@ namespace Metal_Lynch__v3._0_
             switch (RNG.Next(2))
             {
                 case (0):
-                    menu_Framework.ChangeGameMode(Framework.GameModes.Training, true, menu_Framework.GetFramework_MapDataList()[0]);
+                    menu_Framework.ChangeGameMode(Framework.GameModes.Training, true, menu_Framework.GetFramework_MapDataList()[RNG.Next(menu_Framework.GetFramework_MapDataList().Count)]);
                     break;
                 case (1):
-                    menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true, menu_Framework.GetFramework_MapDataList()[0]);
+                    menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true, menu_Framework.GetFramework_MapDataList()[RNG.Next(menu_Framework.GetFramework_MapDataList().Count)]);
                     break;
             }
             menu_Framework.ChangeMenu(Framework.Menus.MainMenu);
@@ -111,11 +111,11 @@ namespace Metal_Lynch__v3._0_
 
             if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(Training)))
             {
-                menu_Framework.ChangeGameMode(Framework.GameModes.Training, false, menu_Framework.GetFramework_MapDataList()[0]);
+                menu_Framework.ChangeGameMode(Framework.GameModes.Training, false, menu_Framework.GetFramework_Game().GetGame_MapData());
             }
             if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(_1v1)))
             {
-                menu_Framework.ChangeGameMode(Framework.GameModes._1v1, false, menu_Framework.GetFramework_MapDataList()[0]);
+                menu_Framework.ChangeGameMode(Framework.GameModes._1v1, false, menu_Framework.GetFramework_Game().GetGame_MapData());
                 menu_Framework.GetFramework_Game().AssignUsernames(
                     resultsMenu_GameStats.player1Username,
                     resultsMenu_GameStats.player2Username);
