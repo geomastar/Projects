@@ -21,8 +21,8 @@ namespace Metal_Lynch__v3._0_
 
             BaseConstructor(game_Framework, demoMode, mapData);
 
-            _1v1_Player1 = new Tank(this, "Player1", 100, 100, 320, 100);
-            _1v1_Player2 = new Tank(this, "Player2", 100, 100, 900, 100);
+            _1v1_Player1 = new Tank(this, "Player1", 100, 100, 245, 100);
+            _1v1_Player2 = new Tank(this, "Player2", 100, 100, 945, 100);
 
             game_TankArray = new Tank[2] { _1v1_Player1, _1v1_Player2 };
 

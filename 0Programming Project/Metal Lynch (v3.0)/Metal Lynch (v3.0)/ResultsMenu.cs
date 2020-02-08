@@ -92,16 +92,17 @@ namespace Metal_Lynch__v3._0_
         {
             PlayClickBackwardSound();
 
-            Random RNG = new Random();
-            switch (RNG.Next(2))
+            Framework.MapData selectedMapData = menu_Framework.GetFramework_Game().GetGame_MapData();
+
+            if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(Training)))
             {
-                case (0):
-                    menu_Framework.ChangeGameMode(Framework.GameModes.Training, true, menu_Framework.GetFramework_MapDataList()[RNG.Next(menu_Framework.GetFramework_MapDataList().Count)]);
-                    break;
-                case (1):
-                    menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true, menu_Framework.GetFramework_MapDataList()[RNG.Next(menu_Framework.GetFramework_MapDataList().Count)]);
-                    break;
+                menu_Framework.ChangeGameMode(Framework.GameModes.Training, true, selectedMapData);
             }
+            if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(_1v1)))
+            {
+                menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true, selectedMapData);
+            }
+
             menu_Framework.ChangeMenu(Framework.Menus.MainMenu);
         }
 

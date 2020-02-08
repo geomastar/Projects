@@ -51,6 +51,7 @@ namespace Metal_Lynch__v3._0_
                 //Defines the points for the geometry for the bottom section of
                 //the map.
             };
+
             map_PolyLineSegment = new PolyLineSegment()
             {
                 Points = map_LinePointCollection
