@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -11,6 +12,7 @@ namespace Metal_Lynch__v3._0_
         private Rect tank_Rect;
         private TransformGroup tank_TransformGroup;
         private TranslateTransform tank_TranslateTransform;
+        private RotateTransform tank_RotateTransform;
 
         private BitmapImage tank_Sprite;
         private ScaleTransform tankSprite_ScaleTransform;
@@ -44,10 +46,12 @@ namespace Metal_Lynch__v3._0_
             tank_TranslateTransform = new TranslateTransform(X, Y);
             //Instantiates the TranslateTransform object that will define
             //the location of the tank. Its coordinates are assigned by the
-            //two integer parameters of the constructor.       
+            //two integer parameters of the constructor.
+            tank_RotateTransform = new RotateTransform(0, tank_TranslateTransform.X, tank_TranslateTransform.Y);
 
             tank_TransformGroup = new TransformGroup();
             tank_TransformGroup.Children.Add(tank_TranslateTransform);
+            tank_TransformGroup.Children.Add(tank_RotateTransform);
             //Instantiates the TransformGroup object and adds the
             //TranslateTransform to it.
 
@@ -191,6 +195,13 @@ namespace Metal_Lynch__v3._0_
         {
             return tank_TranslateTransform;
             //Returns the Tank's TranslateTransform object.
+        }
+
+        public void SetTank_RotateTransformAngle(double angle)
+        {
+            tank_RotateTransform.CenterX = tank_TranslateTransform.X;
+            tank_RotateTransform.CenterY = tank_TranslateTransform.Y;
+            tank_RotateTransform.Angle = angle;
         }
 
         public void SetTank_Username(string username)

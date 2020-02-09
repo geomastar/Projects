@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -210,6 +211,9 @@ namespace Metal_Lynch__v3._0_
                         //Will stop the while loop if the tank intersects
                         //with the map, stopping gravity from pulling the
                         //tank through the map.
+
+                        tank.SetTank_RotateTransformAngle(game_MapData.angleArray[Convert.ToInt32
+                            (Math.Truncate(tank.GetTank_TranslateTransform().X / game_MapData.angleStep))]);
                     }
 
                     i--;
@@ -312,12 +316,42 @@ namespace Metal_Lynch__v3._0_
                 {
                     game_CurrentPlayer.MoveRight();
                     //Moves the tank right if the game_NextXLoc is to its right.
+
+                    IntersectionDetail tankMapIntersection =
+                        game_CurrentPlayer.GetGeometry().FillContainsWithDetail
+                        (game_Map.GetGeometry());
+                    //Assigns the results from a hitbox test between the
+                    //Tank and the Map to a new variable.
+
+                    if (tankMapIntersection == IntersectionDetail.Intersects)
+                    {
+                        game_CurrentPlayer.MoveUp();
+                        game_CurrentPlayer.MoveUp();
+
+                        game_CurrentPlayer.SetTank_RotateTransformAngle(game_MapData.angleArray[Convert.ToInt32
+                            (Math.Truncate(game_CurrentPlayer.GetTank_TranslateTransform().X / game_MapData.angleStep))]);
+                    }
                 }
                 else if (game_NextXLoc < game_CurrentPlayer.GetTank_TranslateTransform().X
                     && game_CurrentPlayer.GetTank_Fuel() != 0)
                 {
                     game_CurrentPlayer.MoveLeft();
                     //Moves the tank left if the game_NextXLoc is to its left.
+
+                    IntersectionDetail tankMapIntersection =
+                        game_CurrentPlayer.GetGeometry().FillContainsWithDetail
+                        (game_Map.GetGeometry());
+                    //Assigns the results from a hitbox test between the
+                    //Tank and the Map to a new variable.
+
+                    if (tankMapIntersection == IntersectionDetail.Intersects)
+                    {
+                        game_CurrentPlayer.MoveUp();
+                        game_CurrentPlayer.MoveUp();
+
+                        game_CurrentPlayer.SetTank_RotateTransformAngle(game_MapData.angleArray[Convert.ToInt32
+                            (Math.Truncate(game_CurrentPlayer.GetTank_TranslateTransform().X / game_MapData.angleStep))]);
+                    }
                 }
                 else
                 {
@@ -334,12 +368,42 @@ namespace Metal_Lynch__v3._0_
                         game_CurrentPlayer.MoveLeft();
                         //Moves the player's Tank object left if the 'A' key is
                         //pressed down.
+
+                        IntersectionDetail tankMapIntersection =
+                            game_CurrentPlayer.GetGeometry().FillContainsWithDetail
+                            (game_Map.GetGeometry());
+                        //Assigns the results from a hitbox test between the
+                        //Tank and the Map to a new variable.
+
+                        if (tankMapIntersection == IntersectionDetail.Intersects)
+                        {
+                            game_CurrentPlayer.MoveUp();
+                            game_CurrentPlayer.MoveUp();
+
+                            game_CurrentPlayer.SetTank_RotateTransformAngle(game_MapData.angleArray[Convert.ToInt32
+                                (Math.Truncate(game_CurrentPlayer.GetTank_TranslateTransform().X / game_MapData.angleStep))]);
+                        }
                     }
                     if (Keyboard.IsKeyDown(Key.D))
                     {
                         game_CurrentPlayer.MoveRight();
                         //Moves the player's Tank object right if the 'D' key is
                         //pressed down.
+
+                        IntersectionDetail tankMapIntersection =
+                            game_CurrentPlayer.GetGeometry().FillContainsWithDetail
+                            (game_Map.GetGeometry());
+                        //Assigns the results from a hitbox test between the
+                        //Tank and the Map to a new variable.
+
+                        if (tankMapIntersection == IntersectionDetail.Intersects)
+                        {
+                            game_CurrentPlayer.MoveUp();
+                            game_CurrentPlayer.MoveUp();
+
+                            game_CurrentPlayer.SetTank_RotateTransformAngle(game_MapData.angleArray[Convert.ToInt32
+                                (Math.Truncate(game_CurrentPlayer.GetTank_TranslateTransform().X / game_MapData.angleStep))]);
+                        }
                     }
                 }
 

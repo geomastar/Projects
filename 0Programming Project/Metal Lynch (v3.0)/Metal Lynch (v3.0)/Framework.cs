@@ -22,11 +22,15 @@ namespace Metal_Lynch__v3._0_
         {
             public string mapName;
             public Point[] pointArray;
+            public int angleStep;
+            public double[] angleArray;
 
-            public MapData(string name, Point[] points)
+            public MapData(string name, Point[] points, int step)
             {
                 mapName = name;
                 pointArray = points;
+                angleStep = step;
+                angleArray = new double[1280 / angleStep];
             }
         }
 
@@ -59,20 +63,10 @@ namespace Metal_Lynch__v3._0_
             };
 
             framework_MapDataList = new List<MapData>();
-            ReadMapDataFromFile();
 
-            Random RNG = new Random();
-            switch (RNG.Next(2))
-            {
-                case (0):
-                    framework_Game = new Training(this, true, framework_MapDataList[RNG.Next(framework_MapDataList.Count)]);
-                    break;
-                case (1):
-                    framework_Game = new _1v1(this, true, framework_MapDataList[RNG.Next(framework_MapDataList.Count)]);
-                    break;
-            }
+            framework_Game = new MapLoader(this);
 
-            framework_Menu = new MainMenu(this);
+            framework_Game.EndGame();
 
             framework_Window.Content = framework_Canvas;
             //Adds the Canvas to the Window.
@@ -93,13 +87,13 @@ namespace Metal_Lynch__v3._0_
                     break;
             }
 
-            Panel.SetZIndex(framework_Game.GetGame_Grid(), 0);
-            Panel.SetZIndex(framework_Menu.GetMenu_Canvas(), 1);
+            if (framework_Game != null) { Panel.SetZIndex(framework_Game.GetGame_Grid(), 0); }
+            if (framework_Menu != null) { Panel.SetZIndex(framework_Menu.GetMenu_Canvas(), 1); }
         }
 
         public void ChangeMenu(Menus menu)
         {
-            framework_Canvas.Children.Remove(framework_Menu.GetMenu_Canvas());
+            if (framework_Menu != null) { framework_Canvas.Children.Remove(framework_Menu.GetMenu_Canvas()); }
 
             switch (menu)
             {
@@ -118,46 +112,8 @@ namespace Metal_Lynch__v3._0_
                     break;
             }
 
-            Panel.SetZIndex(framework_Game.GetGame_Grid(), 0);
-            Panel.SetZIndex(framework_Menu.GetMenu_Canvas(), 1);
-        }
-
-        private void ReadMapDataFromFile()
-        {
-            string[] mapDataLines = File.ReadAllLines(Directory.GetCurrentDirectory() + @"\Resources\Maps.txt");
-
-            string linePattern = @"^'\w*'{(\(\d+,\d+\))+}$";
-            string namePattern = @"'\w*'";
-            string coordinatePattern = @"\d+,\d+";
-
-            foreach (string mapDataLine in mapDataLines)
-            {
-                if (Regex.IsMatch(mapDataLine, linePattern))
-                {
-                    string name = Regex.Match(mapDataLine, namePattern).Value.Substring(1, Regex.Match(mapDataLine, namePattern).Value.Length - 2);
-
-                    MatchCollection coordinates = Regex.Matches(mapDataLine, coordinatePattern);
-
-                    Point[] points = new Point[coordinates.Count];
-
-                    int i = 0;
-                    foreach (Match coordinate in coordinates)
-                    {
-                        string[] coordinateValues = coordinate.Value.Split(',');
-
-                        points[i] = new Point(Convert.ToDouble(coordinateValues[0]), Convert.ToDouble(coordinateValues[1]));
-
-                        i++;
-                    }
-
-                    framework_MapDataList.Add(new MapData(name, points));
-                }
-            }
-
-            if (framework_MapDataList.Count == 0)
-            {
-                framework_MapDataList.Add(new MapData("Flat", new Point[] { new Point(0, 300), new Point(0, 300), new Point(1265, 300), new Point(1265, 300) }));
-            }
+            if (framework_Game != null) { Panel.SetZIndex(framework_Game.GetGame_Grid(), 0); }
+            if (framework_Menu != null) { Panel.SetZIndex(framework_Menu.GetMenu_Canvas(), 1); }
         }
 
         public Window GetFramework_Window()
@@ -188,6 +144,11 @@ namespace Metal_Lynch__v3._0_
         {
             return framework_MapDataList;
             //Returns the mapDataList.
+        }
+        public void SetFramework_MapDataList(List<MapData> mapDataList)
+        {
+            framework_MapDataList = mapDataList;
+            //Sets the mapDataList.
         }
     }
 }

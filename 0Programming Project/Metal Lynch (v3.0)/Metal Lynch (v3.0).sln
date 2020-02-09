@@ -20,6 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{2F9A8A38-C6BA-4B00-BDA8-B07539E1658F}"
 	ProjectSection(SolutionItems) = preProject
 		Metal Lynch (v3.0)\1v1.cs = Metal Lynch (v3.0)\1v1.cs
+		Metal Lynch (v3.0)\MapLoader.cs = Metal Lynch (v3.0)\MapLoader.cs
 		Metal Lynch (v3.0)\Training.cs = Metal Lynch (v3.0)\Training.cs
 	EndProjectSection
 EndProject

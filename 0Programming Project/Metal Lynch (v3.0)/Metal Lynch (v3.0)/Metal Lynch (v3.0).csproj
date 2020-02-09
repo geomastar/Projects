@@ -64,6 +64,7 @@
     <Compile Include="GUIObject.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="MapLoader.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="PauseMenu.cs" />
