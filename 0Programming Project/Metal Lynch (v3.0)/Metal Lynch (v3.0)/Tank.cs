@@ -202,6 +202,9 @@ namespace Metal_Lynch__v3._0_
             tank_RotateTransform.CenterX = tank_TranslateTransform.X;
             tank_RotateTransform.CenterY = tank_TranslateTransform.Y;
             tank_RotateTransform.Angle = angle;
+
+            //path.Fill.RelativeTransform = new RotateTransform(angle, 0.5, 0.5);
+            //tank_TranslateTransform.X, tank_TranslateTransform.Y);
         }
 
         public void SetTank_Username(string username)
