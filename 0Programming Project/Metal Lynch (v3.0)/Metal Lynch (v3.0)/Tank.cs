@@ -88,7 +88,11 @@ namespace Metal_Lynch__v3._0_
             {
                 Stroke = Brushes.Blue,
                 Fill = new ImageBrush(new TransformedBitmap(
-                    tank_Sprite, tankSprite_ScaleTransform)),
+                    tank_Sprite, tankSprite_ScaleTransform))
+                {
+                    //Viewport = new Rect(0, 0, 1d / 12.8, 1d / 1.5),
+                    Stretch = Stretch.Uniform
+                },
                 StrokeThickness = 2,
                 Data = geometry
                 //Instantiates the Path object that will define the tank's
@@ -203,8 +207,7 @@ namespace Metal_Lynch__v3._0_
             tank_RotateTransform.CenterY = tank_TranslateTransform.Y;
             tank_RotateTransform.Angle = angle;
 
-            //path.Fill.RelativeTransform = new RotateTransform(angle, 0.5, 0.5);
-            //tank_TranslateTransform.X, tank_TranslateTransform.Y);
+            path.Fill.RelativeTransform = new RotateTransform(angle);
         }
 
         public void SetTank_Username(string username)
