@@ -55,7 +55,7 @@ namespace Metal_Lynch__v3._0_
             //Instantiates the TransformGroup object and adds the
             //TranslateTransform to it.
 
-            tank_Rect = new Rect(new Size(76, 35));
+            tank_Rect = new Rect(new Size(76*7, 35*7));
             //Instantiates the Rect object that will define the tank's
             //size. Also defines the Rect's size as having dimensions
             //30x20.
@@ -90,8 +90,7 @@ namespace Metal_Lynch__v3._0_
                 Fill = new ImageBrush(new TransformedBitmap(
                     tank_Sprite, tankSprite_ScaleTransform))
                 {
-                    //Viewport = new Rect(0, 0, 1d / 12.8, 1d / 1.5),
-                    Stretch = Stretch.Uniform
+                    Stretch = Stretch.None
                 },
                 StrokeThickness = 2,
                 Data = geometry
@@ -207,7 +206,7 @@ namespace Metal_Lynch__v3._0_
             tank_RotateTransform.CenterY = tank_TranslateTransform.Y;
             tank_RotateTransform.Angle = angle;
 
-            path.Fill.RelativeTransform = new RotateTransform(angle);
+            path.Fill.RelativeTransform = new RotateTransform(angle, 0.5, 0.5);
         }
 
         public void SetTank_Username(string username)
