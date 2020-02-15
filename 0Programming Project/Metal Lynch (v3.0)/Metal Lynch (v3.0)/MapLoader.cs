@@ -74,7 +74,7 @@ namespace Metal_Lynch__v3._0_
 
             while (mapLoader_CalculatingAngles)
             {
-                UpdateEvent(10, new EventArgs());
+                UpdateEvent(1, new EventArgs());
             }
         }
 
@@ -283,7 +283,7 @@ namespace Metal_Lynch__v3._0_
 
                 angleMeasurer_AngleList.Add(angle);
 
-                Debug.WriteLine(angleMeasurer_PrevY + "   =>   " + angleMeasurer_TranslateTransform.Y);
+                //Debug.WriteLine(angleMeasurer_PrevY + "   =>   " + angleMeasurer_TranslateTransform.Y);
             }
 
             public void ResetPosition()
