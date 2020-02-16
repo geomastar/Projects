@@ -76,24 +76,11 @@ namespace Metal_Lynch__v3._0_
             //Finds the angle.
             if (X < 0)
             {
-                if (Y > 0)
-                {
-                    return a + Math.PI;
-                    //Finds the angle if facing in the opposite direction.
-                }
+                return a + Math.PI;
+                //Finds the angle if facing in the opposite direction.
             }
             return a;
             //returns the angle.
-        }
-
-        public bool GetTrajectoryDirection()
-        {
-            if (icon.icon_TranslateTransform.X > aimingIcon_Centre.X)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         public bool IconCentred()

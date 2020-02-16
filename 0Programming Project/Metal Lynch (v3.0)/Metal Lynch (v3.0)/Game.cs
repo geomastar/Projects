@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -147,7 +148,7 @@ namespace Metal_Lynch__v3._0_
             //Adds the game_GUICanvas to the Grid.
 
             game_Map = new Map(this, mapData);
-            game_Projectile = new Projectile(this);
+            game_Projectile = new Grenade(this);
             //Instantiates the game objects.
 
             game_MessageBox = new MessageBox(this);
@@ -245,68 +246,43 @@ namespace Metal_Lynch__v3._0_
 
             if (game_Projectile.GetProjectile_InMotion())
             {
-                double i = game_Projectile.GetProjectile_Speed() *
-                    game_Projectile.GetXVelocity();
-                //Assigns a temporary integer variable for use as a decrement
-                //In the following while loop.
-                bool intersectionFound = false;
-                //Assigns a temporary Boolean variable the value false for
-                //use as an argument in the following while loop.
+                game_Projectile.MoveAlongTrajectory(game_Gravity);
 
-                while (i > 0 & !intersectionFound)
+                IntersectionDetail projectileMapIntersection =
+                    game_Projectile.GetGeometry().FillContainsWithDetail
+                    (game_Map.GetGeometry());
+
+                foreach (Tank tank in enemyTankArray)
                 {
-                    game_Projectile.MoveAlongTrajectory(game_Gravity);
-                    //Moves the Projectile along its trajectory.
-
-                    IntersectionDetail projectileMapIntersection =
+                    IntersectionDetail projectileEnemyIntersection =
                         game_Projectile.GetGeometry().FillContainsWithDetail
-                        (game_Map.GetGeometry());
-                    //Assigns the results from a hitbox test between the Projectile
-                    //object and the Map object to a variable.
+                        (tank.GetGeometry());
 
-                    foreach (Tank tank in enemyTankArray)
-                    {
-                        IntersectionDetail projectileEnemyIntersection =
-                            game_Projectile.GetGeometry().FillContainsWithDetail
-                            (tank.GetGeometry());
-                        //Assigns the results from a hitbox test between the Projectile
-                        //object and the tank object to a variable.
-
-                        if (projectileEnemyIntersection == IntersectionDetail.Intersects
-                            & !intersectionFound)
-                        {
-                            game_MediaPlayer.Open(game_ExplosionSoundUri);
-                            game_MediaPlayer.Play();
-
-                            EndTurn(tank.TakeDamage(game_Projectile));
-                            game_CurrentPlayer.DealDamage(game_Projectile);
-                            intersectionFound = true;
-                            //If the projectile hits the enemy it will deal damage and
-                            //stop the while loop.
-                        }
-                    }
-
-                    if ((projectileMapIntersection == IntersectionDetail.Intersects | projectileMapIntersection == IntersectionDetail.FullyInside)
-                        & !intersectionFound)
+                    if (projectileEnemyIntersection == IntersectionDetail.Intersects)
                     {
                         game_MediaPlayer.Open(game_ExplosionSoundUri);
                         game_MediaPlayer.Play();
 
-                        EndTurn(0);
-                        intersectionFound = true;
-                        //If the projectile hits the map it stops the while loop.
-                    }
-                    else if ((game_Projectile.GetProjectile_TranslateTransform().X < game_LeftBoundary |
-                        game_Projectile.GetProjectile_TranslateTransform().X > game_RightBoundary)
-                        & !intersectionFound)
-                    {
-                        EndTurn(0);
-                        intersectionFound = true;
-                        //If the projectile leaves the map it stops the while loop.
-                    }
+                        int damage = game_Projectile.Impact(game_CurrentPlayer, enemyTankArray);
 
-                    i--;
-                    //Decrements the while loop.
+                        EndTurn(tank.TakeDamage(game_Projectile) + damage);
+                        game_CurrentPlayer.DealDamage(game_Projectile);
+                    }
+                }
+
+                if ((projectileMapIntersection == IntersectionDetail.Intersects | projectileMapIntersection == IntersectionDetail.FullyInside))
+                {
+                    game_MediaPlayer.Open(game_ExplosionSoundUri);
+                    game_MediaPlayer.Play();
+
+                    int damage = game_Projectile.Impact(game_CurrentPlayer, enemyTankArray);
+
+                    EndTurn(damage);
+                }
+                else if ((game_Projectile.GetProjectile_TranslateTransform().X < game_LeftBoundary |
+                    game_Projectile.GetProjectile_TranslateTransform().X > game_RightBoundary))
+                {
+                    EndTurn(0);
                 }
             }
             else if (game_DemoMode)
@@ -455,8 +431,7 @@ namespace Metal_Lynch__v3._0_
                     (new Point(game_CurrentPlayer.GetTank_TranslateTransform().X,
                         game_CurrentPlayer.GetTank_TranslateTransform().Y),
                     game_AimingIcon.GetAngleRadians(),
-                    game_AimingIcon.GetInitialVelocity(),
-                    game_AimingIcon.GetTrajectoryDirection());
+                    game_AimingIcon.GetInitialVelocity());
                 //Starts the trajectory of the Projectile.
 
                 game_CurrentPlayer.FireProjectile();
@@ -501,7 +476,7 @@ namespace Metal_Lynch__v3._0_
             Random RNG = new Random();
             game_NextXLoc = RNG.Next(game_NextMinX, game_NextMaxX);
             //Assigns the game_NextXLoc variable to a random integer.
-        }
+        }        
 
         private void FireProjectileRandom()
         {
@@ -510,7 +485,7 @@ namespace Metal_Lynch__v3._0_
             double calcAngle = RNG.Next(40, Convert.ToInt32(((Math.PI * 100) - 30) / 2)) / 100D;
             if (!game_AngleDirection)
             {
-                calcAngle = calcAngle * -1;
+                calcAngle = calcAngle + (Math.PI / 2);
             }
 
             game_MediaPlayer.Open(game_TankFireSoundUri);
@@ -520,8 +495,7 @@ namespace Metal_Lynch__v3._0_
                 (new Point(game_CurrentPlayer.GetTank_TranslateTransform().X,
                     game_CurrentPlayer.GetTank_TranslateTransform().Y),
                 calcAngle,
-                RNG.Next(60, 100),
-                game_AngleDirection);
+                RNG.Next(60, 100));
             //Starts a random trajectory for the Projectile.
         }
 

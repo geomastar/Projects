@@ -77,6 +77,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 		Metal Lynch (v3.0)\Resources\Target sprite.png = Metal Lynch (v3.0)\Resources\Target sprite.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projectile", "Projectile", "{DA5983AF-AEC2-469B-83F5-52B458E192C9}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\Projectile.cs = Metal Lynch (v3.0)\Projectile.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Derived", "Derived", "{BA0616B0-4107-4A24-80DA-5FECD6FBAFBD}"
+	ProjectSection(SolutionItems) = preProject
+		Metal Lynch (v3.0)\Grenade.cs = Metal Lynch (v3.0)\Grenade.cs
+		Metal Lynch (v3.0)\Shot.cs = Metal Lynch (v3.0)\Shot.cs
+		Metal Lynch (v3.0)\Sniper.cs = Metal Lynch (v3.0)\Sniper.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +113,8 @@ Global
 		{68936B7D-2EDE-42C9-B35B-98645E258283} = {27C88507-70A9-4D79-885C-764BA4982232}
 		{329804C2-409A-48B0-A7A3-585245F228C5} = {68936B7D-2EDE-42C9-B35B-98645E258283}
 		{52A3A9C4-32A1-4E80-BA88-DD51512E633C} = {27C88507-70A9-4D79-885C-764BA4982232}
+		{DA5983AF-AEC2-469B-83F5-52B458E192C9} = {08B8664A-99DA-4BE8-BC9D-30B6105F2C4B}
+		{BA0616B0-4107-4A24-80DA-5FECD6FBAFBD} = {DA5983AF-AEC2-469B-83F5-52B458E192C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {144CF6F1-BD63-4C65-A6CE-319766C9BE8B}

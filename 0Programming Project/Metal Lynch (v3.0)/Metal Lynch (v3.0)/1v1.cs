@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Media;
 
 namespace Metal_Lynch__v3._0_
@@ -112,11 +113,15 @@ namespace Metal_Lynch__v3._0_
             if (_1v1_Player1.GetTank_Health() <= 0)
             {
                 game_Winner = _1v1_Player2;
+                game_Stats.winner = game_Winner;
+
                 EndGame();
             }
             if (_1v1_Player2.GetTank_Health() <= 0)
             {
                 game_Winner = _1v1_Player1;
+                game_Stats.winner = game_Winner;
+
                 EndGame();
             }
         }
@@ -127,7 +132,7 @@ namespace Metal_Lynch__v3._0_
             _1v1_Player1.SetTank_Username(player1Username);
             game_Stats.player1Username = player1Username;
             _1v1_Player2HealthBar.SetProgressBar_LabelText(player2Username);
-            _1v1_Player1.SetTank_Username(player2Username);
+            _1v1_Player2.SetTank_Username(player2Username);
             game_Stats.player2Username = player2Username;
         }
 
@@ -142,8 +147,6 @@ namespace Metal_Lynch__v3._0_
                 game_Framework.GetFramework_Window().KeyDown -= EscKeyPress;
 
                 if (game_FireButton.GetFireButton_IsEnabled()) { game_FireButton.Toggle(); }
-
-                game_Stats.winner = game_Winner;
 
                 game_Stats.player1DamageDealt = _1v1_Player1.GetTank_DamageDealt();
                 game_Stats.player1DamageTaken = _1v1_Player1.GetTank_DamageTaken();

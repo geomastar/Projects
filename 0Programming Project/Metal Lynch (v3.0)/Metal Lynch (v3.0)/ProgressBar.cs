@@ -113,6 +113,11 @@ namespace Metal_Lynch__v3._0_
                     new Size((value / progressBar_ProgressMaxValue) * progressBar_Width,
                     progressBar_Height));
             }
+            else
+            {
+                progressBar_ProgressRectangleGeometry.Rect = new Rect(
+                    new Size(0, progressBar_Height));
+            }
             if (progressBar_ProgressValueText != null) { progressBar_ProgressValueText.Text = value.ToString(); }
             //Updates the ProgressBar.
         }

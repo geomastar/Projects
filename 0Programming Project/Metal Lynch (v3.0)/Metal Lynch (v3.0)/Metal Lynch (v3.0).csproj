@@ -61,6 +61,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameMenu.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="Grenade.cs" />
     <Compile Include="GUIObject.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Map.cs" />
@@ -71,6 +72,8 @@
     <Compile Include="ProgressBar.cs" />
     <Compile Include="Projectile.cs" />
     <Compile Include="ResultsMenu.cs" />
+    <Compile Include="Shot.cs" />
+    <Compile Include="Sniper.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="Training.cs" />
     <Page Include="MainWindow.xaml">
