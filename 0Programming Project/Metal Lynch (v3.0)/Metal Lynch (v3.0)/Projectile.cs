@@ -17,9 +17,7 @@ namespace Metal_Lynch__v3._0_
         protected double projectile_Speed;
         protected bool projectile_InMotion;
         protected int projectile_Damage;
-        protected int projectile_Time;
-
-        public virtual int Impact(Tank currentPlayer, Tank[] enemyTankArray) { return 0; }
+        protected int projectile_Time;        
 
         public void BaseConstructor(Game projectile_Game)
         {
@@ -55,6 +53,8 @@ namespace Metal_Lynch__v3._0_
 
             projectile_Time++;
         }
+
+        public virtual int Impact(Tank currentPlayer, Tank[] enemyTankArray) { return 0; }
 
         public virtual double CalculateX(double time)
         {

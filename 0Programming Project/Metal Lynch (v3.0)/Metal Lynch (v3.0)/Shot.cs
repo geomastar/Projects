@@ -17,8 +17,8 @@ namespace Metal_Lynch__v3._0_
             geometry = new EllipseGeometry()
             {
                 Transform = projectile_TransformGroup,
-                RadiusX = 6,
-                RadiusY = 6
+                RadiusX = 8,
+                RadiusY = 8
             };
             path = new Path()
             {

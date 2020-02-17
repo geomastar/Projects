@@ -129,6 +129,12 @@
     <Content Include="Resources\Explosion sound effect.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Explosion spritesheet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Grenade sprite.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\GUI texture.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

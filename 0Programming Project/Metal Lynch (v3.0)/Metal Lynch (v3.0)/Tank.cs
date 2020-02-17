@@ -79,8 +79,7 @@ namespace Metal_Lynch__v3._0_
             //screen. This way the tanks will be facing each other.
 
             tank_Sprite = new BitmapImage(
-                new Uri(@"Resources/Tank sprite.png", UriKind.Relative)
-                );
+                new Uri(@"Resources/Tank sprite.png", UriKind.Relative));
             //Selects the image for the Tank's sprite and assigns the
             //ScaleTransform to the image.
 
@@ -88,10 +87,7 @@ namespace Metal_Lynch__v3._0_
             {
                 Stroke = Brushes.Blue,
                 Fill = new ImageBrush(new TransformedBitmap(
-                    tank_Sprite, tankSprite_ScaleTransform))
-                {
-                    Stretch = Stretch.Uniform
-                },
+                    tank_Sprite, tankSprite_ScaleTransform)),
                 StrokeThickness = 2,
                 Data = geometry
                 //Instantiates the Path object that will define the tank's
