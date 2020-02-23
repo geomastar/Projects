@@ -47,6 +47,7 @@ namespace Metal_Lynch__v3._0_
             game_MessageBox.EndGameMessage();
 
             if (game_FireButton.GetFireButton_IsEnabled()) { game_FireButton.Toggle(); }
+            if (game_WeaponSelector.GetWeaponSelector_IsEnabled()) { game_WeaponSelector.Toggle(); }
 
             game_Stats.player1DamageDealt = training_Player1.GetTank_DamageDealt();
             game_Stats.player1DistanceTravelled = training_Player1.GetTank_DistanceTravelled();

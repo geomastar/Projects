@@ -12,16 +12,22 @@ namespace Metal_Lynch__v3._0_
 
         protected void AddToCanvas()
         {
-            game.GetGame_MainCanvas().Children.Add(path);
-            //Adds the object's Path to the Canvas of the Game that
-            //it belongs to.
+            if (!game.GetGame_MainCanvas().Children.Contains(path))
+            {
+                game.GetGame_MainCanvas().Children.Add(path);
+                //Adds the object's Path to the Canvas of the Game that
+                //it belongs to.
+            }
         }
 
         protected void RemoveFromCanvas()
         {
-            game.GetGame_MainCanvas().Children.Remove(path);
-            //Removes the object's Path from the Canvas of the Game that
-            //it belongs to.
+            if (game.GetGame_MainCanvas().Children.Contains(path))
+            {
+                game.GetGame_MainCanvas().Children.Remove(path);
+                //Removes the object's Path from the Canvas of the Game that
+                //it belongs to.
+            }
         }
 
         public Path GetPath()

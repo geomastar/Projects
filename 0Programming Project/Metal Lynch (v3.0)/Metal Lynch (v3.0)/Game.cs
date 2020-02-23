@@ -29,6 +29,7 @@ namespace Metal_Lynch__v3._0_
         protected MessageBox game_MessageBox;
         protected AimingIcon game_AimingIcon;
         protected FireButton game_FireButton;
+        protected WeaponSelector game_WeaponSelector;
 
         protected MediaPlayer game_MediaPlayer;
         protected Uri game_TankMoveSoundUri;
@@ -47,6 +48,8 @@ namespace Metal_Lynch__v3._0_
         protected int game_Gravity;
         protected int game_Turn;
         protected bool game_Paused;
+        protected bool game_ProjectileDetonated;
+        protected int game_TurnDamage;
 
         protected GameStats game_Stats;
         protected Framework.MapData game_MapData;
@@ -84,6 +87,15 @@ namespace Metal_Lynch__v3._0_
                 totalDistanceTravelled = player1DistanceTravelled + player2DistanceTravelled;
                 totalProjectilesFired = player1ProjectilesFired + player2ProjectilesFired;
             }
+        }
+
+        public enum Weapons
+        {
+            Shot,
+            Sniper,
+            Grenade,
+            Bouncer,
+            AirStrike
         }
 
         protected void AddToCanvas()
@@ -126,7 +138,7 @@ namespace Metal_Lynch__v3._0_
             };
             //Instantiates the two Canvas objects, giving them heights
             //and widths, as well as applying their textures.
-
+            
             game_Grid = new Grid()
             {
                 Height = 690,
@@ -148,12 +160,13 @@ namespace Metal_Lynch__v3._0_
             //Adds the game_GUICanvas to the Grid.
 
             game_Map = new Map(this, mapData);
-            game_Projectile = new Grenade(this);
+            game_Projectile = new Shot(this);
             //Instantiates the game objects.
 
             game_MessageBox = new MessageBox(this);
             game_AimingIcon = new AimingIcon(this, 500, 115);
             game_FireButton = new FireButton(this, 700, 85);
+            game_WeaponSelector = new WeaponSelector(this, 700, 10);
             //Instantiates the GUI objects.
 
             game_LeftBoundary = 0;
@@ -163,6 +176,8 @@ namespace Metal_Lynch__v3._0_
             game_NewTurn = true;
             game_Gravity = 10;
             game_Turn = 1;
+            game_ProjectileDetonated = false;
+            game_TurnDamage = 0;
             //Sets the gravity, turn counter and NewTurn bool.
 
             game_Stats = new GameStats();
@@ -246,41 +261,64 @@ namespace Metal_Lynch__v3._0_
 
             if (game_Projectile.GetProjectile_InMotion())
             {
-                game_Projectile.MoveAlongTrajectory(game_Gravity);
+                if (!game_ProjectileDetonated)
+                {
+                    game_Projectile.MoveAlongTrajectory(game_Gravity);
+                }
 
                 IntersectionDetail projectileMapIntersection =
                     game_Projectile.GetGeometry().FillContainsWithDetail
                     (game_Map.GetGeometry());
 
+                bool enemyHit = false;
                 foreach (Tank tank in enemyTankArray)
                 {
                     IntersectionDetail projectileEnemyIntersection =
                         game_Projectile.GetGeometry().FillContainsWithDetail
                         (tank.GetGeometry());
 
-                    if (projectileEnemyIntersection == IntersectionDetail.Intersects)
+                    if (projectileEnemyIntersection == IntersectionDetail.Intersects
+                        && !enemyHit)
                     {
-                        game_MediaPlayer.Open(game_ExplosionSoundUri);
-                        game_MediaPlayer.Play();
+                        if (!game_ProjectileDetonated)
+                        {
+                            game_TurnDamage = game_Projectile.Impact(game_CurrentPlayer, enemyTankArray);
+                        }
 
-                        int damage = game_Projectile.Impact(game_CurrentPlayer, enemyTankArray);
+                        if (game_Projectile.GetProjectile_Finished())
+                        {
+                            EndTurn(tank.TakeDamage(game_Projectile) + game_TurnDamage);
+                            game_CurrentPlayer.DealDamage(game_Projectile);
+                        }
+                        else
+                        {
+                            if (game_Projectile.GetProjectile_Detonated()) { game_ProjectileDetonated = true; }
+                        }
 
-                        EndTurn(tank.TakeDamage(game_Projectile) + damage);
-                        game_CurrentPlayer.DealDamage(game_Projectile);
+                        enemyHit = true;
                     }
                 }
 
-                if ((projectileMapIntersection == IntersectionDetail.Intersects | projectileMapIntersection == IntersectionDetail.FullyInside))
+                if ((projectileMapIntersection == IntersectionDetail.Intersects | projectileMapIntersection == IntersectionDetail.FullyInside)
+                    && !enemyHit)
                 {
-                    game_MediaPlayer.Open(game_ExplosionSoundUri);
-                    game_MediaPlayer.Play();
+                    if (!game_ProjectileDetonated)
+                    {
+                        game_TurnDamage = game_Projectile.Impact(game_CurrentPlayer, enemyTankArray);
+                    }
 
-                    int damage = game_Projectile.Impact(game_CurrentPlayer, enemyTankArray);
-
-                    EndTurn(damage);
+                    if (game_Projectile.GetProjectile_Finished())
+                    {
+                        EndTurn(game_TurnDamage);
+                    }
+                    else
+                    {
+                        if (game_Projectile.GetProjectile_Detonated()) { game_ProjectileDetonated = true; }
+                    }
                 }
                 else if ((game_Projectile.GetProjectile_TranslateTransform().X < game_LeftBoundary |
-                    game_Projectile.GetProjectile_TranslateTransform().X > game_RightBoundary))
+                    game_Projectile.GetProjectile_TranslateTransform().X > game_RightBoundary)
+                    && !enemyHit)
                 {
                     EndTurn(0);
                 }
@@ -416,7 +454,7 @@ namespace Metal_Lynch__v3._0_
                 game_MediaPlayer.Open(game_ClickBackwardSoundUri);
                 game_MediaPlayer.Play();
             }
-            if (!game_Projectile.GetProjectile_InMotion()) { game_FireButton.Toggle(); }
+            if (!game_Projectile.GetProjectile_InMotion()) { game_FireButton.Toggle(); game_WeaponSelector.Toggle(); }
             game_Paused = !game_Paused;
         }
 
@@ -442,6 +480,8 @@ namespace Metal_Lynch__v3._0_
 
                 game_FireButton.Toggle();
                 //Disables the FireButton so that it cannot be clicked.
+                game_WeaponSelector.Toggle();
+                //Disables the weapon selector.
             }
         }
 
@@ -451,11 +491,12 @@ namespace Metal_Lynch__v3._0_
             else { game_MediaPlayer.Volume /= 2; }
             game_DemoMode = !game_DemoMode;
             game_FireButton.Toggle();
-            //Toggles the game_DemoMode variable as well as the FireButton
-            //object.
+            game_WeaponSelector.Toggle();
+            //Toggles the game_DemoMode variable, the FireButton object and the
+            //weapon selector.
         }
 
-        private void EndTurn(int damageDealt)
+        public void EndTurn(int damageDealt)
         {
             game_Projectile.StopTrajectory();
             //Stops the trajectory of the Projectile.
@@ -465,8 +506,21 @@ namespace Metal_Lynch__v3._0_
             //Increments the turn counter.
             game_CurrentPlayer.ResetFuel();
             //Resets the fuel value for the player who just played.
-            if (!game_DemoMode) { game_FireButton.Toggle(); }
-            //Enables the fire button if demo mode is not active.
+            if (!game_DemoMode && !game_Paused) { game_FireButton.Toggle(); game_WeaponSelector.Toggle(); }
+            //Enables the fire button and weapon selector if demo mode is not active.
+            else if (game_DemoMode)
+            {
+                Random RNG = new Random();
+                string[] weaponNames = Enum.GetNames(typeof(Weapons));
+
+                Weapons randomWeapon = (Weapons)Enum.Parse(typeof(Weapons),
+                    weaponNames[RNG.Next(weaponNames.Length)]);
+
+                game_WeaponSelector.SetWeaponSelector_SelectedWeapon(randomWeapon);
+                SelectWeapon(randomWeapon);
+            }
+            game_TurnDamage = 0;
+            game_ProjectileDetonated = false;
             game_NewTurn = true;
             //Tells the program that a new turn has started.
         }
@@ -505,6 +559,47 @@ namespace Metal_Lynch__v3._0_
             //Removes the UpdateEvent from the Rendering EventHandler.
         }
 
+        public void SelectWeapon(Weapons weapon)
+        {
+            switch (weapon)
+            {
+                case Weapons.Shot:
+                    game_Projectile = new Shot(this);
+                    break;
+                case Weapons.Sniper:
+                    game_Projectile = new Sniper(this);
+                    break;
+                case Weapons.Grenade:
+                    game_Projectile = new Grenade(this);
+                    break;
+                case Weapons.Bouncer:
+                    game_Projectile = new Bouncer(this);
+                    break;
+                case Weapons.AirStrike:
+                    game_Projectile = new AirStrike(this);
+                    break;
+                default:
+                    game_Projectile = new Shot(this);
+                    break;
+            }
+        }
+
+        public void PlayClickForwardSound()
+        {
+            game_MediaPlayer.Open(game_ClickForwardSoundUri);
+            game_MediaPlayer.Play();
+        }
+        public void PlayExplosionSound()
+        {
+            game_MediaPlayer.Open(game_ExplosionSoundUri);
+            game_MediaPlayer.Play();
+        }
+        public void PlaySound(Uri soundUri)
+        {
+            game_MediaPlayer.Open(soundUri);
+            game_MediaPlayer.Play();
+        }
+
         public Canvas GetGame_MainCanvas()
         {
             return game_MainCanvas;
@@ -533,6 +628,36 @@ namespace Metal_Lynch__v3._0_
         {
             return game_MapData;
             //Returns the map data.
+        }
+
+        public void SetGame_ProjectileDetonated(bool detonated)
+        {
+            game_ProjectileDetonated = detonated;
+        }
+
+        public Map GetGame_Map()
+        {
+            return game_Map;
+        }
+
+        public int GetGame_Gravity()
+        {
+            return game_Gravity;
+        }
+
+        public int[] GetGame_Boundaries()
+        {
+            return new int[2] { game_LeftBoundary, game_RightBoundary };
+        }
+
+        public bool GetGame_DemoMode()
+        {
+            return game_DemoMode;
+        }
+
+        public bool GetGame_Paused()
+        {
+            return game_Paused;
         }
     }
 }

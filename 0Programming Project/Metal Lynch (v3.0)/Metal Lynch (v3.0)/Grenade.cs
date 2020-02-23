@@ -17,6 +17,7 @@ namespace Metal_Lynch__v3._0_
     {
         private EllipseGeometry grenade_ExplosionGeometry;
         private Path grenade_ExplosionPath;
+
         private RotateTransform grenade_RotateTransform;
 
         private BitmapImage grenade_Sprite;
@@ -33,12 +34,11 @@ namespace Metal_Lynch__v3._0_
             BaseConstructor(game);
 
             grenade_RotateTransform = new RotateTransform();
-            projectile_TransformGroup.Children.Add(grenade_RotateTransform);
 
             geometry = new EllipseGeometry()
             {
                 Transform = projectile_TransformGroup,
-                RadiusX = 12,
+                RadiusX = 20,
                 RadiusY = 20
             };
 
@@ -47,9 +47,12 @@ namespace Metal_Lynch__v3._0_
 
             path = new Path()
             {
-                Stroke = Brushes.Brown,
+                Stroke = Brushes.Black,
                 Fill = new ImageBrush(new TransformedBitmap(
-                    grenade_Sprite, grenade_RotateTransform)),
+                    grenade_Sprite, grenade_RotateTransform))
+                {
+                    Stretch = Stretch.Uniform
+                },
                 StrokeThickness = 2,
                 Data = geometry
             };
@@ -67,9 +70,11 @@ namespace Metal_Lynch__v3._0_
                 Data = grenade_ExplosionGeometry
             };
 
-            grenade_ImpactDamage = 15;
+            grenade_ImpactDamage = 20;
             grenade_ExplosionDamage = 15;
             projectile_Damage = grenade_ImpactDamage;
+
+            projectile_Speed = 0.07;
 
             grenade_ExplosionSpriteSheet = new BitmapImage(
                 new Uri(@"Resources/Explosion spritesheet.png", UriKind.Relative)
@@ -87,23 +92,31 @@ namespace Metal_Lynch__v3._0_
             grenade_AnimationIncrement = 0;
         }
 
-        public override void MoveAlongTrajectory(int gravity)
+        public override void MoveAlongTrajectory(double gravity)
         {
+            gravity *= 1.3;
             base.MoveAlongTrajectory(gravity);
 
             grenade_RotateTransform.CenterX = projectile_TranslateTransform.X;
             grenade_RotateTransform.CenterY = projectile_TranslateTransform.Y;
 
             if (projectile_AngleRadians < Math.PI / 2)
-                { grenade_RotateTransform.Angle += 5; }
-            else { grenade_RotateTransform.Angle -= 5; }
+                { grenade_RotateTransform.Angle += 4; }
+            else { grenade_RotateTransform.Angle -= 4; }
 
             path.Fill.Transform = grenade_RotateTransform;
         }
 
         public override int Impact(Tank currentPlayer, Tank[] enemyTankArray)
         {
+            game.PlayExplosionSound();
+
             int damage = 0;
+
+            projectile_Finished = false;
+            projectile_Detonated = true;
+
+            RemoveFromCanvas();
 
             game.GetGame_MainCanvas().Children.Add(
                 grenade_ExplosionPath);
@@ -150,6 +163,9 @@ namespace Metal_Lynch__v3._0_
 
                 game.GetGame_MainCanvas().Children.Remove(
                     grenade_ExplosionPath);
+
+                projectile_Finished = true;
+                projectile_Detonated = false;
             }
         }
     }

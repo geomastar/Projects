@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -17,7 +18,9 @@ namespace Metal_Lynch__v3._0_
         protected double projectile_Speed;
         protected bool projectile_InMotion;
         protected int projectile_Damage;
-        protected int projectile_Time;        
+        protected int projectile_Time;
+        protected bool projectile_Finished;
+        protected bool projectile_Detonated;
 
         public void BaseConstructor(Game projectile_Game)
         {
@@ -39,9 +42,11 @@ namespace Metal_Lynch__v3._0_
             projectile_InMotion = false;
             //Instantiates the boolean value as false, as the projectile wont
             //be in motion as soon as the object is instantiated.
+            projectile_Finished = false;
+            projectile_Detonated = false;
         }
 
-        public virtual void MoveAlongTrajectory(int gravity)
+        public virtual void MoveAlongTrajectory(double gravity)
         {
             double realTime = projectile_Time * projectile_Speed;
 
@@ -54,16 +59,21 @@ namespace Metal_Lynch__v3._0_
             projectile_Time++;
         }
 
-        public virtual int Impact(Tank currentPlayer, Tank[] enemyTankArray) { return 0; }
-
-        public virtual double CalculateX(double time)
+        protected virtual double CalculateX(double time)
         {
             return (projectile_InitialVelocity * time * Math.Cos(projectile_AngleRadians));
         }
-        public virtual double CalculateY(int gravity, double time)
+        protected virtual double CalculateY(double gravity, double time)
         {
             return projectile_InitialVelocity * time * Math.Sin(projectile_AngleRadians)
                 - (0.5 * gravity * Math.Pow(time, 2));
+        }
+
+        public virtual int Impact(Tank currentPlayer, Tank[] enemyTankArray)
+        {
+            game.PlayExplosionSound();
+            projectile_Finished = true;
+            return 0;
         }
 
         public void SetAndStartTrajectory(Point startPoint, double angleRadians, double initialVelocity)
@@ -86,7 +96,7 @@ namespace Metal_Lynch__v3._0_
             //Starts the trajectory.
         }
 
-        public void StopTrajectory()
+        public virtual void StopTrajectory()
         {
             projectile_InMotion = false;
             //Stops the Projectile from moving along its trajectory.
@@ -106,6 +116,15 @@ namespace Metal_Lynch__v3._0_
         {
             return projectile_TranslateTransform;
             //Returns the TranslateTransform of the projectile.
+        }
+
+        public bool GetProjectile_Finished()
+        {
+            return projectile_Finished;
+        }
+        public bool GetProjectile_Detonated()
+        {
+            return projectile_Detonated;
         }
 
         public double GetProjectile_Speed()

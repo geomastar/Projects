@@ -30,5 +30,10 @@ namespace Metal_Lynch__v3._0_
 
             projectile_Damage = 20;
         }
+
+        public override int Impact(Tank currentPlayer, Tank[] enemyTankArray)
+        {
+            return base.Impact(currentPlayer, enemyTankArray);
+        }
     }
 }

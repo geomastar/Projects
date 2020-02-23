@@ -49,6 +49,10 @@ namespace Metal_Lynch__v3._0_
             fireButton_Button.IsEnabled = !fireButton_Button.IsEnabled;
             //Toggles the fire button.
         }
+        public void Enable()
+        {
+            fireButton_Button.IsEnabled = true;
+        }
 
         public bool GetFireButton_IsEnabled()
         {

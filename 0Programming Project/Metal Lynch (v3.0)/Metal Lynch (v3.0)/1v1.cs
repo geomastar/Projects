@@ -80,6 +80,12 @@ namespace Metal_Lynch__v3._0_
                 game_AimingIcon.SetIconPos(game_CurrentPlayer.GetTank_IconPos());
                 //Sets the icon position of the Tank to the icon position of the AimingIcon object.
 
+                if (!game_DemoMode)
+                {
+                    game_WeaponSelector.SetWeaponSelector_SelectedWeapon(Weapons.Shot);
+                    SelectWeapon(Weapons.Shot);
+                }
+
                 game_NewTurn = false;
             }
 
@@ -147,6 +153,7 @@ namespace Metal_Lynch__v3._0_
                 game_Framework.GetFramework_Window().KeyDown -= EscKeyPress;
 
                 if (game_FireButton.GetFireButton_IsEnabled()) { game_FireButton.Toggle(); }
+                if (game_WeaponSelector.GetWeaponSelector_IsEnabled()) { game_WeaponSelector.Toggle(); }
 
                 game_Stats.player1DamageDealt = _1v1_Player1.GetTank_DamageDealt();
                 game_Stats.player1DamageTaken = _1v1_Player1.GetTank_DamageTaken();

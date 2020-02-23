@@ -29,6 +29,14 @@ namespace Metal_Lynch__v3._0_
             };
 
             projectile_Damage = 60;
+
+            projectile_Speed = 0.15;
+        }
+
+        public override void MoveAlongTrajectory(double gravity)
+        {
+            gravity *= 0.8;
+            base.MoveAlongTrajectory(gravity);
         }
     }
 }

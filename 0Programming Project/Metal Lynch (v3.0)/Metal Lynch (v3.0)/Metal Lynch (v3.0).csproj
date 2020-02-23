@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AimingIcon.cs" />
+    <Compile Include="AirStrike.cs" />
+    <Compile Include="Bouncer.cs" />
     <Compile Include="FireButton.cs" />
     <Compile Include="Framework.cs" />
     <Compile Include="Game.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Sniper.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="Training.cs" />
+    <Compile Include="WeaponSelector.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -141,7 +144,13 @@
     <Content Include="Resources\Maps.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Missile sprite.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Sky texture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Soft Hit sound effect.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Tank Fire sound effect.mp3">
