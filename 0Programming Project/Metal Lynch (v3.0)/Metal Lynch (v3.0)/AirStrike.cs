@@ -209,7 +209,7 @@ namespace Metal_Lynch__v3._0_
                     Data = geometry
                 };
 
-                projectile_Damage = 15;
+                projectile_Damage = 10;
             }
 
             public override int Impact(Tank currentPlayer, Tank[] enemyTankArray)
