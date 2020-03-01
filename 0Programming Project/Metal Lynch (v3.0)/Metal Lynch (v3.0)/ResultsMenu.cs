@@ -119,7 +119,8 @@ namespace Metal_Lynch__v3._0_
                 menu_Framework.ChangeGameMode(Framework.GameModes._1v1, false, menu_Framework.GetFramework_Game().GetGame_MapData());
                 menu_Framework.GetFramework_Game().AssignUsernames(
                     resultsMenu_GameStats.player1Username,
-                    resultsMenu_GameStats.player2Username);
+                    resultsMenu_GameStats.player2Username,
+                    "", "");
             }
             menu_Framework.GetFramework_Canvas().Children.Remove(menu_Canvas);
         }

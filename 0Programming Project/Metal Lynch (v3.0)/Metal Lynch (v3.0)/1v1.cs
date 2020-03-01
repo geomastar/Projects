@@ -132,7 +132,8 @@ namespace Metal_Lynch__v3._0_
             }
         }
 
-        public override void AssignUsernames(string player1Username, string player2Username)
+        public override void AssignUsernames(string player1Username, string player2Username,
+            string player3Username, string player4Username)
         {
             _1v1_Player1HealthBar.SetProgressBar_LabelText(player1Username);
             _1v1_Player1.SetTank_Username(player1Username);

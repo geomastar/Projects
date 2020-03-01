@@ -62,13 +62,16 @@ namespace Metal_Lynch__v3._0_
 
         protected abstract void UpdateEvent(object sender, EventArgs e);
         public abstract void EndGame();
-        public virtual void AssignUsernames(string player1Username, string player2Username) { }
+        public virtual void AssignUsernames(string player1Username, string player2Username,
+            string player3Username, string player4Username) { }
 
         public struct GameStats
         {
             public Tank winner;
             public string player1Username;
             public string player2Username;
+            public string player3Username;
+            public string player4Username;
             public int player1DamageDealt;
             public int player2DamageDealt;
             public int player1DamageTaken;

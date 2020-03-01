@@ -15,25 +15,28 @@ namespace Metal_Lynch__v3._0_
         private ComboBox gameMenu_ModeSelector;
         private ComboBoxItem gameMenu_TrainingComboBoxItem;
         private ComboBoxItem gameMenu_1v1ComboBoxItem;
+        private ComboBoxItem gameMenu_4PlayerFFAComboBoxItem;
 
         private TextBlock gameMenu_ModeDescriptor;
 
         private UsernamePrompt gameMenu_Player1UsernamePrompt;
         private UsernamePrompt gameMenu_Player2UsernamePrompt;
+        private UsernamePrompt gameMenu_Player3UsernamePrompt;
+        private UsernamePrompt gameMenu_Player4UsernamePrompt;
 
         private struct UsernamePrompt
         {
             public TextBlock labelBox;
             public TextBox inputBox;
 
-            public UsernamePrompt(int playerNumber, int YPos)
+            public UsernamePrompt(int playerNumber, int XPos, int YPos)
             {
                 labelBox = new TextBlock()
                 {
                     FontSize = 20,
                     FontStyle = FontStyles.Italic,
                     Text = "Player " + playerNumber + "'s Username:",
-                    RenderTransform = new TranslateTransform(360, YPos)
+                    RenderTransform = new TranslateTransform(XPos, YPos)
                 };
 
                 inputBox = new TextBox()
@@ -50,7 +53,7 @@ namespace Metal_Lynch__v3._0_
                     MaxLength = 10,
                     HorizontalContentAlignment = HorizontalAlignment.Center,
                     Text = "Player" + playerNumber,
-                    RenderTransform = new TranslateTransform(410, YPos + 35)
+                    RenderTransform = new TranslateTransform(XPos + 50, YPos + 35)
                 };
             }
         }
@@ -106,6 +109,7 @@ namespace Metal_Lynch__v3._0_
 
             gameMenu_1v1ComboBoxItem = new ComboBoxItem() { Content = "1v1" };
             gameMenu_TrainingComboBoxItem = new ComboBoxItem() { Content = "Training" };
+            gameMenu_4PlayerFFAComboBoxItem = new ComboBoxItem() { Content = "4 Player FFA" };
 
             gameMenu_ModeSelector = new ComboBox()
             {
@@ -120,6 +124,7 @@ namespace Metal_Lynch__v3._0_
             };
             gameMenu_ModeSelector.Items.Add(gameMenu_TrainingComboBoxItem);
             gameMenu_ModeSelector.Items.Add(gameMenu_1v1ComboBoxItem);
+            gameMenu_ModeSelector.Items.Add(gameMenu_4PlayerFFAComboBoxItem);
             gameMenu_ModeSelector.DropDownOpened += DropDownOpenedEvent;
             gameMenu_ModeSelector.DropDownClosed += DropDownClosedEvent;
             menu_Canvas.Children.Add(gameMenu_ModeSelector);
@@ -132,8 +137,10 @@ namespace Metal_Lynch__v3._0_
             };
             menu_Canvas.Children.Add(gameMenu_ModeDescriptor);
 
-            gameMenu_Player1UsernamePrompt = new UsernamePrompt(1, 290);
-            gameMenu_Player2UsernamePrompt = new UsernamePrompt(2, 365);
+            gameMenu_Player1UsernamePrompt = new UsernamePrompt(1, 360, 290);
+            gameMenu_Player2UsernamePrompt = new UsernamePrompt(2, 360, 365);
+            gameMenu_Player3UsernamePrompt = new UsernamePrompt(3, 600, 290);
+            gameMenu_Player4UsernamePrompt = new UsernamePrompt(4, 600, 365);
 
             AddToCanvas();
             //Adds the Menu Canvas to the Framework Canvas.
@@ -156,7 +163,17 @@ namespace Metal_Lynch__v3._0_
                     menu_Framework.ChangeGameMode(Framework.GameModes._1v1, false, selectedMapData);
                     menu_Framework.GetFramework_Game().AssignUsernames(
                         gameMenu_Player1UsernamePrompt.inputBox.Text,
-                        gameMenu_Player2UsernamePrompt.inputBox.Text);
+                        gameMenu_Player2UsernamePrompt.inputBox.Text,
+                        "", "");
+                }
+                else if (gameMenu_ModeSelector.SelectedItem == gameMenu_4PlayerFFAComboBoxItem)
+                {
+                    menu_Framework.ChangeGameMode(Framework.GameModes._4PlayerFFA, false, selectedMapData);
+                    menu_Framework.GetFramework_Game().AssignUsernames(
+                        gameMenu_Player1UsernamePrompt.inputBox.Text,
+                        gameMenu_Player2UsernamePrompt.inputBox.Text,
+                        gameMenu_Player3UsernamePrompt.inputBox.Text,
+                        gameMenu_Player4UsernamePrompt.inputBox.Text);
                 }
 
                 menu_Framework.GetFramework_Canvas().Children.Remove(menu_Canvas);
@@ -203,6 +220,10 @@ namespace Metal_Lynch__v3._0_
                 {
                     menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true, selectedMapData);
                 }
+                if (menu_Framework.GetFramework_Game().GetType().Equals(typeof(_4PlayerFFA)))
+                {
+                    menu_Framework.ChangeGameMode(Framework.GameModes._4PlayerFFA, true, selectedMapData);
+                }
             }
             if (gameMenu_ModeSelector.SelectedItem == gameMenu_TrainingComboBoxItem)
             {
@@ -210,13 +231,24 @@ namespace Metal_Lynch__v3._0_
                 gameMenu_ModeDescriptor.Text = "Practice your aim by endlessly\n firing at an unmoving enemy tank.";
                 HideUsernamePrompt(gameMenu_Player1UsernamePrompt);
                 HideUsernamePrompt(gameMenu_Player2UsernamePrompt);
+                HideUsernamePrompt(gameMenu_Player3UsernamePrompt);
+                HideUsernamePrompt(gameMenu_Player4UsernamePrompt);
             }
             if (gameMenu_ModeSelector.SelectedItem == gameMenu_1v1ComboBoxItem)
             {
                 menu_Framework.ChangeGameMode(Framework.GameModes._1v1, true, selectedMapData);
-                gameMenu_ModeDescriptor.Text = "Take turns with a friend in this\n two player one vs one battle. ";
+                gameMenu_ModeDescriptor.Text = "Take turns with a friend in this\n two player one vs one battle.";
                 ShowUsernamePrompt(gameMenu_Player1UsernamePrompt);
                 ShowUsernamePrompt(gameMenu_Player2UsernamePrompt);
+            }
+            if (gameMenu_ModeSelector.SelectedItem == gameMenu_4PlayerFFAComboBoxItem)
+            {
+                menu_Framework.ChangeGameMode(Framework.GameModes._4PlayerFFA, true, selectedMapData);
+                gameMenu_ModeDescriptor.Text = "---Mode Description---";
+                ShowUsernamePrompt(gameMenu_Player1UsernamePrompt);
+                ShowUsernamePrompt(gameMenu_Player2UsernamePrompt);
+                ShowUsernamePrompt(gameMenu_Player3UsernamePrompt);
+                ShowUsernamePrompt(gameMenu_Player4UsernamePrompt);
             }
         }
 

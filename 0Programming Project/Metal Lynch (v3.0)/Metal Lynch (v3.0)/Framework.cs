@@ -37,7 +37,8 @@ namespace Metal_Lynch__v3._0_
         public enum GameModes
         {
             Training,
-            _1v1
+            _1v1,
+            _4PlayerFFA
         }
         public enum Menus
         {
@@ -84,6 +85,9 @@ namespace Metal_Lynch__v3._0_
                     break;
                 case GameModes._1v1:
                     framework_Game = new _1v1(this, demoMode, mapData);
+                    break;
+                case GameModes._4PlayerFFA:
+                    framework_Game = new _4PlayerFFA(this, demoMode, mapData);
                     break;
             }
 
